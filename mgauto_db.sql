@@ -1,4 +1,7 @@
-SET FOREIGN_KEY_CHECKS=0;
+-- to get following script working on linux
+-- mysql -u [username] -p[password] [database_name] < [this_script.sql]
+
+SET FOREIGN_KEY_CHECKS=0; #temporary solution
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
