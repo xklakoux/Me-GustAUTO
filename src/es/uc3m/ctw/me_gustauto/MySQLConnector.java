@@ -11,6 +11,7 @@ import java.sql.Statement;
 public class MySQLConnector {
 	
 	public static final String CLIENT_IS_LOGGED_IN = "CLIENT_IS_LOGGED_IN";
+	public static final String USERNAME_OF_CLIENT = "USERNAME_OF_CLIENT";
 	public static final int SALTLENGTH = 10;
 	
 	private static Connection connection = null;

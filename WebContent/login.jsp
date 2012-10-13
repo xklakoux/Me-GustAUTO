@@ -9,12 +9,13 @@
 <body>
   <form METHOD="POST" ACTION="LoginServlet">
     <h1>Login</h1>
-    <h3>
+    <h4>
       Username <input name="username" value=""><br>
       Password <input name="password" value=""><br>
       <br>
       <input type=submit value="Log in" />
-	</h3>
+	</h4>
   </form>
+  <a href="index.jsp">Back to index</a>
 </body>
 </html>

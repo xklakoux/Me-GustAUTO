@@ -8,5 +8,6 @@
 </head>
 <body>
   <h1>Content - only visible for clients</h1>
+  <a href="index.jsp">Back to index</a>
 </body>
 </html>
