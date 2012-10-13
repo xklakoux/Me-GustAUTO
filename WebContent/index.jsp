@@ -5,9 +5,11 @@
 <html>
   <head>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    	<title>GlassFish JSP Page</title>
+    	<title>Welcome to Me-GustAUTO</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <h1>Welcome to Me-GustAUTO</h1>
+    <a href="login.jsp">Log in</a><br>
+    <a href="registration_form.jsp">Registration form</a>
   </body>
-</html> 
+</html>
