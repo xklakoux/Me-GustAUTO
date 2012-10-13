@@ -23,8 +23,9 @@ CREATE TABLE general_ads(
     ad_id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
     descr TEXT NOT NULL,
-    add_date DATETIME,
     user_id INT NOT NULL,
+    add_date DATETIME,
+    valid_to DATETIME,
     PRIMARY KEY (ad_id),
     FOREIGN KEY (user_id) references users(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB;
@@ -44,6 +45,8 @@ CREATE TABLE auto_ads(
     description TEXT,
     user_id INT,
     auto_moto ENUM('auto','moto'),
+    add_date DATETIME,
+    valid_to DATETIME,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     PRIMARY KEY (ad_id)
 ) ENGINE=INNODB;
