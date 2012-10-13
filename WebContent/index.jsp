@@ -9,7 +9,16 @@
   </head>
   <body>
     <h1>Welcome to Me-GustAUTO</h1>
-    <a href="login.jsp">Log in</a><br>
-    <a href="registration_form.jsp">Registration form</a>
+    <%
+    Object client = session.getAttribute("CLIENT_IS_LOGGED_IN");
+    if (client != null && (Boolean) client) {
+    	out.println("<a href='LoginServlet'>Log out</a><br>");
+    } else {
+    	out.println("<a href='login.jsp'>Log in</a><br>");
+    }
+    %>
+    <a href="registration_form.jsp">Registration form</a><br>
+    <br>
+    <a href="content.jsp">SHOW CONTENT!</a>
   </body>
 </html>

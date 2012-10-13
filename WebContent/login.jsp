@@ -8,7 +8,7 @@
 </head>
 <body>
   <form METHOD="POST" ACTION="LoginServlet">
-    <h1>Client registration</h1>
+    <h1>Login</h1>
     <h3>
       Username <input name="username" value=""><br>
       Password <input name="password" value=""><br>
