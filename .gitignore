@@ -2,3 +2,7 @@
 *.mwb
 *.swp
 .settings
+*.un~
+*.bak
+*.beforefix
+.classpath
