@@ -15,7 +15,8 @@ CREATE TABLE users(
     address VARCHAR(50),
     role INT,
     join_date DATETIME,
-    PRIMARY KEY (user_id)
+    PRIMARY KEY (user_id),
+    UNIQUE(username)
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS general_ads ;
