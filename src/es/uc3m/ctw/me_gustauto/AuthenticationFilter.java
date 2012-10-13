@@ -36,7 +36,6 @@ public class AuthenticationFilter implements Filter {
 			res.sendRedirect("login.jsp");
 		}
 		
-		System.out.println("always");
 		System.out.println(session.getLastAccessedTime()-session.getCreationTime());
 		
 		// pass the request along the filter chain
