@@ -29,7 +29,7 @@ body {
 
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
-		<img src="car.png" width="120px" height="72px"
+		<img src="res/images/car.png" width="120px" height="72px"
 			style="float: left; margin-right: 20px;" />
 		<b>
 			<jsp:getProperty name="autoAdBean" property="brand" />

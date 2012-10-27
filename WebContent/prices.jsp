@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Prices list</title>
-	<div style="text-align: center">
+<title>Price list</title>
+</head>
+<body>
+	<div style="text-align:center;">
 		<h2>Our prices:</h2>
 		<hr>
 		<h3>Auto ads prices:</h3>
@@ -18,8 +20,5 @@
 		1 day (more than 3 months) - 44.25€<br>
 		<hr>
 	</div>
-</head>
-<body>
-
 </body>
 </html>

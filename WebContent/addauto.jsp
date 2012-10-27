@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 <title>Add your auto advertisement</title>
 </head>
 
@@ -35,8 +36,7 @@
 				<INPUT TYPE="radio" <% if(autoAdBean.getAuto_moto().equals("auto")) out.print("checked"); %> name="auto_moto" value="auto"> Car
 				<INPUT TYPE="radio" <% if(autoAdBean.getAuto_moto().equals("moto")) out.print("checked"); %> name="auto_moto" value="moto"> Motorbike <br>
 			
-<!-- 		temporary, later might use a different way to input date -->
-			<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+			<!-- temporary, later might use a different way to input date -->
 		    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 		    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 		    <script>
