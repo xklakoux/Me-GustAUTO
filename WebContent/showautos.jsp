@@ -9,7 +9,7 @@
 
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
-		<a href="?page=showdetails.jsp&id=123"><img
+		<a href="?page=showdetails.jsp&id=${autoAdBean.ad_id}"><img
 			src="res/images/car.png" width="50px" height="30px"
 			style="float: left; margin-right: 20px;" /></a>
 		<div>
@@ -21,7 +21,6 @@
 			<div>
 				<%
 				Object admin = session.getAttribute(MySQLConnector.IS_ADMIN);
-				admin = true;
 				if (admin != null && (Boolean) admin) {
 					if (((AutoAdBean) pageContext.getAttribute("autoAdBean")).getValid_to() == null) {
 						out.println("<a href='AutoAdAdministrationServlet?command=c&ad_id="
