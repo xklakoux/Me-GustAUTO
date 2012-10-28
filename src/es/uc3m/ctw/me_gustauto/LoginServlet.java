@@ -40,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 				MySQLConnector.CLIENT_IS_LOGGED_IN, false);
 		request.getSession(true).setAttribute(
 				MySQLConnector.USERNAME_OF_CLIENT, null);
+		request.getSession(true).setAttribute(MySQLConnector.IS_ADMIN,false);
 		response.sendRedirect("index.jsp");
 	}
 
