@@ -1,4 +1,5 @@
-package es.uc3m.ctw.me_gustauto;
+package es.uc3m.ctw.me_gustauto.controller;
+
 
 public class ClientBean {
 	

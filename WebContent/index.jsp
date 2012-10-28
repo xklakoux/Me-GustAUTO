@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="es.uc3m.ctw.me_gustauto.MySQLConnector"%>
+<%@ page import="es.uc3m.ctw.me_gustauto.controller.MySQLConnector"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%--     <jsp:useBean id="MySQLSession" type="es.uc3m.ctw.me_gustauto.MySQLConnector" scope="session"> --%>
 <%-- 			<jsp:getProperty property="MySQLSession" name="IS_ADMIN"/> --%>
@@ -53,7 +53,6 @@
 					</div>
 				</div>
 				<div id="menu">
-
 					<ul>
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="?page=prices.jsp">Pricing</a></li>
@@ -61,7 +60,6 @@
 						<li><a href="?page=contact.jsp">Contact</a></li>
 						<li><a href="?page=registration_form.jsp">Register</a></li>
 					</ul>
-
 				</div>
 
 			</c:otherwise>
@@ -91,5 +89,6 @@
 			<div id="footer">Footer Content</div>
 		</div>
 	</div>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-package es.uc3m.ctw.me_gustauto;
+package es.uc3m.ctw.me_gustauto.controller;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -83,14 +83,9 @@ public class MySQLConnector {
 	}
 
 	public static boolean verifyAdmin(String username) {
-		// TODO Auto-generated method stub
 		try {
-			ResultSet rs = executeQuery("SELECT * FROM users WHERE username = '" + username + "' AND role = 'admin' ");
-			if (!rs.first()){
-				return false;
-			}else{
-				return true;
-			}
+			ResultSet rs = executeQuery("SELECT * FROM users WHERE username = '" + username + "' AND role = 'admin';");
+			return rs.first();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}

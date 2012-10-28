@@ -1,4 +1,4 @@
-package es.uc3m.ctw.me_gustauto;
+package es.uc3m.ctw.me_gustauto.controller;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -28,6 +28,7 @@ public class AutoAdBean {
 	private String username = "";
 	
 	//Saved to db
+	private int ad_id;
 	private String title = "";
 	private String brand = "";
 	private String model = "";
@@ -53,6 +54,7 @@ public class AutoAdBean {
      * temporary, just to see if the jsp works 
      */
     public void fillWithData(){
+    	this.setAd_id(42);
 		this.setAdd_date("23-10-2013");
 		this.setAuto_moto("auto");
 		this.setBrand("Toyota");
@@ -161,6 +163,12 @@ public class AutoAdBean {
 		return true;
 	}
 
+	public int getAd_id() {
+		return ad_id;
+	}
+	public void setAd_id(int ad_id) {
+		this.ad_id = ad_id;
+	}
 	public String getTitle() {
 		return title;
 	}
