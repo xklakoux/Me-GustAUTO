@@ -11,15 +11,16 @@
   </welcome-file-list>
   <servlet>
   	<description>
-  	server that manages whole navigation on the website</description>
-  	<display-name>NavigationServlet</display-name>
-  	<servlet-name>NavigationServlet</servlet-name>
-  	<servlet-class>es.uc3m.ctw.me_gustauto.NavigationServlet</servlet-class>
+  	</description>
+  	<display-name>DBServlet</display-name>
+  	<servlet-name>DBServlet</servlet-name>
+  	<servlet-class>es.uc3m.ctw.me_gustauto.DBServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>NavigationServlet</servlet-name>
-  	<url-pattern>/NavigationServlet</url-pattern>
+  	<servlet-name>DBServlet</servlet-name>
+  	<url-pattern>/DBServlet</url-pattern>
   </servlet-mapping>
+ 
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>
