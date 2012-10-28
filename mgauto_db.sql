@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS prices;
 CREATE TABLE prices(
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(20),
-    price DECIMAL(3,2),
+    price DECIMAL(7,2),
     descr TEXT,
     PRIMARY KEY (id)
 );
@@ -77,3 +77,7 @@ insert into prices (name, price, descr) values ("1 month", 20, "normal price");
 insert into prices (name, price, descr) values ("2 month", 16, "at least 2 months 10/month discount!");
 insert into prices (name, price, descr) values ("3 month", 8, "at least 3 months ultra discount!");
 
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
+values ('Brand-new offer', 'BMW', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
+values ('Recent offer', 'Audi', 'R8', '800', '12345', '2012', 59000.5, 3000, 'Red', 'The car is in a perfect condition.', 1, 'auto', now());
