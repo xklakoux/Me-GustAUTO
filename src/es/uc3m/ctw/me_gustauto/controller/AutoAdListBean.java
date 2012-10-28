@@ -14,7 +14,21 @@ public class AutoAdListBean {
 		try {
 			while (rs.next()) {
 				AutoAdBean bean = new AutoAdBean();
-				bean.fillWithData(); // TODO
+				bean.setAd_id(rs.getInt("ad_id"));
+				bean.setTitle(rs.getString("title"));
+				bean.setBrand(rs.getString("brand"));
+				bean.setModel(rs.getString("model"));
+				bean.setEngine(rs.getString("engine"));
+				bean.setRegistration_number(rs.getString("registration_number"));
+				bean.setYears(rs.getString("years"));
+				bean.setPrice(rs.getDouble("price"));
+				bean.setMileage(rs.getInt("mileage"));
+				bean.setColour(rs.getString("colour"));
+				bean.setDescription(rs.getString("description"));
+				bean.setUser_id(rs.getInt("user_id"));
+				bean.setAuto_moto(rs.getString("auto_moto"));
+				bean.setAdd_date(rs.getString("add_date"));
+				bean.setValid_to(rs.getString("valid_to"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {
