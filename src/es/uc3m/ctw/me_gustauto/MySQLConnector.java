@@ -12,6 +12,7 @@ public class MySQLConnector {
 	
 	public static final String CLIENT_IS_LOGGED_IN = "CLIENT_IS_LOGGED_IN";
 	public static final String USERNAME_OF_CLIENT = "USERNAME_OF_CLIENT";
+	public static final String IS_ADMIN = "IS_ADMIN";
 	public static final int SALTLENGTH = 10;
 	
 	private static Connection connection = null;
@@ -76,6 +77,21 @@ public class MySQLConnector {
 			String hash = sha1(password, rs.getString("salt"));
 			if (rs.getString("hash").equals(hash)) return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public static boolean verifyAdmin(String username) {
+		// TODO Auto-generated method stub
+		try {
+			ResultSet rs = executeQuery("SELECT * FROM users WHERE username = '" + username + "' AND role = 'admin' ");
+			if (!rs.first()){
+				return false;
+			}else{
+				return true;
+			}
+		}catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;

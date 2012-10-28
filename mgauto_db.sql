@@ -13,7 +13,7 @@ CREATE TABLE users(
     email VARCHAR(40) NOT NULL,
     phone VARCHAR(15),
     address VARCHAR(50),
-    role INT,
+    role ENUM('admin','user'),
     join_date DATETIME,
     PRIMARY KEY (user_id),
     UNIQUE(username)
@@ -60,3 +60,11 @@ CREATE TABLE prices(
     descr TEXT,
     PRIMARY KEY (id)
 );
+
+
+-- users
+insert into users (username, full_name, hash, salt, email, phone, address, role) values('admin', 'Admin Adminov', '733b8fa4b833ca9d3baec9470d7f467614e85057', 'NLVBGCODGE', 'asdsa@dasdsa.dasda' ,'123131313', 'dasdada', 'admin');
+
+insert into users (username, full_name, hash, salt, email, phone, address, role) values('xklakoux', 'Artur Staniec', 'e8e8921b196428ac5ef1f05265d360f2078910af', 'INAEBQWCKQ', 'adsad@dasdsa.ds', '123131313', 'dasdada', 'admin');
+
+

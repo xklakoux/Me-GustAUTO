@@ -16,14 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public LoginServlet() {
+		super();
+	}
 
-    /**
+	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
@@ -31,27 +31,37 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession(true).setAttribute(MySQLConnector.CLIENT_IS_LOGGED_IN, false);
-		request.getSession(true).setAttribute(MySQLConnector.USERNAME_OF_CLIENT, null);
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		request.getSession(true).setAttribute(
+				MySQLConnector.CLIENT_IS_LOGGED_IN, false);
+		request.getSession(true).setAttribute(
+				MySQLConnector.USERNAME_OF_CLIENT, null);
 		response.sendRedirect("index.jsp");
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+
 		if (MySQLConnector.verifyLogin(username, password)) {
-			request.getSession(true).setAttribute(MySQLConnector.CLIENT_IS_LOGGED_IN, true);
-			request.getSession(true).setAttribute(MySQLConnector.USERNAME_OF_CLIENT, username);
-			response.sendRedirect("content.jsp");
+			request.getSession(true).setAttribute(
+					MySQLConnector.CLIENT_IS_LOGGED_IN, true);
+			request.getSession(true).setAttribute(
+					MySQLConnector.USERNAME_OF_CLIENT, username);
+			request.getSession(true).setAttribute(MySQLConnector.IS_ADMIN,
+					MySQLConnector.verifyAdmin(username));
+			response.sendRedirect("index.jsp");
 		} else {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("index.jsp");
 		}
 	}
 }

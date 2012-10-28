@@ -1,0 +1,150 @@
+﻿body {
+				font-family: Arial;
+				font-size: 13px;
+				color: #666;
+				background: #f6f6f6;
+
+}
+a {
+				color: #6a8db7;
+}
+
+a:hover {
+				text-decoration: none;
+				padding: 0px;
+}
+
+p {
+				line-height: 25px;
+				color: #555;
+				text-align: justify;
+}
+
+h2 {
+				font-size: 20px;
+				color: #6a8db7;
+}
+
+/* wrapper for whole page */
+.wrapper {
+	width: 1024px;
+	height: 620px;
+	margin: auto;
+}
+
+#header_container {
+	width: 100%;
+	height: 20%;
+	background: url("../res/images/img2.png") no-repeat;
+	background-color: #34393B;
+	display: inline-block;
+}
+
+#header {
+	float: left;
+	display: block;
+}
+
+#menu {
+	width: 100%;
+	height: 7%;
+	float: left;
+}
+
+.container {
+	display: inline-block;
+	width: 100%;
+	height: 70%;
+	margin: 2px;
+}
+
+#login {
+	display: block;
+	float: right;
+	font-size: 10px;
+}
+
+#bar-search,#content,#bar-ads {
+	float: left;
+	/*     display: inline-block; */
+	height: 100% !important;
+}
+
+#bar-search {
+	width: 20%; /* sidebar width */
+	overflow: hidden; /* hide extra content */
+}
+#bar-ads {
+	width: 20%; /* sidebar width */
+	overflow: hidden; /* hide extra content */
+	margin-bottom:5px;
+	display: block;
+	
+}
+
+#content {
+	width: 60%; /* main content width */
+	overflow: auto;
+}
+
+.gen-ad {
+	background-color: black;
+	color: white;
+	margin: 5px;
+}
+
+#footer_container { /* 	position: fixed; */
+	width: 100%;
+	height: 3%;
+	background-color: #34393B ;
+	clear: both;
+	z-index: 10;
+	padding: 10px;
+}
+
+#footer {
+	text-align: center;
+	color: white;
+	font-size: 10px;
+}
+
+a {
+	color: white;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 5px 0px 0px 0px;
+	list-style: none;
+}
+
+#menu li {
+	display: block;
+	float: left;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	padding: 15px 15px 15px 15px;
+	text-decoration: none;
+	text-align: left;
+	text-transform: uppercase;
+	font-family: Arial;
+	font-weight: normal;
+	color: #444;
+	font-size: 12px;
+}
+
+#menu a:hover {
+	color: #111;
+	background: #c2cfdf;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+input {
+				border: 1px solid #ccc;
+				background: #34393b;
+				color: #CCC;
+}
+

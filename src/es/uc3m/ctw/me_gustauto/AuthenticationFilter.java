@@ -33,7 +33,7 @@ public class AuthenticationFilter implements Filter {
 		
 		Object client = session.getAttribute(MySQLConnector.CLIENT_IS_LOGGED_IN);
 		if (client == null || !(Boolean) client) {
-			res.sendRedirect("login.jsp");
+			res.sendRedirect("index.jsp");
 		}
 		
 		// pass the request along the filter chain
