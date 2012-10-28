@@ -62,7 +62,9 @@ CREATE TABLE prices(
 );
 
 
--- users
+-- users passwords are following
+--  admin -> admin1
+--  xklakoux -> qweqwe
 insert into users (username, full_name, hash, salt, email, phone, address, role) values('admin', 'Admin Adminov', '733b8fa4b833ca9d3baec9470d7f467614e85057', 'NLVBGCODGE', 'asdsa@dasdsa.dasda' ,'123131313', 'dasdada', 'admin');
 insert into users (username, full_name, hash, salt, email, phone, address, role) values('xklakoux', 'Artur Staniec', 'e8e8921b196428ac5ef1f05265d360f2078910af', 'INAEBQWCKQ', 'adsad@dasdsa.ds', '123131313', 'dasdada', 'admin');
 
