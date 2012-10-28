@@ -41,5 +41,6 @@ public class AutoAdAdministrationServlet extends HttpServlet {
 		} else if ("d".equals(command)) {
 			MySQLConnector.execute("DELETE FROM auto_ads WHERE ad_id = '" + ad_id + "';");
 		}
+		response.sendRedirect("index.jsp");
 	}
 }

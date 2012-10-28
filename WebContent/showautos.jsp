@@ -21,10 +21,13 @@
 			<div>
 				<%
 				Object admin = session.getAttribute(MySQLConnector.IS_ADMIN);
+				admin = true;
 				if (admin != null && (Boolean) admin) {
-					out.println("<a href='AutoAdAdministrationServlet?command=c&ad_id="
-							+ ((AutoAdBean) pageContext.getAttribute("autoAdBean")).getAd_id()
-							+ "'><img src='res/images/confirm.png' width='13px' height='13px'></a>");
+					if (((AutoAdBean) pageContext.getAttribute("autoAdBean")).getValid_to() == null) {
+						out.println("<a href='AutoAdAdministrationServlet?command=c&ad_id="
+								+ ((AutoAdBean) pageContext.getAttribute("autoAdBean")).getAd_id()
+								+ "'><img src='res/images/confirm.png' width='13px' height='13px'></a>");
+					}
 					out.println("<a href='AutoAdAdministrationServlet?command=d&ad_id="
 							+ ((AutoAdBean) pageContext.getAttribute("autoAdBean")).getAd_id()
 							+ "'><img src='res/images/delete.gif' width='13px' height='13px'></a>");
