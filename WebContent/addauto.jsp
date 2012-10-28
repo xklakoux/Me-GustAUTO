@@ -1,9 +1,9 @@
 <%@page import="java.util.Date"%>
-<%@page import="es.uc3m.ctw.me_gustauto.MySQLConnector"%>
+<%@page import="es.uc3m.ctw.me_gustauto.controller.MySQLConnector"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<jsp:useBean id="autoAdBean" class="es.uc3m.ctw.me_gustauto.AutoAdBean"
+<jsp:useBean id="autoAdBean" class="es.uc3m.ctw.me_gustauto.controller.AutoAdBean"
 	scope="session" />
 <jsp:setProperty name="autoAdBean" property="*" />
 <form METHOD="POST" ACTION="add_auto_ad_form.jsp">

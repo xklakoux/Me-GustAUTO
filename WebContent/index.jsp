@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="es.uc3m.ctw.me_gustauto.MySQLConnector"%>
+<%@ page import="es.uc3m.ctw.me_gustauto.controller.MySQLConnector"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%-- <%@ page errorPage="error.jsp" %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -47,7 +47,6 @@
 
 	</div>
 
-	</div>
 	<div id="menu">
 		<ul>
 
@@ -90,7 +89,6 @@
 	</div>
 	<div id="footer_container">
 		<div id="footer">Footer Content</div>
-	</div>
 	</div>
 </body>
 </html>

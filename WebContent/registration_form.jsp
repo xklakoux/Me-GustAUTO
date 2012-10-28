@@ -7,7 +7,7 @@
 	String password2 = request.getParameter("password2");
 	boolean alright = true;
 %>
-<jsp:useBean id="clientBean" class="es.uc3m.ctw.me_gustauto.ClientBean" />
+<jsp:useBean id="clientBean" class="es.uc3m.ctw.me_gustauto.controller.ClientBean" />
 <jsp:setProperty name="clientBean" property="*" />
 <form METHOD="POST" ACTION="?page=registration_form.jsp">
 	<h2>Client registration</h2>

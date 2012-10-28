@@ -12,7 +12,7 @@ body {
 </style>
 </head>
 <body>
-	<jsp:useBean id="autoAdBean" class="es.uc3m.ctw.me_gustauto.AutoAdBean"
+	<jsp:useBean id="autoAdBean" class="es.uc3m.ctw.me_gustauto.controller.AutoAdBean"
 		scope="session" />
 	<jsp:setProperty name="autoAdBean" property="*" />
 	<%

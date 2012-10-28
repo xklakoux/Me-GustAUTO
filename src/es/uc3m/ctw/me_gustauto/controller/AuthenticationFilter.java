@@ -1,4 +1,4 @@
-package es.uc3m.ctw.me_gustauto;
+package es.uc3m.ctw.me_gustauto.controller;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 /**
  * Servlet Filter implementation class AuthenticationFilter

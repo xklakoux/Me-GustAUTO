@@ -7,7 +7,7 @@
 <title>Thanks for your registration</title>
 </head>
 <body>
-  <jsp:useBean id="clientBean" class="es.uc3m.ctw.me_gustauto.ClientBean" />
+  <jsp:useBean id="clientBean" class="es.uc3m.ctw.me_gustauto.controller.ClientBean" />
   <jsp:setProperty name="clientBean" property="*" />
   <h1>Thanks for your registration</h1>
   <h4>
