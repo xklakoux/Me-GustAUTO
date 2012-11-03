@@ -12,15 +12,13 @@ body {
 </style>
 </head>
 <body>
-	<jsp:useBean id="autoAdBean" class="es.uc3m.ctw.me_gustauto.controller.AutoAdBean"
-		scope="session" />
+	<jsp:useBean  id="autoAdBean" class="es.uc3m.ctw.me_gustauto.controller.AutoAdBean" />
 	<jsp:setProperty name="autoAdBean" property="*" />
 	<%
 		//LATER: get from db by adid
 		//NOW: create a fictional record
 		autoAdBean.fillWithData();
 	%>
-
 	<br>
 
 	<div style="font-weight: bold; font-size: 16px">
@@ -30,37 +28,27 @@ body {
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
 		<img src="res/images/car.png" width="120px" height="72px"
-			style="float: left; margin-right: 20px;" />
-		<b>
-			<jsp:getProperty name="autoAdBean" property="brand" />
-
-			<jsp:getProperty name="autoAdBean" property="model" /><br>
-		</b>
-		engine:
-		<b><jsp:getProperty name="autoAdBean" property="engine" /><br></b> 
-		year
-		of manufacture:
-		<b><jsp:getProperty name="autoAdBean" property="years" /><br></b>
-		mileage:
-		<b><jsp:getProperty name="autoAdBean" property="mileage" /><br></b>
-		color:
-		<b><jsp:getProperty name="autoAdBean" property="colour" /><br></b>
-		registration number:
-		<b><jsp:getProperty name="autoAdBean" property="registration_number" /><br></b>
+			style="float: left; margin-right: 20px;" /> <b> <jsp:getProperty
+				name="autoAdBean" property="brand" /> <jsp:getProperty
+				name="autoAdBean" property="model" /><br>
+		</b> engine: <b><jsp:getProperty name="autoAdBean" property="engine" /><br></b>
+		year of manufacture: <b><jsp:getProperty name="autoAdBean"
+				property="years" /><br></b> mileage: <b><jsp:getProperty
+				name="autoAdBean" property="mileage" /><br></b> color: <b><jsp:getProperty
+				name="autoAdBean" property="colour" /><br></b> registration
+		number: <b><jsp:getProperty name="autoAdBean"
+				property="registration_number" /><br></b>
 	</div>
 
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
 
-		owner's username:
-		<b><jsp:getProperty name="autoAdBean" property="username" /><br></b>
-		offer valid until:
-		<b><jsp:getProperty name="autoAdBean" property="valid_to" /></b>
-		<br> Description:<br><br>
-		<jsp:getProperty name="autoAdBean" property="description" /><br><br>
-
+		owner's username: <b><jsp:getProperty name="autoAdBean"
+				property="username" /><br></b> offer valid until: <b><jsp:getProperty
+				name="autoAdBean" property="valid_to" /></b> <br> Description:<br>
+		<br>
+		<jsp:getProperty name="autoAdBean" property="description" /><br>
+		<br>
 	</div>
-	<br>
-	<a href="/Me-GustAUTO/index.jsp">Back to index</a>
 </body>
 </html>
