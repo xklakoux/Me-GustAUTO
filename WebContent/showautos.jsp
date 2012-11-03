@@ -21,7 +21,6 @@
 			<div>
 				<%
 				Object admin = session.getAttribute(MySQLConnector.IS_ADMIN);
-				admin = true;
 				if (admin != null && (Boolean) admin) {
 					if (((AutoAdBean) pageContext.getAttribute("autoAdBean")).getValid_to() == null) {
 						out.println("<a href='AutoAdAdministrationServlet?command=c&ad_id="
