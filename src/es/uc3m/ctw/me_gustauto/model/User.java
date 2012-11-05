@@ -2,6 +2,7 @@ package es.uc3m.ctw.me_gustauto.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="users")
+@NamedQuery(name="getUserByUsername", query="select a from User a where a.username like :usern")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +36,7 @@ public class User implements Serializable {
 
 	private String phone;
 
-	private int role;
+	private String role;
 
 	private String salt;
 
@@ -107,11 +109,11 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 
-	public int getRole() {
+	public String getRole() {
 		return this.role;
 	}
 
-	public void setRole(int role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

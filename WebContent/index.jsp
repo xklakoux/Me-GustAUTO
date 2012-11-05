@@ -5,7 +5,6 @@
 <%--     <jsp:useBean id="MySQLSession" type="es.uc3m.ctw.me_gustauto.MySQLConnector" scope="session"> --%>
 <%-- 			<jsp:getProperty property="MySQLSession" name="IS_ADMIN"/> --%>
 <%-- </jsp:useBean> --%>
-
 <%-- <%@ page errorPage="error.jsp" %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,10 +45,8 @@
 			<c:otherwise>
 
 				<div id="header_container">
-					<div id="header">
-						<div id="login">
-							<jsp:include page="login.jsp" />
-						</div>
+					<div id="login">
+						<jsp:include page="login.jsp" />
 					</div>
 				</div>
 				<div id="menu">
@@ -70,7 +67,6 @@
 				<jsp:include page="bar-search.jsp" />
 			</div>
 			<div id="content">
-
 				<c:choose>
 					<c:when test="${param.page==null}">
 						<jsp:include page="showautos.jsp" />
@@ -82,7 +78,7 @@
 			</div>
 
 			<div id="bar-ads">
-				<jsp:include page="bar-ads.jsp" />
+						<jsp:include page="/GeneralAdServlet" />
 			</div>
 		</div>
 		<div id="footer_container">

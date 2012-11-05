@@ -2,11 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>Me-GustAUTO</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
@@ -16,9 +12,30 @@
   	<servlet-name>DBServlet</servlet-name>
   	<servlet-class>es.uc3m.ctw.me_gustauto.DBServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>GeneralAdServlet</display-name>
+  	<servlet-name>GeneralAdServlet</servlet-name>
+  	<servlet-class>es.uc3m.ctw.me_gustauto.controller.GeneralAdServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description></description>
+  	<display-name>AddGeneralAd</display-name>
+  	<servlet-name>AddGeneralAd</servlet-name>
+  	<servlet-class>es.uc3m.ctw.me_gustauto.controller.AddGeneralAd</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>DBServlet</servlet-name>
   	<url-pattern>/DBServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GeneralAdServlet</servlet-name>
+  	<url-pattern>/GeneralAdServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddGeneralAd</servlet-name>
+  	<url-pattern>/AddGeneralAd</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>10</session-timeout>
