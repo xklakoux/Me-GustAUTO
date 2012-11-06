@@ -8,27 +8,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import model.AutoAd;
+import model.GeneralAd;
 
-public class AutoAdListBean {
+public class GenAdListBean {
 
 	private static final String PERSISTENCE_UNIT_NAME = "megustauto";
 	private static EntityManagerFactory factory;
 
-	private List<AutoAd> list = new LinkedList<AutoAd>();
+	private List<GeneralAd> list = new LinkedList<GeneralAd>();
 
-	public AutoAdListBean() {
+	public GenAdListBean() {
 
+		
 		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-
+		
 		EntityManager em = factory.createEntityManager();
 
-		String jpql = "SELECT c FROM AutoAd c";
+		String jpql = "SELECT c FROM GeneralAd c";
 		Query query = em.createQuery(jpql); 
 		list = query.getResultList();
 	}
 
-	public List<AutoAd> getList() {
+	public List<GeneralAd> getList() {
 		return list;
 	}
 }

@@ -1,26 +1,6 @@
 package es.uc3m.ctw.me_gustauto.controller;
 
-import java.math.BigDecimal;
-import java.sql.Date;
 
-import javax.annotation.Resource;
-import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
-
-//@Stateless
-//@TransactionManagement(javax.ejb.TransactionManagementType.BEAN)
 public class AutoAdBean {
 	// Only needed to get the user_id
 	private String username = "";
