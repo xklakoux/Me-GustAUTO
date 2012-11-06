@@ -1,12 +1,12 @@
-*.class
-*.mwb
-*.sw[pno]
-.settings
-*.un~
-*.bak
-*.beforefix
-.classpath
-bin
+Client/*.class
+Client/*.mwb
+Client/*.sw[pno]
+Client/.settings
+Client/*.un~
+Client/*.bak
+Client/*.beforefix
+Client/.classpath
+Client/bin/*
 
 AdminPanel/*.class
 AdminPanel/*.mwb
@@ -17,3 +17,7 @@ AdminPanel/*.bak
 AdminPanel/*.beforefix
 AdminPanel/.classpath
 AdminPanel/bin
+
+bin
+.settings
+
