@@ -1,5 +1,12 @@
 package es.uc3m.ctw.me_gustauto.controller;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import es.uc3m.ctw.me_gustauto.model.User;
+
 
 public class ClientBean {
 	
@@ -10,19 +17,30 @@ public class ClientBean {
 	private String phone = "";
 	private String password1 = "";
 	
-	
 	public void storeClient() {
 		StringBuilder salt = new StringBuilder();
 		for (int i=0; i<MySQLConnector.SALTLENGTH; i++) {
 			salt.append((char) (Math.random()*25.0 + 65));
 		}
 		
-		String query = "INSERT INTO users (username,full_name,hash,salt,email,phone,address) VALUES ('" + username + "','" + name + "','"
-		+ MySQLConnector.sha1(password1, salt.toString())+ "','" + salt.toString() + "','" + email + "','" + phone + "','" + address + "');";
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory(MySQLConnector.PERSISTENCE_UNIT_NAME);
+		EntityManager em = factory.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		
-		MySQLConnector.execute(query);
+		User u = new User();
+		em.persist(u);
+		u.setUsername(username);
+		u.setFullName(name);
+		u.setHash(MySQLConnector.sha1(password1, salt.toString()));
+		u.setSalt(salt.toString());
+		u.setEmail(email);
+		u.setPhone(phone);
+		u.setAddress(address);
+		
+		tx.commit();
+		em.close();
 	}
-	
 	
 	public String getUsername() {
 		return username;

@@ -1,6 +1,7 @@
 package es.uc3m.ctw.me_gustauto.controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -37,9 +38,9 @@ public class AutoAdAdministrationServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		String ad_id = request.getParameter("ad_id");
 		if ("c".equals(command)) {
-			MySQLConnector.execute("UPDATE auto_ads SET valid_to = CURRENT_TIMESTAMP() WHERE ad_id = '" + ad_id + "';");
+			MySQLConnector.executeUpdate("UPDATE AutoAd a SET a.validTo = :validTo WHERE a.adId = '" + ad_id + "'", "validTo", new Date());
 		} else if ("d".equals(command)) {
-			MySQLConnector.execute("DELETE FROM auto_ads WHERE ad_id = '" + ad_id + "';");
+			MySQLConnector.executeUpdate("DELETE FROM AutoAd a WHERE a.adId = :adId", "adId", Integer.parseInt(ad_id));
 		}
 		response.sendRedirect("index.jsp");
 	}

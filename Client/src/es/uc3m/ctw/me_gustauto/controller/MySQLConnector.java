@@ -1,12 +1,20 @@
 package es.uc3m.ctw.me_gustauto.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import es.uc3m.ctw.me_gustauto.model.User;
 
 public class MySQLConnector {
 	
@@ -15,31 +23,37 @@ public class MySQLConnector {
 	public static final String IS_ADMIN = "IS_ADMIN";
 	public static final int SALTLENGTH = 10;
 	
-	private static Connection connection = null;
-	private static Statement statement = null;
+	public static final String PERSISTENCE_UNIT_NAME = "megustauto";
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	
-	static {
+	public static boolean executeUpdate(String jpql, String name, Object value) {
+		EntityManager em = factory.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/me_gustauto", "root", "1234");
-			statement = connection.createStatement();
-		} catch (Exception e) {
-            e.printStackTrace();
-        }
-	}
-	
-	public static boolean execute(String sql) {
-		try {
-			return statement.execute(sql);
-		} catch (SQLException e) {e.printStackTrace();}
+			Query q = em.createQuery(jpql);
+			q.setParameter(name, value);
+			q.executeUpdate();
+			em.close();
+			return true;
+		} catch (IllegalArgumentException e) {e.printStackTrace();}
+		tx.commit();
+		em.close();
 		return false;
 	}
 	
-	public static ResultSet executeQuery(String sql) {
+	@SuppressWarnings("unchecked")
+	public static List<Object> executeQuery(String jpql) {
+		List<Object> result = null;
+		EntityManager em = factory.createEntityManager();
 		try {
-			return statement.executeQuery(sql);
-		} catch (SQLException e) {e.printStackTrace();}
-		return null;
+			result = em.createQuery(jpql).getResultList();
+		} catch (IllegalArgumentException e) {e.printStackTrace();}
+		for (Object o : result) {
+			em.refresh(o);
+		}
+		em.close();
+		return result;
 	}
 	
 	public static String sha1(String password, String salt) {
@@ -71,24 +85,32 @@ public class MySQLConnector {
 	}
 	
 	public static boolean verifyLogin(String username, String password) {
-		ResultSet rs = executeQuery("SELECT * FROM users WHERE username = '" + username + "';");
-		try {
-			if (!rs.first()) return false;
-			String hash = sha1(password, rs.getString("salt"));
-			if (rs.getString("hash").equals(hash)) return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		List<Object> list = executeQuery("SELECT u FROM User u WHERE u.username = '" + username + "'");
+		if (list.size() == 0) return false;
+		
+		User user = (User) createDeepCopy(list.get(0));
+		if (user == null) return false;
+		
+		String hash = sha1(password, (user.getSalt()));
+		if (user.getHash().equals(hash)) return true;
 		return false;
 	}
-
+	
 	public static boolean verifyAdmin(String username) {
+		List<Object> list = executeQuery("SELECT u FROM User u WHERE u.username = '" + username + "' AND u.role = 'admin'");
+		return list.size() != 0;
+	}
+	
+	public static Object createDeepCopy(Object o) {
+		Object result = null;
 		try {
-			ResultSet rs = executeQuery("SELECT * FROM users WHERE username = '" + username + "' AND role = 'admin';");
-			return rs.first();
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			ObjectOutputStream oout = new ObjectOutputStream(out);
+			oout.writeObject(o);
+			
+			ObjectInputStream oin = new ObjectInputStream(new ByteArrayInputStream(out.toByteArray()));
+			result = oin.readObject();
+		} catch (Exception e) {e.printStackTrace();}
+		return result;
 	}
 }
