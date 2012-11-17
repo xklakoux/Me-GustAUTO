@@ -62,6 +62,15 @@ CREATE TABLE prices(
 );
 
 
+DROP TABLE IF EXISTS favs;
+CREATE TABLE favs(
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    ad_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
+    PRIMARY KEY(id)
+);
 -- users passwords are following
 --  admin -> admin1
 --  xklakoux -> qweqwe

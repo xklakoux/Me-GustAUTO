@@ -2,7 +2,6 @@ package es.uc3m.ctw.me_gustauto.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.Date;
 import java.util.List;
 
@@ -13,13 +12,12 @@ import java.util.List;
  */
 @Entity
 @Table(name="users")
-@NamedQuery(name="getUserByUsername", query="select a from User a where a.username like :usern")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="user_id")
-	private int userId;	
+	private int userId;
 
 	private String address;
 
@@ -45,6 +43,10 @@ public class User implements Serializable {
 	//bi-directional many-to-one association to AutoAd
 	@OneToMany(mappedBy="user")
 	private List<AutoAd> autoAds;
+
+	//bi-directional many-to-one association to Fav
+	@OneToMany(mappedBy="user")
+	private List<Fav> favs;
 
 	//bi-directional many-to-one association to GeneralAd
 	@OneToMany(mappedBy="user")
@@ -139,6 +141,14 @@ public class User implements Serializable {
 
 	public void setAutoAds(List<AutoAd> autoAds) {
 		this.autoAds = autoAds;
+	}
+
+	public List<Fav> getFavs() {
+		return this.favs;
+	}
+
+	public void setFavs(List<Fav> favs) {
+		this.favs = favs;
 	}
 
 	public List<GeneralAd> getGeneralAds() {

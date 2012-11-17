@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -56,6 +57,10 @@ public class AutoAd implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+
+	//bi-directional many-to-one association to Fav
+	@OneToMany(mappedBy="autoAd")
+	private List<Fav> favs;
 
 	public AutoAd() {
 	}
@@ -178,6 +183,14 @@ public class AutoAd implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Fav> getFavs() {
+		return this.favs;
+	}
+
+	public void setFavs(List<Fav> favs) {
+		this.favs = favs;
 	}
 
 }
