@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -44,15 +45,20 @@ public class MySQLConnector {
 	
 	@SuppressWarnings("unchecked")
 	public static List<Object> executeQuery(String jpql) {
-		List<Object> result = null;
+		List<Object> tmp = null;
 		EntityManager em = factory.createEntityManager();
 		try {
-			result = em.createQuery(jpql).getResultList();
+			tmp = em.createQuery(jpql).getResultList();
 		} catch (IllegalArgumentException e) {e.printStackTrace();}
-		for (Object o : result) {
+		for (Object o : tmp) {
 			em.refresh(o);
 		}
 		em.close();
+		
+		List<Object> result = new LinkedList<Object>();
+		for (Object o : tmp) {
+			result.add(createDeepCopy(o));
+		}
 		return result;
 	}
 	
@@ -88,8 +94,8 @@ public class MySQLConnector {
 		List<Object> list = executeQuery("SELECT u FROM User u WHERE u.username = '" + username + "'");
 		if (list.size() == 0) return false;
 		
-		User user = (User) createDeepCopy(list.get(0));
-		if (user == null) return false;
+		if (list.get(0) == null) return false;
+		User user = (User) list.get(0);
 		
 		String hash = sha1(password, (user.getSalt()));
 		if (user.getHash().equals(hash)) return true;
@@ -101,7 +107,12 @@ public class MySQLConnector {
 		return list.size() != 0;
 	}
 	
-	public static Object createDeepCopy(Object o) {
+	public static boolean favDoesNotExist(String username, int ad_id) {
+		List<Object> list = executeQuery("SELECT f FROM Fav f WHERE f.user.username = '" + username + "' AND f.autoAd.adId = " + ad_id);
+		return list.size() == 0;
+	}
+	
+	private static Object createDeepCopy(Object o) {
 		Object result = null;
 		try {
 			ByteArrayOutputStream out = new ByteArrayOutputStream();

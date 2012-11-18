@@ -6,36 +6,36 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-  	<description>
+    <description>
   	</description>
-  	<display-name>DBServlet</display-name>
-  	<servlet-name>DBServlet</servlet-name>
-  	<servlet-class>es.uc3m.ctw.me_gustauto.DBServlet</servlet-class>
+    <display-name>DBServlet</display-name>
+    <servlet-name>DBServlet</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.DBServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description>
+    <description>
   	</description>
-  	<display-name>GeneralAdServlet</display-name>
-  	<servlet-name>GeneralAdServlet</servlet-name>
-  	<servlet-class>es.uc3m.ctw.me_gustauto.controller.GeneralAdServlet</servlet-class>
+    <display-name>GeneralAdServlet</display-name>
+    <servlet-name>GeneralAdServlet</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.GeneralAdServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
-  	<display-name>AddGeneralAd</display-name>
-  	<servlet-name>AddGeneralAd</servlet-name>
-  	<servlet-class>es.uc3m.ctw.me_gustauto.controller.AddGeneralAd</servlet-class>
+    <description></description>
+    <display-name>AddGeneralAd</display-name>
+    <servlet-name>AddGeneralAd</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.AddGeneralAd</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>DBServlet</servlet-name>
-  	<url-pattern>/DBServlet</url-pattern>
+    <servlet-name>DBServlet</servlet-name>
+    <url-pattern>/DBServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>GeneralAdServlet</servlet-name>
-  	<url-pattern>/GeneralAdServlet</url-pattern>
+    <servlet-name>GeneralAdServlet</servlet-name>
+    <url-pattern>/GeneralAdServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>AddGeneralAd</servlet-name>
-  	<url-pattern>/AddGeneralAd</url-pattern>
+    <servlet-name>AddGeneralAd</servlet-name>
+    <url-pattern>/AddGeneralAd</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>10</session-timeout>

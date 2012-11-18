@@ -35,13 +35,11 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		request.getSession(true).setAttribute(
-				MySQLConnector.CLIENT_IS_LOGGED_IN, false);
-		request.getSession(true).setAttribute(
-				MySQLConnector.USERNAME_OF_CLIENT, null);
-		request.getSession(true).setAttribute(MySQLConnector.IS_ADMIN,false);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// log out
+		request.getSession(true).setAttribute(MySQLConnector.CLIENT_IS_LOGGED_IN, false);
+		request.getSession(true).setAttribute(MySQLConnector.USERNAME_OF_CLIENT, null);
+		request.getSession(true).setAttribute(MySQLConnector.IS_ADMIN, false);
 		response.sendRedirect("index.jsp");
 	}
 
@@ -49,18 +47,15 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// log in
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
 		if (MySQLConnector.verifyLogin(username, password)) {
-			request.getSession(true).setAttribute(
-					MySQLConnector.CLIENT_IS_LOGGED_IN, true);
-			request.getSession(true).setAttribute(
-					MySQLConnector.USERNAME_OF_CLIENT, username);
-			request.getSession(true).setAttribute(MySQLConnector.IS_ADMIN,
-					MySQLConnector.verifyAdmin(username));
+			request.getSession(true).setAttribute(MySQLConnector.CLIENT_IS_LOGGED_IN, true);
+			request.getSession(true).setAttribute(MySQLConnector.USERNAME_OF_CLIENT, username);
+			request.getSession(true).setAttribute(MySQLConnector.IS_ADMIN, MySQLConnector.verifyAdmin(username));
 			response.sendRedirect("index.jsp");
 		} else {
 			response.sendRedirect("index.jsp");
