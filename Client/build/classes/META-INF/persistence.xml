@@ -7,6 +7,7 @@
 		<class>es.uc3m.ctw.me_gustauto.model.GeneralAd</class>
 		<class>es.uc3m.ctw.me_gustauto.model.Price</class>
 		<class>es.uc3m.ctw.me_gustauto.model.User</class>
+		<class>es.uc3m.ctw.me_gustauto.model.Fav</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="eclipselink.exclude-eclipselink-orm" value="false" />

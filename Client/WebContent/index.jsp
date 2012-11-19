@@ -37,6 +37,9 @@
 						<li><a href="?page=addgenad.jsp">Add General Ad</a></li>
 						<li><a href="?page=prices.jsp">Pricing</a></li>
 						<li><a href="?page=search.jsp">Search</a></li>
+						<c:if test="${CLIENT_IS_LOGGED_IN}">
+							<li><a href="?page=showfav.jsp">Favourites</a></li>
+						</c:if>
 						<li><a href="?page=contact.jsp">Contact</a></li>
 					</ul>
 

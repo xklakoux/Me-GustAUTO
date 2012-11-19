@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AuthenticationFilter
  */
-@WebFilter(filterName = "AuthenticationFilter", urlPatterns = "/content.jsp")
+@WebFilter(filterName = "AuthenticationFilter", urlPatterns = "/showfav.jsp")
 public class AuthenticationFilter implements Filter {
 
 	/**
