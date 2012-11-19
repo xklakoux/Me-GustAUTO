@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="es.uc3m.ctw.me_gustauto.controller.MySQLConnector"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,7 +27,8 @@ body {
 </style>
 </head>
 <body>
-	<jsp:useBean  id="autoAdBean" class="es.uc3m.ctw.me_gustauto.controller.AutoAdBean" />
+	<jsp:useBean id="autoAdBean"
+		class="es.uc3m.ctw.me_gustauto.controller.AutoAdBean" />
 	<jsp:setProperty name="autoAdBean" property="*" />
 	<%
 		//LATER: get from db by adid
@@ -63,6 +66,7 @@ body {
 		<jsp:getProperty name="autoAdBean" property="description" /><br>
 		<br>
 	</div>
+
 	<div class="contact_seller" >
 	<form  method="POST" action="SendEmailServlet">
 	<input type="hidden" value="${param.id}" name="id">
@@ -76,5 +80,43 @@ body {
 	</div>
 	
 	
+	<jsp:useBean id="commentsListBean"
+		class="es.uc3m.ctw.me_gustauto.controller.CommentsListBean" />
+	<%
+		commentsListBean.setAd_id(autoAdBean.getAd_id());
+	%>
+	<c:if test="${CLIENT_IS_LOGGED_IN}">
+		<div>
+			<h4>Add your comment:</h4>
+			<div style="border-style: solid; border-width: 1px; padding: 8px;">
+				<!-- 			send ad_id parameter  -->
+
+				<form METHOD="POST" ACTION="AddComment">
+					<input type="hidden" name="ad_id"
+						value="<%=autoAdBean.getAd_id()%>">
+					<textarea rows="5" cols="50" name="content"></textarea>
+					<br> <br> <input type=submit value="Add" />
+				</form>
+
+			</div>
+		</div>
+	</c:if>
+	<h4>Comments:</h4>
+
+	<c:forEach items="${commentsListBean.getList()}" var="comment">
+		<div
+			style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
+			
+			<jsp:getProperty name="comment" property="content" />
+			<br>
+			<!-- 			TODO : username instead of userid -->
+			from user:
+			<jsp:getProperty name="comment" property="userId" />
+			<%-- 		TODO:	<jsp:getProperty name="comment" property="date"> --%>
+			<br>
+		</div>
+	</c:forEach>
+
+
 </body>
 </html>

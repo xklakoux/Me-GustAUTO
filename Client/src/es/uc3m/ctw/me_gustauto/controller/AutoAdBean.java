@@ -32,7 +32,7 @@ public class AutoAdBean {
 	 * temporary, just to see if the jsp works
 	 */
 	public void fillWithData() {
-		this.setAd_id(42);
+		this.setAd_id(1);
 		this.setAdd_date("23-10-2013");
 		this.setAuto_moto("auto");
 		this.setBrand("Toyota");

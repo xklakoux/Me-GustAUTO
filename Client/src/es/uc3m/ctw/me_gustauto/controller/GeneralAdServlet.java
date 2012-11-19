@@ -49,7 +49,6 @@ public class GeneralAdServlet extends HttpServlet {
 		list = list.subList(0, 5);
 		if(list!=null){
 			request.setAttribute("list", list);
-
 		}
 		request.getRequestDispatcher("/bar-ads.jsp").include(request, response);
 	}
