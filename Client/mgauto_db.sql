@@ -71,6 +71,17 @@ CREATE TABLE favs(
     FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
     PRIMARY KEY(id)
 );
+
+DROP TABLE IF EXISTS comments;
+CREATE TABLE comments(
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    ad_id INT,
+    content TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
+    PRIMARY KEY(id)
+);
 -- users passwords are following
 --  admin -> admin1
 --  xklakoux -> qweqwe
