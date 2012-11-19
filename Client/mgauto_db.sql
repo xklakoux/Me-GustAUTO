@@ -101,6 +101,12 @@ insert into prices (name, price, descr) values ("1 month", 20, "normal price");
 insert into prices (name, price, descr) values ("2 month", 16, "at least 2 months 10/month discount!");
 insert into prices (name, price, descr) values ("3 month", 8, "at least 3 months ultra discount!");
 
+-- comments
+insert into `me_gustauto`.`comments`(`id`,`user_id`,`ad_id`,`content`)
+VALUES('1','1','1','Do not buy from this guy he is a thief.');
+insert into `me_gustauto`.`comments`(`id`,`user_id`,`ad_id`,`content`)
+VALUES('2','2','1','Very nice offer, I will ask my mom to buy it.');
+
 -- auto_ads
 insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
 values ('Brand-new offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
