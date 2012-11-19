@@ -5,6 +5,14 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+    <description>
+  	</description>
+    <display-name>AddComment</display-name>
+    <servlet-name>AddComment</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.AddComment</servlet-class>
+  </servlet>
   <servlet>
     <description>
   	</description>
@@ -35,6 +43,10 @@
   <servlet-mapping>
     <servlet-name>DBServlet</servlet-name>
     <url-pattern>/DBServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddComment</servlet-name>
+    <url-pattern>/AddComment</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GeneralAdServlet</servlet-name>
