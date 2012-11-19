@@ -78,6 +78,7 @@ CREATE TABLE comments(
     user_id INT,
     ad_id INT,
     content TEXT,
+    date_added datetime,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
     PRIMARY KEY(id)
