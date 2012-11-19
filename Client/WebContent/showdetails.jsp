@@ -4,6 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script>
+$(function() {
+    $("textarea").focus(function(event) {
+    
+          // Erase text from inside textarea
+        $(this).text("");
+    
+          // Disable text erase
+        $(this).unbind(event);
+    });
+});​
+</script>
 <title>Detailed ad</title>
 <style type="text/css" media="screen">
 body {
@@ -50,5 +63,18 @@ body {
 		<jsp:getProperty name="autoAdBean" property="description" /><br>
 		<br>
 	</div>
+	<div class="contact_seller" >
+	<form  method="POST" action="SendEmailServlet">
+	<input type="hidden" value="${param.id}" name="id">
+	<textarea cols="30" rows="5" name="message" onfocus="">
+	Hi there,
+	I'm interested in this advertisment...
+	</textarea>
+	<br />
+	<input type="submit" value="Send to the owner">
+	</form>
+	</div>
+	
+	
 </body>
 </html>
