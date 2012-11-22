@@ -43,10 +43,10 @@ public class AddComment extends HttpServlet {
 				.getResultList().get(0))).getUserId();
 		et.begin();
 		manager.persist(cmt);
-		cmt.setAutoAd( manager.find(AutoAd.class, request.getParameter("ad_id")));
+		cmt.setAutoAd( manager.find(AutoAd.class, Integer.valueOf(request.getParameter("ad_id"))));
 		cmt.setContent(((String) request.getParameter("content")));
 		cmt.setUser(manager.find(User.class, uId));
-		
+		cmt.setDateAdded(new Date());
 		
 		et.commit();
 		//	redirect to showdetails 
