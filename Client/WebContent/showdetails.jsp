@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="es.uc3m.ctw.me_gustauto.controller.MySQLConnector"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,7 +33,7 @@ body {
 		class="es.uc3m.ctw.me_gustauto.controller.AutoAdBean" />
 	<jsp:setProperty name="autoAdBean" property="*" />
 	<%
-		//LATER: get from db by adid
+		// TODO: get ad from db
 		//NOW: create a fictional record
 		autoAdBean.fillWithData();
 	%>
@@ -107,7 +108,7 @@ body {
 			<jsp:getProperty name="comment" property="content" />
 			<br>			
 			 - <c:out value="${comment.getUser().getUsername()}" />
-			, <jsp:getProperty name="comment" property="dateAdded"/> <!--  TODO: format date -->
+			,<i><fmt:formatDate value="${comment.getDateAdded()}" pattern=" d MMM yyyy 'at' hh:mm a " /></i>
 			<br>
 		</div>
 	</c:forEach>
