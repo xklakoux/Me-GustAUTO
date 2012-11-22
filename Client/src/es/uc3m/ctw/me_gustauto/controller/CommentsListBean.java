@@ -16,9 +16,8 @@ public class CommentsListBean {
 		EntityManager em = emf.createEntityManager();
 		AutoAd autoad = em.find(AutoAd.class, ad_id);
 		
-		return em.createQuery("select a from Comment a where a.autoAd = :auto").setParameter("auto", autoad).getResultList(); 
+		return em.createQuery("SELECT a FROM Comment a WHERE a.autoAd = :auto ORDER BY a.dateAdded DESC").setParameter("auto", autoad).getResultList(); 
 
-		// TODO: sort db so the newest comments show up first?
 	}
 
 	public int getAd_id() {
