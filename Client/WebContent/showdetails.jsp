@@ -90,15 +90,12 @@ body {
 		<div>
 			<h4>Add your comment:</h4>
 			<div style="border-style: solid; border-width: 1px; padding: 8px;">
-				<!-- 			send ad_id parameter  -->
-
 				<form METHOD="POST" ACTION="AddComment">
 					<input type="hidden" name="ad_id"
 						value="<%=autoAdBean.getAd_id()%>">
 					<textarea rows="5" cols="50" name="content"></textarea>
 					<br> <br> <input type=submit value="Add" />
 				</form>
-
 			</div>
 		</div>
 	</c:if>
@@ -107,13 +104,10 @@ body {
 	<c:forEach items="${commentsListBean.getList()}" var="comment">
 		<div
 			style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
-			
 			<jsp:getProperty name="comment" property="content" />
-			<br>
-			<!-- 			TODO : username instead of userid -->
-			from user:
-			<jsp:getProperty name="comment" property="user" />
-			<%-- 		TODO:	<jsp:getProperty name="comment" property="date"> --%>
+			<br>			
+			 - <c:out value="${comment.getUser().getUsername()}" />
+			, <jsp:getProperty name="comment" property="dateAdded"/> <!--  TODO: format date -->
 			<br>
 		</div>
 	</c:forEach>

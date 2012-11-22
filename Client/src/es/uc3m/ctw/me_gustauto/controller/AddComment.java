@@ -41,12 +41,12 @@ public class AddComment extends HttpServlet {
 		int uId = ((User)(manager.createQuery("SELECT c FROM User c WHERE c.username=:userName")
 				.setParameter("userName", username)
 				.getResultList().get(0))).getUserId();
-
 		et.begin();
 		manager.persist(cmt);
 		cmt.setAutoAd( manager.find(AutoAd.class, request.getParameter("ad_id")));
 		cmt.setContent(((String) request.getParameter("content")));
 		cmt.setUser(manager.find(User.class, uId));
+		
 		
 		et.commit();
 		//	redirect to showdetails 

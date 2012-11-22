@@ -1,6 +1,8 @@
 package es.uc3m.ctw.me_gustauto.model;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.*;
 
 
@@ -29,9 +31,21 @@ public class Comment implements Serializable {
 	@JoinColumn(name="user_id")
 	private User user;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="date_added")
+	private Date dateAdded;
+	
 	public Comment() {
 	}
 
+	public Date getDateAdded() {
+		return this.dateAdded;
+	}
+
+	public void setDateAdded(Date dateAdded) {
+		this.dateAdded = dateAdded;
+	}
+	
 	public int getId() {
 		return this.id;
 	}
