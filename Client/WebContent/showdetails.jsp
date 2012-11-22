@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="es.uc3m.ctw.me_gustauto.controller.MySQLConnector"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -111,7 +112,7 @@ body {
 			<br>
 			<!-- 			TODO : username instead of userid -->
 			from user:
-			<jsp:getProperty name="comment" property="userId" />
+			<jsp:getProperty name="comment" property="user" />
 			<%-- 		TODO:	<jsp:getProperty name="comment" property="date"> --%>
 			<br>
 		</div>

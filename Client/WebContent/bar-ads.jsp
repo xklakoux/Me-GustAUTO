@@ -11,7 +11,6 @@
 				<tr>
 					<td>${i.descr}</td>
 				</tr>
-
 			</tbody>
 		</table>
 	</c:forEach>

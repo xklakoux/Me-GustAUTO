@@ -25,7 +25,7 @@ public class MySQLConnector {
 	public static final int SALTLENGTH = 10;
 	
 	public static final String PERSISTENCE_UNIT_NAME = "megustauto";
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+	public static EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	
 	public static boolean executeUpdate(String jpql, String name, Object value) {
 		EntityManager em = factory.createEntityManager();
@@ -50,6 +50,7 @@ public class MySQLConnector {
 		try {
 			tmp = em.createQuery(jpql).getResultList();
 		} catch (IllegalArgumentException e) {e.printStackTrace();}
+		if(tmp!=null){
 		for (Object o : tmp) {
 			em.refresh(o);
 		}
@@ -60,6 +61,9 @@ public class MySQLConnector {
 			result.add(createDeepCopy(o));
 		}
 		return result;
+
+		}
+		return null;
 	}
 	
 	public static String sha1(String password, String salt) {

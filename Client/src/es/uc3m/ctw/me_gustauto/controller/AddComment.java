@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transaction;
 
+import es.uc3m.ctw.me_gustauto.model.AutoAd;
 import es.uc3m.ctw.me_gustauto.model.Comment;
 import es.uc3m.ctw.me_gustauto.model.GeneralAd;
 import es.uc3m.ctw.me_gustauto.model.User;
@@ -43,9 +44,9 @@ public class AddComment extends HttpServlet {
 
 		et.begin();
 		manager.persist(cmt);
-		cmt.setAdId( Integer.valueOf((request.getParameter("ad_id"))) );
+		cmt.setAutoAd( manager.find(AutoAd.class, request.getParameter("ad_id")));
 		cmt.setContent(((String) request.getParameter("content")));
-		cmt.setUserId(uId);
+		cmt.setUser(manager.find(User.class, uId));
 		
 		et.commit();
 		//	redirect to showdetails 

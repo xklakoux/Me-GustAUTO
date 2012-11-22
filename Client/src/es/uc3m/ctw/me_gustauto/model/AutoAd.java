@@ -58,6 +58,10 @@ public class AutoAd implements Serializable {
 	@JoinColumn(name="user_id")
 	private User user;
 
+	//bi-directional many-to-one association to Comment
+	@OneToMany(mappedBy="autoAd")
+	private List<Comment> comments;
+
 	//bi-directional many-to-one association to Fav
 	@OneToMany(mappedBy="autoAd")
 	private List<Fav> favs;
@@ -183,6 +187,14 @@ public class AutoAd implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public List<Fav> getFavs() {

@@ -44,6 +44,10 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<AutoAd> autoAds;
 
+	//bi-directional many-to-one association to Comment
+	@OneToMany(mappedBy="user")
+	private List<Comment> comments;
+
 	//bi-directional many-to-one association to Fav
 	@OneToMany(mappedBy="user")
 	private List<Fav> favs;
@@ -141,6 +145,14 @@ public class User implements Serializable {
 
 	public void setAutoAds(List<AutoAd> autoAds) {
 		this.autoAds = autoAds;
+	}
+
+	public List<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public List<Fav> getFavs() {

@@ -16,14 +16,18 @@ public class Comment implements Serializable {
 	@Id
 	private int id;
 
-	@Column(name="ad_id")
-	private int adId;
-
 	@Lob
 	private String content;
 
-	@Column(name="user_id")
-	private int userId;
+	//bi-directional many-to-one association to AutoAd
+	@ManyToOne
+	@JoinColumn(name="ad_id")
+	private AutoAd autoAd;
+
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 
 	public Comment() {
 	}
@@ -36,14 +40,6 @@ public class Comment implements Serializable {
 		this.id = id;
 	}
 
-	public int getAdId() {
-		return this.adId;
-	}
-
-	public void setAdId(int adId) {
-		this.adId = adId;
-	}
-
 	public String getContent() {
 		return this.content;
 	}
@@ -52,12 +48,20 @@ public class Comment implements Serializable {
 		this.content = content;
 	}
 
-	public int getUserId() {
-		return this.userId;
+	public AutoAd getAutoAd() {
+		return this.autoAd;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setAutoAd(AutoAd autoAd) {
+		this.autoAd = autoAd;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
