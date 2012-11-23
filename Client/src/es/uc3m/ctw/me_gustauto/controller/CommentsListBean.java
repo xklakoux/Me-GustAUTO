@@ -12,7 +12,7 @@ public class CommentsListBean {
 	private int ad_id;
 	
 	public List<Object> getList() {
-		EntityManagerFactory emf = MySQLConnector.factory;
+		EntityManagerFactory emf = MySQLConnector.getFactory();
 		EntityManager em = emf.createEntityManager();
 		AutoAd autoad = em.find(AutoAd.class, ad_id);
 		

@@ -52,7 +52,7 @@ public class SendEmailServlet extends HttpServlet {
 		String body = request.getParameter("message");
 		String id = request.getParameter("id");
 		
-		EntityManagerFactory emf = MySQLConnector.factory;
+		EntityManagerFactory emf = MySQLConnector.getFactory();
 		EntityManager manager = emf.createEntityManager();
 		AutoAd ad = manager.find(AutoAd.class,Integer.valueOf(id));
 		User vendor = ad.getUser();
