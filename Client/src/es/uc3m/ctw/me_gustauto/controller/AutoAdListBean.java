@@ -3,14 +3,16 @@ package es.uc3m.ctw.me_gustauto.controller;
 import java.util.List;
 
 public class AutoAdListBean {	
+	// sorting orders
 	public final String ASCENDING = "ASC", DESCENDING = "DESC";
+	// autoAd fields
 	public final String PRICE = "price", ENGINE = "engine", YEAR = "year",
 			MILEAGE = "mileage", BRAND = "brand", DATE_ADDED = "addDate",
 			AD_ID = "addId", COLOUR = "colour", DESCRIPTION = "description",
 			MODEL = "model", REGISTRATION_NUMBER = "registrationNumber", TITLE = "title",
 			VALID_UNTIL = "validTo";
+	// operators for filtering
 	public final String BIGGER = ">", SMALLER = "<", EQUAL = "=", SMALLER_EQUAL = "<=", BIGGER_EQUAL = ">=";
-	public final String BASIC_QUERY = "SELECT a FROM AutoAd a";
 	
 	/**
 	 * Get a list of all AutoAds
