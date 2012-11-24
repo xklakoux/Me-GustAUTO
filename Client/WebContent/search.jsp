@@ -35,5 +35,5 @@
 			<td><select name="color" value=""></td>
 		</tr>
 	</table>
-	<input type="submit" action="" value="Search">
+	<input type="submit" value="Search">
 </form>

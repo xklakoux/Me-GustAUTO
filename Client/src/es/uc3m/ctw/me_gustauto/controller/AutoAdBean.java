@@ -90,59 +90,6 @@ public class AutoAdBean {
 			System.out.println("user_id before query  = " + user_id);
 			return false;
 		}
-
-		// ******OLD QUERY FOR NO JPA******
-		// String query =
-		// "INSERT INTO auto_ads (title,brand,model,engine,registration_number,years,price,mileage,colour,description,user_id,auto_moto) VALUES ('"
-		// +
-		// title + "','" + brand + "','" + model + "','" + engine + "','" +
-		// registration_number + "','" + years + "','" +
-		// price + "','" + mileage + "','" + colour + "','" + description +
-		// "','" + user_id + "','" +
-		// auto_moto/* + "','" + add_date/*mysql_date_format.format(add_date) +
-		// "','" + valid_to/*mysql_date_format.format(valid_to)*/+"');";
-
-		// MySQLConnector.execute(query);
-		/*
-		 * System.out.println("BEFORE CREATING entitymanager");
-		 * 
-		 * if(emf == null){ emf = Persistence.createEntityManagerFactory("PU");
-		 * } EntityManager em = emf.createEntityManager();
-		 * 
-		 * System.out.println("AFTER CREATING entitymanager username = " +
-		 * username);
-		 */
-		// Retrieve user_id knowing username
-		/*
-		 * String query = "SELECT u FROM User u WHERE u.username = ?1"; user_id
-		 * = ((model.User)em.createQuery(query).setParameter(1,
-		 * username).getSingleResult()).getUserId();
-		 * System.out.println("AFTER QUERYing for userid = " + user_id);
-		 * 
-		 * model.AutoAd newautoad = new model.AutoAd();
-		 * newautoad.setAddDate(Date.valueOf(add_date));
-		 * newautoad.setValidTo(Date.valueOf(valid_to));
-		 * newautoad.setAutoMoto(auto_moto); newautoad.setBrand(brand);
-		 * newautoad.setColour(colour); newautoad.setDescription(description);
-		 * newautoad.setEngine(engine);
-		 * newautoad.setMileage(Integer.parseInt(mileage));
-		 * newautoad.setModel(model);
-		 * newautoad.setPrice(BigDecimal.valueOf(Double.valueOf(price)));
-		 * newautoad.setRegistrationNumber(registration_number);
-		 * newautoad.setTitle(title);
-		 * newautoad.setUser(em.find(model.User.class, user_id));
-		 * newautoad.setYears(years);
-		 * 
-		 * try { utx.begin(); } catch (Exception ex) {}
-		 * System.out.println("Before persisting newautoad");
-		 * em.persist(newautoad);
-		 * System.out.println("After persisting newautoad"); try { utx.commit();
-		 * } catch (Exception ex) {}
-		 * 
-		 * 
-		 * em.close();
-		 */
-
 		return true;
 	}
 

@@ -103,9 +103,7 @@ body {
 	<h4>Comments:</h4>
 
 	<c:forEach items="${commentsListBean.getList()}" var="comment">
-		<div
-			style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
-			<jsp:getProperty name="comment" property="content" />
+		<div style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
 			<br>			
 			 - <c:out value="${comment.getUser().getUsername()}" />
 			,<i><fmt:formatDate value="${comment.getDateAdded()}" pattern=" d MMM yyyy 'at' hh:mm a " /></i>
