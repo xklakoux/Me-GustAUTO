@@ -16,10 +16,10 @@ import es.uc3m.ctw.me_gustauto.model.Comment;
 import es.uc3m.ctw.me_gustauto.model.User;
 
 
-public class AddComment extends HttpServlet {
+public class AddCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddComment() {
+    public AddCommentServlet() {
         super();
     }
 

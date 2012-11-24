@@ -1,5 +1,3 @@
-<%@ page import="es.uc3m.ctw.me_gustauto.controller.MySQLConnector"%>
-<%@ page import="es.uc3m.ctw.me_gustauto.model.AutoAd"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:useBean id="favListBean" class="es.uc3m.ctw.me_gustauto.controller.FavListBean" />

@@ -20,16 +20,15 @@
 			<div>
 				<c:if test="${CLIENT_IS_LOGGED_IN}">
 					<c:if test="${IS_ADMIN}">
-					<%
-					if (((AutoAd) pageContext.getAttribute("autoAd")).getValidTo() == null) {
-						out.println("<a href='AutoAdAdministrationServlet?command=c&id="
-								+ ((AutoAd) pageContext.getAttribute("autoAd")).getAdId()
-								+ "'><img src='res/images/confirm.png' width='13px' height='13px'></a>");
-					}
-					out.println("<a href='AutoAdAdministrationServlet?command=d&id="
-							+ ((AutoAd) pageContext.getAttribute("autoAd")).getAdId()
-							+ "'><img src='res/images/delete.gif' width='13px' height='13px'></a>");
-					%>
+					<c:if test="${autoAd.getValidTo() == null}">
+						<a href="AutoAdAdministrationServlet?command=c&id=${autoAd.adId}"><img src='res/images/confirm.png' width='13px' height='13px'></a>
+					</c:if>
+					<a href="AutoAdAdministrationServlet?command=d&id=${autoAd.adId}"><img src='res/images/delete.gif' width='13px' height='13px'></a>
+					</c:if>
+					<c:set var="v1" value="${USERNAME_OF_CLIENT}"/>
+					<c:set var="v2" value="${autoAd.adId}"/>
+					<c:if test="${MySQLConnector.favDoesNotExist('v1', 'v2')}">
+						hehe
 					</c:if>
 					<%
 					if (MySQLConnector.favDoesNotExist((String) session.getAttribute(MySQLConnector.USERNAME_OF_CLIENT), ((AutoAd) pageContext.getAttribute("autoAd")).getAdId())) {
