@@ -1,6 +1,6 @@
 package es.uc3m.ctw.me_gustauto.controller;
 
-
+// THIS FILE WILL BE DELETED
 public class AutoAdBean {
 	// Only needed to get the user_id
 	private String username = "";
