@@ -22,15 +22,6 @@ public class AutoAdBean {
 	private String add_date = "";
 	private String valid_to = null;
 
-	// @PersistenceUnit
-	// private EntityManagerFactory emf;
-	//
-	// @Resource
-	// private UserTransaction utx;
-
-	/*
-	 * temporary, just to see if the jsp works
-	 */
 	public void fillWithData() {
 		this.setAd_id(1);
 		this.setAdd_date("23-10-2013");
@@ -79,15 +70,7 @@ public class AutoAdBean {
 				|| username.length() == 0 || auto_moto.length() == 0
 				|| add_date.length() == 0 || valid_to.length() == 0) {
 			System.out
-					.println("Could not store auto ad becase of empty fields"); // TO
-																				// DO
-																				// more
-																				// details
-			System.out.println("auto_moto = " + auto_moto);
-			System.out.println("add_date = " + add_date);
-			System.out.println("description = " + description);
-			System.out.println("username = " + username);
-			System.out.println("user_id before query  = " + user_id);
+					.println("Could not store auto ad becase of empty fields");
 			return false;
 		}
 		return true;
