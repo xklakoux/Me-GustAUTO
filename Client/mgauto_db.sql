@@ -103,10 +103,10 @@ insert into prices (name, price, descr) values ("2 month", 16, "at least 2 month
 insert into prices (name, price, descr) values ("3 month", 8, "at least 3 months ultra discount!");
 
 -- comments
-insert into `me_gustauto`.`comments`(`id`,`user_id`,`ad_id`,`content`)
-VALUES('1','1','1','Do not buy from this guy he is a thief.');
-insert into `me_gustauto`.`comments`(`id`,`user_id`,`ad_id`,`content`)
-VALUES('2','2','1','Very nice offer, I will ask my mom to buy it.');
+insert into comments (id,user_id,ad_id,content,date_added)
+VALUES('1','1','1','Do not buy from this guy he is a thief.','2012-11-10');
+insert into comments (id,user_id,ad_id,content,date_added)
+VALUES('2','2','1','Very nice offer, I will ask my mom to buy it.','2012-09-01');
 
 -- auto_ads
 insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)

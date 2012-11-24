@@ -11,12 +11,12 @@ public class CommentsListBean {
 	
 	private int ad_id;
 	
+	@SuppressWarnings("unchecked")
 	public List<Object> getList() {
-		EntityManagerFactory emf = MySQLConnector.factory;
+		EntityManagerFactory emf = MySQLConnector.getFactory();
 		EntityManager em = emf.createEntityManager();
 		AutoAd autoad = em.find(AutoAd.class, ad_id);
-		return em.createQuery("select a from Comment a where a.autoAd = :auto").setParameter("auto", autoad).getResultList();
-		
+		return em.createQuery("SELECT a FROM Comment a WHERE a.autoAd = :auto ORDER BY a.dateAdded DESC").setParameter("auto", autoad).getResultList(); 
 	}
 
 	public int getAd_id() {
