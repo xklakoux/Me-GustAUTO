@@ -1,7 +1,7 @@
 -- to get following script working on linux
 -- mysql -u [username] -p[password] [database_name] < [this_script.sql]
 
-SET FOREIGN_KEY_CHECKS=0; -- temporary solution
+SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
@@ -148,3 +148,5 @@ insert into auto_ads (title, brand, model, engine, registration_number, years, p
 values ('Recent offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
 insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
 values ('Recent offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Gray', 'The car is in a perfect condition.', 1, 'auto', now());
+
+SET FOREIGN_KEY_CHECKS=1; -- has to be on the very end
