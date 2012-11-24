@@ -15,6 +15,13 @@
   <servlet>
     <description>
   	</description>
+    <display-name>AddAutoAd</display-name>
+    <servlet-name>AddAutoAd</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.AddAutoAd</servlet-class>
+  </servlet>
+  <servlet>
+    <description>
+  	</description>
     <display-name>DBServlet</display-name>
     <servlet-name>DBServlet</servlet-name>
     <servlet-class>es.uc3m.ctw.me_gustauto.DBServlet</servlet-class>
@@ -42,6 +49,10 @@
   <servlet-mapping>
     <servlet-name>DBServlet</servlet-name>
     <url-pattern>/DBServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddAutoAd</servlet-name>
+    <url-pattern>/AddAutoAd</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GeneralAdServlet</servlet-name>

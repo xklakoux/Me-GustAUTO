@@ -2,11 +2,8 @@ package es.uc3m.ctw.me_gustauto.controller;
 
 
 public class AutoAdBean {
-	// Only needed to get the user_id
-	private String username = "";
-
-	// Saved to db
-	private int ad_id;
+	
+	private int ad_id; // delete later
 	private String title = "";
 	private String brand = "";
 	private String model = "";
@@ -17,28 +14,24 @@ public class AutoAdBean {
 	private int mileage;
 	private String colour = "";
 	private String description = "";
-	private int user_id;
 	private String auto_moto = "";
 	private String add_date = "";
 	private String valid_to = null;
 
-	public void fillWithData() {
+	public void fillWithData() { // this will be deleted
 		this.setAd_id(1);
 		this.setAdd_date("23-10-2013");
 		this.setAuto_moto("auto");
 		this.setBrand("Toyota");
 		this.setColour("Bloody Red");
-		this.setDescription("An awesome car. A smart choice. A great deal. Just buy it. "
-				+ "You will not regret it. It's definitely worth it."
-				+ "I recommend it to you. It will not disappoint you.");
+		this.setDescription("Description description description description description. " +
+							"Description description description.");
 		this.setEngine("diesel");
 		this.setMileage(100000);
 		this.setModel("Corolla");
 		this.setPrice(5000);
 		this.setRegistration_number("123-1234");
 		this.setTitle("A beautiful red toyota corolla for sale");
-		this.setUser_id(0);
-		this.setUsername("Username123");
 		this.setValid_to("24-10-2014");
 		this.setYears("1998");
 	}
@@ -55,33 +48,8 @@ public class AutoAdBean {
 		this.setPrice(0);
 		this.setRegistration_number("");
 		this.setTitle("");
-		this.setUser_id(0);
-		this.setUsername("");
 		this.setValid_to("");
 		this.setYears("");
-	}
-
-	public boolean storeAutoAd() {
-		// check if data is filled
-		if (title.length() == 0 || brand.length() == 0 || model.length() == 0
-				|| engine.length() == 0 || registration_number.length() == 0
-				|| years.length() == 0 || price == 0 || mileage == 0
-				|| colour.length() == 0 || description.length() == 0
-				|| username.length() == 0 || auto_moto.length() == 0
-				|| add_date.length() == 0 || valid_to.length() == 0) {
-			System.out
-					.println("Could not store auto ad becase of empty fields");
-			return false;
-		}
-		return true;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public int getAd_id() {
@@ -170,14 +138,6 @@ public class AutoAdBean {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public int getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
 	}
 
 	public String getAuto_moto() {

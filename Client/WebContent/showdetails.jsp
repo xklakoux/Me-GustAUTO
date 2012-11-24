@@ -61,8 +61,10 @@ body {
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
 
-		owner's username: <b><jsp:getProperty name="autoAdBean"
-				property="username" /><br></b> offer valid until: <b><jsp:getProperty
+		owner's username: <b>
+<%-- 		<jsp:getProperty name="autoAdBean" property="username" /> --%>
+		<br>
+				</b> offer valid until: <b><jsp:getProperty
 				name="autoAdBean" property="valid_to" /></b> <br> Description:<br>
 		<br>
 		<jsp:getProperty name="autoAdBean" property="description" /><br>
@@ -74,7 +76,7 @@ body {
 	<input type="hidden" value="${param.id}" name="id">
 	<textarea cols="30" rows="5" name="message" onfocus="">
 	Hi there,
-	I'm interested in this advertisment...
+	I'm interested in this advertisement...
 	</textarea>
 	<br />
 	<input type="submit" value="Send to the owner">
