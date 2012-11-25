@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<jsp:useBean id="autoAdListBean"
-	class="es.uc3m.ctw.me_gustauto.controller.AutoAdListBean" />
+<jsp:useBean id="autoAdListBean" class="es.uc3m.ctw.me_gustauto.controller.AutoAdListBean" />
 <form METHOD="POST" ACTION="SearchServlet">
 	<table>
 		<tr>
@@ -54,9 +53,6 @@
 			<td><input id="yearFrom" name="yearFrom" value="" size="6" maxlength="4" onblur="validateInput(this.id);">-</td>
 			<td><input id="yearTo" name="yearTo" value="" size="6" maxlength="4" onblur="validateInput(this.id);"></td>
 		</tr>
-		
-		
-
 		<tr>
 			<td>Colour</td>
 			<td></td>
@@ -73,7 +69,7 @@
 <script type="text/javascript">
 	function validateInput(id) {
 		var result = parseInt(document.getElementById(id).value);
-		if (isNaN(result)) result = 0;
+		if (isNaN(result)) result = '';
 		else if (result < 0) result *= -1;
 		document.getElementById(id).value = result;
 	}

@@ -36,7 +36,7 @@ public class SearchServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title = "'" + request.getParameter("title") + "'";
-		if (title.length() == 2) title = "a.title";
+		if ("'null'".equals(title) || title.length() == 2) title = "a.title";
 		
 		String brand = "'" + request.getParameter("brand") + "'";
 		if (brand.length() == 3) brand = "a.brand";
@@ -59,18 +59,16 @@ public class SearchServlet extends HttpServlet {
 		if (priceTo.length() == 0) priceTo = "999999";
 		
 		String mileageFrom = request.getParameter("mileageFrom");
-		if (mileageFrom.length() == 0) mileageFrom = "0";
+		if (mileageFrom == null || mileageFrom.length() == 0) mileageFrom = "0";
 		
 		String mileageTo = request.getParameter("mileageTo");
-		if (mileageTo.length() == 0) mileageTo = "999999";
+		if (mileageTo == null || mileageTo.length() == 0) mileageTo = "999999";
 		
 		String yearFrom = request.getParameter("yearFrom");
 		if (yearFrom.length() == 0) yearFrom = "0";
 		
 		String yearTo = request.getParameter("yearTo");
 		if (yearTo.length() == 0) yearTo = "9999";
-		
-		
 		
 		List<?> list = MySQLConnector.getFactory().createEntityManager()
 				.createQuery("SELECT a FROM AutoAd a " +
