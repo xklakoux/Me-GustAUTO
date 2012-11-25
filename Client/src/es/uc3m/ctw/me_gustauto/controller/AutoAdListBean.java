@@ -21,6 +21,9 @@ public class AutoAdListBean {
 		return MySQLConnector.executeQuery("SELECT a FROM AutoAd a");
 	}
 	
+	/**
+	 * Get a distinct list of all values of a column in AutoAds
+	 */
 	public List<?> getList(String columnName) {
 		return MySQLConnector.getFactory().createEntityManager().createQuery("SELECT DISTINCT a." + columnName + " FROM AutoAd a ORDER BY a." + columnName + " ASC").getResultList();
 	}
