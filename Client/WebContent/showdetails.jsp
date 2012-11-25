@@ -68,13 +68,14 @@ body {
 		<jsp:getProperty name="autoAdBean" property="description" /><br>
 		<br>
 	</div>
+	<c:if test="${CLIENT_IS_LOGGED_IN}">
 
 	<div class="contact_seller" >
 	<form  method="POST" action="SendEmailServlet">
 	<input type="hidden" value="${param.id}" name="id">
 	<textarea cols="30" rows="5" name="message" onfocus="">
-	Hi there,
-	I'm interested in this advertisment...
+Hi there,
+I'm interested in this advertisment...
 	</textarea>
 	<br />
 	<input type="submit" value="Send to the owner">
@@ -87,7 +88,6 @@ body {
 	<%
 		commentsListBean.setAd_id(autoAdBean.getAd_id());
 	%>
-	<c:if test="${CLIENT_IS_LOGGED_IN}">
 		<div>
 			<h4>Add your comment:</h4>
 			<div style="border-style: solid; border-width: 1px; padding: 8px;">

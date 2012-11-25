@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="es.uc3m.ctw.me_gustauto.controller.MySQLConnector"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%--     <jsp:useBean id="MySQLSession" type="es.uc3m.ctw.me_gustauto.MySQLConnector" scope="session"> --%>
-<%-- 			<jsp:getProperty property="MySQLSession" name="IS_ADMIN"/> --%>
-<%-- </jsp:useBean> --%>
-<%-- <%@ page errorPage="error.jsp" %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
