@@ -8,6 +8,13 @@
   <servlet>
     <description>
   	</description>
+    <display-name>SortSearchResults</display-name>
+    <servlet-name>SortSearchResults</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.SortSearchResults</servlet-class>
+  </servlet>
+  <servlet>
+    <description>
+  	</description>
     <display-name>AddComment</display-name>
     <servlet-name>AddComment</servlet-name>
     <servlet-class>es.uc3m.ctw.me_gustauto.controller.AddComment</servlet-class>
@@ -53,6 +60,10 @@
   <servlet-mapping>
     <servlet-name>AddAutoAd</servlet-name>
     <url-pattern>/AddAutoAd</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SortSearchResults</servlet-name>
+    <url-pattern>/SortSearchResults</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GeneralAdServlet</servlet-name>

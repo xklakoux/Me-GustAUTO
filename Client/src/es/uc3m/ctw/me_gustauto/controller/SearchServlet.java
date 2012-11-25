@@ -71,25 +71,26 @@ public class SearchServlet extends HttpServlet {
 		if (yearTo.length() == 0) yearTo = "9999";
 		
 		
+		String query = "SELECT a FROM AutoAd a " +
+				"WHERE a.title = " + title +
+				" AND a.brand = " + brand +
+				" AND a.model = " + model +
+				" AND a.engine = " + engine +
+				" AND a.colour = " + colour +
+				
+				" AND a.price >= " + priceFrom +
+				" AND a.price <= " + priceTo +
+				
+				" AND a.mileage >= " + mileageFrom +
+				" AND a.mileage <= " + mileageTo +
+				
+				" AND a.years >= " + yearFrom +
+				" AND a.years <= " + yearTo;
 		
 		List<?> list = MySQLConnector.getFactory().createEntityManager()
-				.createQuery("SELECT a FROM AutoAd a " +
-						"WHERE a.title = " + title +
-						" AND a.brand = " + brand +
-						" AND a.model = " + model +
-						" AND a.engine = " + engine +
-						" AND a.colour = " + colour +
-						
-						" AND a.price >= " + priceFrom +
-						" AND a.price <= " + priceTo +
-						
-						" AND a.mileage >= " + mileageFrom +
-						" AND a.mileage <= " + mileageTo +
-						
-						" AND a.years >= " + yearFrom +
-						" AND a.years <= " + yearTo
-						).getResultList();
+				.createQuery(query).getResultList();
 		
+		request.setAttribute("SEARCH_QUERY", query); // will use that to sort search results
 		request.setAttribute("SEARCHRESULT", true);
 		request.setAttribute("LIST", list);
 		
