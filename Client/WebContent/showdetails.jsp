@@ -70,6 +70,11 @@ body {
 		<jsp:getProperty name="autoAdBean" property="description" /><br>
 		<br>
 	</div>
+	<jsp:useBean id="commentsListBean"
+		class="es.uc3m.ctw.me_gustauto.controller.CommentsListBean" />
+	<%
+		commentsListBean.setAd_id(autoAdBean.getAd_id());
+	%>
 	<c:if test="${CLIENT_IS_LOGGED_IN}">
 
 	<div class="contact_seller" >
@@ -85,11 +90,7 @@ I'm interested in this advertisment...
 	</div>
 	
 	
-	<jsp:useBean id="commentsListBean"
-		class="es.uc3m.ctw.me_gustauto.controller.CommentsListBean" />
-	<%
-		commentsListBean.setAd_id(autoAdBean.getAd_id());
-	%>
+	
 		<div>
 			<h4>Add your comment:</h4>
 			<div style="border-style: solid; border-width: 1px; padding: 8px;">
