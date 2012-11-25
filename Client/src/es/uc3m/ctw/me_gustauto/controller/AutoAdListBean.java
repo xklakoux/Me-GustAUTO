@@ -17,10 +17,13 @@ public class AutoAdListBean {
 	/**
 	 * Get a list of all AutoAds
 	 */
-	public List<Object> getList() {
+	public List<?> getList() {
 		return MySQLConnector.executeQuery("SELECT a FROM AutoAd a");
 	}
 	
+	public List<?> getList(String columnName) {
+		return MySQLConnector.getFactory().createEntityManager().createQuery("SELECT DISTINCT a." + columnName + " FROM AutoAd a ORDER BY a." + columnName + " ASC").getResultList();
+	}
 	
 	/**
 	 * 
@@ -28,7 +31,7 @@ public class AutoAdListBean {
 	 * @param order AutoAdListBean.ASCENDING or AutoAdListBean.DESCENDING
 	 * @return list of auto ads sorted ascending or descending by a given field
 	 */
-	public List<Object> getSortedList(String field, String order){
+	public List<?> getSortedList(String field, String order){
 		return MySQLConnector.getFactory().createEntityManager().createQuery("SELECT a FROM AutoAd a ORDER BY a.:f :o")
 					.setParameter("f", field)
 					.setParameter("o", order)
@@ -45,7 +48,7 @@ public class AutoAdListBean {
 	 * @param value 
 	 * @return list of ads that fulfill the specified requirement
 	 */
-	public List<Object> getFilteredList(String field, String relation, String value){
+	public List<?> getFilteredList(String field, String relation, String value){
 		return MySQLConnector.getFactory().createEntityManager().createQuery("SELECT a FROM AutoAd a WHERE a.:f :r :v")
 					.setParameter("f", field)
 					.setParameter("r", relation)
@@ -53,9 +56,7 @@ public class AutoAdListBean {
 					.getResultList();		
 	}
 	
-	public List<Object> getListFromQuery(String query){
+	public List<?> getListFromQuery(String query){
 		return MySQLConnector.getFactory().createEntityManager().createQuery(query).getResultList();
 	}
-	
-	
 }

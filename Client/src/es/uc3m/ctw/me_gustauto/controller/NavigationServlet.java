@@ -18,30 +18,25 @@ public class NavigationServlet extends HttpServlet {
      */
     public NavigationServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String page = request.getParameter("page");
-//		if(page = "")
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 }

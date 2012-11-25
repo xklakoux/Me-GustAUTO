@@ -4,7 +4,15 @@
 
 <jsp:useBean id="autoAdListBean" class="es.uc3m.ctw.me_gustauto.controller.AutoAdListBean" />
 <h2>Current Offers</h2>
-<c:forEach items="${autoAdListBean.getList()}" var="autoAd">
+<c:choose>
+	<c:when test="${SEARCHRESULT}">
+		<c:set var="autoAdList" value="${LIST}"/>
+	</c:when>
+	<c:otherwise>
+		<c:set var="autoAdList" value="${autoAdListBean.getList()}"/>
+	</c:otherwise>
+</c:choose>
+<c:forEach items="${autoAdList}" var="autoAd">
 
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">

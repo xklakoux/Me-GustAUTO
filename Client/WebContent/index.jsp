@@ -33,14 +33,12 @@
 					<ul>
 
 						<li><a href="index.jsp">Home</a></li>
-						<li><a href="?page=addauto.jsp">Add Auto Ad</a></li>
-						<li><a href="?page=addgenad.jsp">Add General Ad</a></li>
-						<li><a href="?page=prices.jsp">Pricing</a></li>
-						<li><a href="?page=search.jsp">Search</a></li>
-						<c:if test="${CLIENT_IS_LOGGED_IN}">
-							<li><a href="?page=showfav.jsp">Favourites</a></li>
-						</c:if>
-						<li><a href="?page=contact.jsp">Contact</a></li>
+						<li><a href="index.jsp?page=addauto.jsp">Add Auto Ad</a></li>
+						<li><a href="index.jsp?page=addgenad.jsp">Add General Ad</a></li>
+						<li><a href="index.jsp?page=prices.jsp">Pricing</a></li>
+						<li><a href="index.jsp?page=search.jsp">Search</a></li>
+						<li><a href="index.jsp?page=showfav.jsp">Favourites</a></li>
+						<li><a href="index.jsp?page=contact.jsp">Contact</a></li>
 					</ul>
 
 				</div>
@@ -55,10 +53,10 @@
 				<div id="menu">
 					<ul>
 						<li><a href="index.jsp">Home</a></li>
-						<li><a href="?page=prices.jsp">Pricing</a></li>
-						<li><a href="?page=search.jsp">Search</a></li>
-						<li><a href="?page=contact.jsp">Contact</a></li>
-						<li><a href="?page=registration_form.jsp">Register</a></li>
+						<li><a href="index.jsp?page=prices.jsp">Pricing</a></li>
+						<li><a href="index.jsp?page=search.jsp">Search</a></li>
+						<li><a href="index.jsp?page=contact.jsp">Contact</a></li>
+						<li><a href="index.jsp?page=registration_form.jsp">Register</a></li>
 					</ul>
 				</div>
 
