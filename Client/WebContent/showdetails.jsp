@@ -61,8 +61,10 @@ body {
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
 
-		owner's username: <b><jsp:getProperty name="autoAdBean"
-				property="username" /><br></b> offer valid until: <b><jsp:getProperty
+		owner's username: <b>
+<%-- 		<jsp:getProperty name="autoAdBean" property="username" /> --%>
+		<br>
+				</b> offer valid until: <b><jsp:getProperty
 				name="autoAdBean" property="valid_to" /></b> <br> Description:<br>
 		<br>
 		<jsp:getProperty name="autoAdBean" property="description" /><br>
@@ -104,7 +106,7 @@ I'm interested in this advertisment...
 
 	<c:forEach items="${commentsListBean.getList()}" var="comment">
 		<div style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
-			<br>			
+			<jsp:getProperty name="comment" property="content" /><br>	
 			 - <c:out value="${comment.getUser().getUsername()}" />
 			,<i><fmt:formatDate value="${comment.getDateAdded()}" pattern=" d MMM yyyy 'at' hh:mm a " /></i>
 			<br>

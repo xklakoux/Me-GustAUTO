@@ -49,9 +49,8 @@ public class MySQLConnector {
 		return false;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public static List<Object> executeQuery(String jpql) {
-		List<Object> tmp = null;
+	public static List<?> executeQuery(String jpql) {
+		List<?> tmp = null;
 		EntityManager em = factory.createEntityManager();
 		try {
 			tmp = em.createQuery(jpql).getResultList();
@@ -101,7 +100,7 @@ public class MySQLConnector {
 	}
 	
 	public static boolean verifyLogin(String username, String password) {
-		List<Object> list = executeQuery("SELECT u FROM User u WHERE u.username = '" + username + "'");
+		List<?> list = executeQuery("SELECT u FROM User u WHERE u.username = '" + username + "'");
 		if (list.size() == 0) return false;
 		
 		if (list.get(0) == null) return false;
@@ -113,12 +112,12 @@ public class MySQLConnector {
 	}
 	
 	public static boolean verifyAdmin(String username) {
-		List<Object> list = executeQuery("SELECT u FROM User u WHERE u.username = '" + username + "' AND u.role = 'admin'");
+		List<?> list = executeQuery("SELECT u FROM User u WHERE u.username = '" + username + "' AND u.role = 'admin'");
 		return list.size() != 0;
 	}
 	
 	public static boolean favDoesNotExist(String username, int ad_id) {
-		List<Object> list = executeQuery("SELECT f FROM Fav f WHERE f.user.username = '" + username + "' AND f.autoAd.adId = " + ad_id);
+		List<?> list = executeQuery("SELECT f FROM Fav f WHERE f.user.username = '" + username + "' AND f.autoAd.adId = " + ad_id);
 		return list.size() == 0;
 	}
 	

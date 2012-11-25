@@ -11,8 +11,7 @@ public class CommentsListBean {
 	
 	private int ad_id;
 	
-	@SuppressWarnings("unchecked")
-	public List<Object> getList() {
+	public List<?> getList() {
 		EntityManagerFactory emf = MySQLConnector.getFactory();
 		EntityManager em = emf.createEntityManager();
 		AutoAd autoad = em.find(AutoAd.class, ad_id);

@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,20 +42,17 @@ public class AddComment extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Comment cmt = new Comment();
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megustauto");
-		EntityManager manager = emf.createEntityManager();
+		EntityManager manager = MySQLConnector.getFactory().createEntityManager();
 		EntityTransaction et = manager.getTransaction();
 		String username = (String) request.getSession().getAttribute(MySQLConnector.USERNAME_OF_CLIENT);
-		int uId = ((User) (manager
-				.createQuery("SELECT c FROM User c WHERE c.username=:userName")
-				.setParameter("userName", username).getResultList().get(0)))
-				.getUserId();
+		
 
 		et.begin();
 		manager.persist(cmt);
 		cmt.setAutoAd(manager.find(AutoAd.class, Integer.valueOf(request.getParameter("ad_id"))));
 		cmt.setContent(((String) request.getParameter("content")));
-		cmt.setUser(manager.find(User.class, uId));
+		cmt.setUser( (User) (manager.createQuery("SELECT c FROM User c WHERE c.username=:userName")
+				.setParameter("userName", username).getResultList().get(0)));
 		cmt.setDateAdded(new Date());
 		et.commit();
 

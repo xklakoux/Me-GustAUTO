@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.Collections;
 
-import es.uc3m.ctw.me_gustauto.model.GeneralAd;
-
-
 /**
  * Servlet implementation class GeneralAdServlet
  */
@@ -32,11 +29,10 @@ public class GeneralAdServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megustauto");
 		EntityManager manager = emf.createEntityManager();
-		List<GeneralAd> list = (List<GeneralAd>) manager.createQuery("select b from GeneralAd b order by b.adId").getResultList();
+		List<?> list = manager.createQuery("select b from GeneralAd b order by b.adId").getResultList();
 		Collections.shuffle(list);
 		list = list.subList(0, 5);
 		if(list!=null){
