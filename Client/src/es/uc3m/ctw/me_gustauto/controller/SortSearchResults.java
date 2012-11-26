@@ -17,20 +17,24 @@ import javax.servlet.http.HttpServletResponse;
 public class SortSearchResults extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
+	/**
+     * @see HttpServlet#HttpServlet()
+     */
     public SortSearchResults() {
         super();
     }
     
+    /**
+	 * @see Servlet#init(ServletConfig)
+	 */
 	public void init(ServletConfig config) throws ServletException {
-		
+		super.init(config);
 	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String squery = request.getParameter("query") + " ORDER BY a." + request.getParameter("field") + " " + request.getParameter("order");
 		
 		List<?> list = MySQLConnector.getFactory().createEntityManager()
@@ -42,5 +46,4 @@ public class SortSearchResults extends HttpServlet {
 		
 		request.getRequestDispatcher("index.jsp").include(request, response);
 	}
-
 }

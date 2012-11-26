@@ -8,39 +8,41 @@
 <c:choose>
 	<c:when test="${SEARCHRESULT}">
 		<c:set var="autoAdList" value="${LIST}" />
-		<!-- 		sorting:  -->
-		<%-- 		<c:out value="${SEARCH_QUERY}" /> --%>
-		sort by: 
-		<form METHOD="POST" ACTION="SortSearchResults">
-			<input type="hidden" name="query" value="${SEARCH_QUERY}" /> <select
-				name="field">
-				<option value="price">price</option>
-				<option value="brand">brand</option>
-				<option value="engine">model</option>
-				<option value="mileage">mileage</option>
-				<option value="title">title</option>
-				<option value="engine">engine</option>
-				<option value="validTo">valid to</option>
-				<option value="addDate">date added</option>
-				<option value="registrationNumber">registration number</option>
-				<option value="user.username">user</option>
-			</select> 
-			<select name="order">
-				<option value="ASC">ascending</option>
-				<option value="DESC">descending</option>
-			</select>
-			<input type="SUBMIT" value="sort"/>
-		</form>
 	</c:when>
 	<c:otherwise>
 		<c:set var="autoAdList" value="${autoAdListBean.getList()}" />
+		<c:set var="SEARCH_QUERY" value="SELECT a FROM AutoAd a"/>
 	</c:otherwise>
 </c:choose>
-<c:forEach items="${autoAdList}" var="autoAd">
 
+<!-- 		sorting:  -->
+<%-- 		<c:out value="${SEARCH_QUERY}" /> --%>
+sort by: 
+<form METHOD="POST" ACTION="SortSearchResults">
+	<input type="hidden" name="query" value="${SEARCH_QUERY}"/>
+	<select name="field">
+		<option value="price">price</option>
+		<option value="brand">brand</option>
+		<option value="engine">model</option>
+		<option value="mileage">mileage</option>
+		<option value="title">title</option>
+		<option value="engine">engine</option>
+		<option value="validTo">valid to</option>
+		<option value="addDate">date added</option>
+		<option value="registrationNumber">registration number</option>
+		<option value="user.username">user</option>
+	</select> 
+	<select name="order">
+		<option value="ASC">ascending</option>
+		<option value="DESC">descending</option>
+	</select>
+	<input type="SUBMIT" value="sort"/>
+</form>
+
+<c:forEach items="${autoAdList}" var="autoAd">
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
-		<a href="ShowAutos?id=${autoAd.adId}"><img
+		<a href="index.jsp?page=showdetails.jsp&id=${autoAd.adId}"><img
 			src="res/images/car.png" width="50px" height="30px"
 			style="float: left; margin-right: 20px;" /></a>
 		<div>
