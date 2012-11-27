@@ -2,6 +2,8 @@ package es.uc3m.ctw.me_gustauto.controller;
 
 import java.util.List;
 
+import javax.persistence.Persistence;
+
 public class AutoAdListBean {	
 	// sorting orders
 	public final String ASCENDING = "ASC", DESCENDING = "DESC";
@@ -25,7 +27,7 @@ public class AutoAdListBean {
 	 * Get a distinct list of all values of a column in AutoAds
 	 */
 	public List<?> getList(String columnName) {
-		return MySQLConnector.getFactory().createEntityManager().createQuery("SELECT DISTINCT a." + columnName + " FROM AutoAd a ORDER BY a." + columnName + " ASC").getResultList();
+		return Persistence.createEntityManagerFactory("megustauto").createEntityManager().createQuery("SELECT DISTINCT a." + columnName + " FROM AutoAd a ORDER BY a." + columnName + " ASC").getResultList();
 	}
 	
 	/**
@@ -35,7 +37,7 @@ public class AutoAdListBean {
 	 * @return list of auto ads sorted ascending or descending by a given field
 	 */
 	public List<?> getSortedList(String field, String order){
-		return MySQLConnector.getFactory().createEntityManager().createQuery("SELECT a FROM AutoAd a ORDER BY a.:f :o")
+		return Persistence.createEntityManagerFactory("megustauto").createEntityManager().createQuery("SELECT a FROM AutoAd a ORDER BY a.:f :o")
 					.setParameter("f", field)
 					.setParameter("o", order)
 					.getResultList();
@@ -52,7 +54,7 @@ public class AutoAdListBean {
 	 * @return list of ads that fulfill the specified requirement
 	 */
 	public List<?> getFilteredList(String field, String relation, String value){
-		return MySQLConnector.getFactory().createEntityManager().createQuery("SELECT a FROM AutoAd a WHERE a.:f :r :v")
+		return Persistence.createEntityManagerFactory("megustauto").createEntityManager().createQuery("SELECT a FROM AutoAd a WHERE a.:f :r :v")
 					.setParameter("f", field)
 					.setParameter("r", relation)
 					.setParameter("v", value)
@@ -60,6 +62,6 @@ public class AutoAdListBean {
 	}
 	
 	public List<?> getListFromQuery(String query){
-		return MySQLConnector.getFactory().createEntityManager().createQuery(query).getResultList();
+		return Persistence.createEntityManagerFactory("megustauto").createEntityManager().createQuery(query).getResultList();
 	}
 }

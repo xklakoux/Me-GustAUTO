@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +34,7 @@ public class ShowAutos extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = MySQLConnector.getFactory();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megustauto");
 		EntityManager manager = emf.createEntityManager();
 		AutoAd auto = manager.find(AutoAd.class, Integer.valueOf(request.getParameter("id")));
 		if(auto!=null){

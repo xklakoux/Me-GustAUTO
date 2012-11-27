@@ -42,7 +42,7 @@ sort by:
 <c:forEach items="${autoAdList}" var="autoAd">
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
-		<a href="index.jsp?page=showdetails.jsp&id=${autoAd.adId}"><img
+		<a href="ShowAutos?id=${autoAd.adId}"><img
 			src="res/images/car.png" width="50px" height="30px"
 			style="float: left; margin-right: 20px;" /></a>
 		<div>

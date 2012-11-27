@@ -36,7 +36,7 @@ public class AutoAdBean {
 		this.setYears("1998");
 	}
 
-	public void reset() {
+	public AutoAdBean() {
 		this.setAdd_date("");
 		this.setAuto_moto("");
 		this.setBrand("");

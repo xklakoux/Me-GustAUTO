@@ -21,7 +21,7 @@ public class GeneralAdServlet extends HttpServlet {
     EntityManagerFactory emf;
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     */	
     public GeneralAdServlet() {
         super();
     }

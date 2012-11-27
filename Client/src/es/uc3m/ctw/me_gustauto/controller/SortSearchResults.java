@@ -3,6 +3,8 @@ package es.uc3m.ctw.me_gustauto.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +39,7 @@ public class SortSearchResults extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String squery = request.getParameter("query") + " ORDER BY a." + request.getParameter("field") + " " + request.getParameter("order");
 		
-		List<?> list = MySQLConnector.getFactory().createEntityManager()
+		List<?> list = Persistence.createEntityManagerFactory("megustauto").createEntityManager()
 				.createQuery(squery).getResultList();
 		
 		request.setAttribute("SEARCH_QUERY", request.getParameter("query"));

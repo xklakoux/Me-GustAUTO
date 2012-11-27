@@ -61,6 +61,13 @@ body {
 		<br>
 		<br>
 	</div>
+	
+		<jsp:useBean id="commentsListBean"
+			class="es.uc3m.ctw.me_gustauto.controller.CommentsListBean" />
+		<%
+			commentsListBean.setAd_id(Integer.valueOf(request.getParameter("id")));
+		%>
+	
 	<c:if test="${CLIENT_IS_LOGGED_IN}">
 
 		<div class="contact_seller">
@@ -75,17 +82,12 @@ I'm interested in this advertisment...
 		</div>
 
 
-		<jsp:useBean id="commentsListBean"
-			class="es.uc3m.ctw.me_gustauto.controller.CommentsListBean" />
-		<%
-			commentsListBean.setAd_id(autoAdBean.getAd_id());
-		%>
 		<div>
-			<h4>Add your comment:</h4>
+			<h4>Add your comment: </h4>
 			<div style="border-style: solid; border-width: 1px; padding: 8px;">
 				<form METHOD="POST" ACTION="AddComment">
 					<input type="hidden" name="ad_id"
-						value="<%=autoAdBean.getAd_id()%>">
+						value="<%=request.getParameter("id")%>">
 					<textarea rows="5" cols="50" name="content"></textarea>
 					<br> <br> <input type=submit value="Add" />
 				</form>

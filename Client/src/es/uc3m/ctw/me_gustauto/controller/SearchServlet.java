@@ -3,6 +3,7 @@ package es.uc3m.ctw.me_gustauto.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.Persistence;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -86,7 +87,7 @@ public class SearchServlet extends HttpServlet {
 				" AND a.years >= " + yearFrom +
 				" AND a.years <= " + yearTo;
 
-		List<?> list = MySQLConnector.getFactory().createEntityManager()
+		List<?> list = Persistence.createEntityManagerFactory("megustauto").createEntityManager()
 				.createQuery(query).getResultList();
 		
 		request.setAttribute("SEARCH_QUERY", query); // will use that to sort search results

@@ -5,6 +5,17 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>FillDetailsFilter</display-name>
+  	<filter-name>FillDetailsFilter</filter-name>
+  	<filter-class>es.uc3m.ctw.me_gustauto.controller.FillDetailsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>FillDetailsFilter</filter-name>
+  	<url-pattern>/FillDetailsFilter</url-pattern>
+  </filter-mapping>
   <servlet>
     <description>
   	</description>
@@ -53,6 +64,13 @@
     <servlet-name>SendEmailServlet</servlet-name>
     <servlet-class>es.uc3m.ctw.me_gustauto.controller.SendEmailServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ShowAutos</display-name>
+  	<servlet-name>ShowAutos</servlet-name>
+  	<servlet-class>es.uc3m.ctw.me_gustauto.controller.ShowAutos</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>DBServlet</servlet-name>
     <url-pattern>/DBServlet</url-pattern>
@@ -76,6 +94,10 @@
   <servlet-mapping>
     <servlet-name>SendEmailServlet</servlet-name>
     <url-pattern>/SendEmailServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ShowAutos</servlet-name>
+  	<url-pattern>/ShowAutos</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>10</session-timeout>

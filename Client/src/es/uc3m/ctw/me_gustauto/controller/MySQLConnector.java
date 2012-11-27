@@ -25,15 +25,13 @@ public class MySQLConnector {
 	public static final int SALTLENGTH = 10;
 	
 	public static final String PERSISTENCE_UNIT_NAME = "megustauto";
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	
 	private MySQLConnector() {}
 	
-	public static EntityManagerFactory getFactory() {
-		return factory;
-	}
-	
 	public static boolean executeUpdate(String jpql, String name, Object value) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+
 		EntityManager em = factory.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -50,6 +48,7 @@ public class MySQLConnector {
 	}
 	
 	public static List<?> executeQuery(String jpql) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		List<?> tmp = null;
 		EntityManager em = factory.createEntityManager();
 		try {
