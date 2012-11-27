@@ -1,4 +1,4 @@
-Client/*.class
+Client/class
 Client/*.mwb
 Client/*.sw[pno]
 Client/.settings
@@ -7,9 +7,9 @@ Client/*.bak
 Client/*.beforefix
 Client/.classpath
 Client/bin/*
-Client/build/*
+Client/build
 
-AdminPanel/*.class
+AdminPanel/class
 AdminPanel/*.mwb
 AdminPanel/*.sw[pno]
 AdminPanel/.settings
@@ -18,7 +18,7 @@ AdminPanel/*.bak
 AdminPanel/*.beforefix
 AdminPanel/.classpath
 AdminPanel/bin
-AdminPanel/build/*
+AdminPanel/build
 bin
 .settings
 
