@@ -13,7 +13,7 @@ public class CommentsListBean {
 	private int ad_id;
 	
 	public List<?> getList() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megusauto");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megustauto");
 		EntityManager em = emf.createEntityManager();
 		AutoAd autoad = em.find(AutoAd.class, ad_id);
 		return em.createQuery("SELECT a FROM Comment a WHERE a.autoAd = :auto ORDER BY a.dateAdded DESC").setParameter("auto", autoad).getResultList(); 
