@@ -56,6 +56,13 @@
   <servlet>
     <description>
   	</description>
+    <display-name>ShowAutosServlet</display-name>
+    <servlet-name>ShowAutosServlet</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.ShowAutosServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>
+  	</description>
     <display-name>SortSearchResults</display-name>
     <servlet-name>SortSearchResults</servlet-name>
     <servlet-class>es.uc3m.ctw.me_gustauto.controller.SortSearchResults</servlet-class>
@@ -83,6 +90,10 @@
   <servlet-mapping>
     <servlet-name>ShowAutos</servlet-name>
     <url-pattern>/ShowAutos</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowAutosServlet</servlet-name>
+    <url-pattern>/ShowAutosServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SortSearchResults</servlet-name>

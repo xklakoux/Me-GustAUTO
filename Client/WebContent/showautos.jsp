@@ -10,17 +10,17 @@
 		<c:set var="autoAdList" value="${LIST}" />
 	</c:when>
 	<c:otherwise>
-		<c:set var="autoAdList" value="${autoAdListBean.getList()}" />
-		<c:set var="SEARCH_QUERY" value="SELECT a FROM AutoAd a"/>
+		<c:set var="autoAdList" value="${AutoAdList}" />
+		<c:set var="SEARCH_QUERY" value="SELECT a FROM AutoAd a" />
 	</c:otherwise>
 </c:choose>
 
 <!-- 		sorting:  -->
 <%-- 		<c:out value="${SEARCH_QUERY}" /> --%>
-sort by: 
+sort by:
 <form METHOD="POST" ACTION="SortSearchResults">
-	<input type="hidden" name="query" value="${SEARCH_QUERY}"/>
-	<select name="field">
+	<input type="hidden" name="query" value="${SEARCH_QUERY}" /> <select
+		name="field">
 		<option value="price">price</option>
 		<option value="brand">brand</option>
 		<option value="engine">model</option>
@@ -31,12 +31,10 @@ sort by:
 		<option value="addDate">date added</option>
 		<option value="registrationNumber">registration number</option>
 		<option value="user.username">user</option>
-	</select> 
-	<select name="order">
+	</select> <select name="order">
 		<option value="ASC">ascending</option>
 		<option value="DESC">descending</option>
-	</select>
-	<input type="SUBMIT" value="sort"/>
+	</select> <input type="SUBMIT" value="sort" />
 </form>
 
 <c:forEach items="${autoAdList}" var="autoAd">
@@ -54,7 +52,7 @@ sort by:
 			<div>
 				<c:if test="${CLIENT_IS_LOGGED_IN}">
 					<c:if test="${IS_ADMIN}">
-						<c:if test="${autoAd.getValidTo() == null}">
+						<c:if test="${autoAd.validTo == null}">
 							<a href="AutoAdAdministrationServlet?command=c&id=${autoAd.adId}"><img
 								src='res/images/confirm.png' width='13px' height='13px'></a>
 						</c:if>
@@ -62,14 +60,14 @@ sort by:
 							src='res/images/delete.gif' width='13px' height='13px'></a>
 					</c:if>
 					<%
-						if (MySQLConnector.favDoesNotExist((String) session
+						/*if (MySQLConnector.favDoesNotExist((String) session
 										.getAttribute(MySQLConnector.USERNAME_OF_CLIENT),
 										((AutoAd) pageContext.getAttribute("autoAd"))
 												.getAdId())) {
 									out.println("<a href='AutoAdAdministrationServlet?command=af&id="
 											+ ((AutoAd) pageContext.getAttribute("autoAd"))
 													.getAdId() + "'>Add to Favourites</a>");
-								}
+								}*/
 					%>
 				</c:if>
 			</div>

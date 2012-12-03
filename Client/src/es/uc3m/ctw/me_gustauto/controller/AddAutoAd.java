@@ -88,6 +88,7 @@ public class AddAutoAd extends HttpServlet {
 		context.setAttribute("SearchModel", null);
 		context.setAttribute("SearchEngine", null);
 		context.setAttribute("SearchColour", null);
+		context.setAttribute("AutoAdList", null);
 		
 		response.sendRedirect("index.jsp?page=showdetails.jsp"); // later it should redirect to newly created ad viewed in showdetails
 	}

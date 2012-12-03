@@ -3,8 +3,6 @@ package es.uc3m.ctw.me_gustauto.controller;
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,17 +36,13 @@ public class SendEmailServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		String username = (String) request.getSession().getAttribute(
-				MySQLConnector.USERNAME_OF_CLIENT);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = (String) request.getSession().getAttribute(MySQLConnector.USERNAME_OF_CLIENT);
 		String body = request.getParameter("message");
 		String id = request.getParameter("id");
 
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megustauto");
-		EntityManager manager = emf.createEntityManager();
-		AutoAd ad = manager.find(AutoAd.class, Integer.valueOf(id));
+		EntityManager em = MySQLConnector.getFactory().createEntityManager();
+		AutoAd ad = em.find(AutoAd.class, Integer.valueOf(id));
 		User vendor = ad.getUser();
 		SimpleEmail email = new SimpleEmail();
 		try {
@@ -67,7 +61,7 @@ public class SendEmailServlet extends HttpServlet {
 		} catch (EmailException e) {
 			e.printStackTrace();
 		}
-		manager.close();
+		em.close();
 		request.getRequestDispatcher("/index.jsp?page=showdetails.jsp&id="+id+"&sent=true").include(request, response);
 	}
 }

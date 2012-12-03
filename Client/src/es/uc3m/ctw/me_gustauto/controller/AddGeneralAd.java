@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,26 +29,20 @@ public class AddGeneralAd extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GeneralAd ga = new GeneralAd();
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("megustauto");
-		EntityManager manager = emf.createEntityManager();
-		EntityTransaction et = manager.getTransaction();
-		String username = (String) request.getSession().getAttribute(
-				MySQLConnector.USERNAME_OF_CLIENT);
+		EntityManager em = MySQLConnector.getFactory().createEntityManager();
+		String username = (String) request.getSession().getAttribute(MySQLConnector.USERNAME_OF_CLIENT);
 		User user = new User();
-		user = (User) manager.createNamedQuery("getUserByUsername")
-				.setParameter("usern", username).getResultList().get(0);
-
-		et.begin();
-		manager.persist(ga);
+		user = (User) em.createNamedQuery("getUserByUsername").setParameter("usern", username).getResultList().get(0);
+		em.getTransaction().begin();
+		em.persist(ga);
 		ga.setTitle((String) request.getParameter("title"));
 		ga.setDescr((String) request.getParameter("descr"));
 		ga.setUser(user);
 		ga.setAddDate(new Date());
-		et.commit();
+		em.getTransaction().commit();
+		em.close();
 		response.sendRedirect("index.jsp?page=success.jsp");
 		return;
 	}

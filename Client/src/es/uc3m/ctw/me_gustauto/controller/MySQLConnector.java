@@ -6,14 +6,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import es.uc3m.ctw.me_gustauto.model.User;
 
@@ -25,49 +22,12 @@ public class MySQLConnector {
 	public static final int SALTLENGTH = 10;
 	
 	public static final String PERSISTENCE_UNIT_NAME = "megustauto";
-	EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	
 	private MySQLConnector() {}
 	
-	public static boolean executeUpdate(String jpql, String name, Object value) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-
-		EntityManager em = factory.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		try {
-			Query q = em.createQuery(jpql);
-			q.setParameter(name, value);
-			q.executeUpdate();
-			em.close();
-			return true;
-		} catch (IllegalArgumentException e) {e.printStackTrace();}
-		tx.commit();
-		em.close();
-		return false;
-	}
-	
-	public static List<?> executeQuery(String jpql) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		List<?> tmp = null;
-		EntityManager em = factory.createEntityManager();
-		try {
-			tmp = em.createQuery(jpql).getResultList();
-		} catch (IllegalArgumentException e) {e.printStackTrace();}
-		if(tmp!=null){
-		for (Object o : tmp) {
-			em.refresh(o);
-		}
-		em.close();
-		
-		List<Object> result = new LinkedList<Object>();
-		for (Object o : tmp) {
-			result.add(createDeepCopy(o));
-		}
-		return result;
-
-		}
-		return null;
+	public static EntityManagerFactory getFactory() {
+		return factory;
 	}
 	
 	public static String sha1(String password, String salt) {
@@ -99,28 +59,31 @@ public class MySQLConnector {
 	}
 	
 	public static boolean verifyLogin(String username, String password) {
-		List<?> list = executeQuery("SELECT u FROM User u WHERE u.username = '" + username + "'");
+		EntityManager em = factory.createEntityManager();
+		List<?> list = em.createQuery("SELECT u FROM User u WHERE u.username = '" + username + "'").getResultList();
+		em.close();
 		if (list.size() == 0) return false;
-		
-		if (list.get(0) == null) return false;
-		User user = (User) list.get(0);
-		
+		User user = (User) createDeepCopy(list.get(0));
 		String hash = sha1(password, (user.getSalt()));
 		if (user.getHash().equals(hash)) return true;
 		return false;
 	}
 	
 	public static boolean verifyAdmin(String username) {
-		List<?> list = executeQuery("SELECT u FROM User u WHERE u.username = '" + username + "' AND u.role = 'admin'");
+		EntityManager em = factory.createEntityManager();
+		List<?> list = em.createQuery("SELECT u FROM User u WHERE u.username = '" + username + "' AND u.role = 'admin'").getResultList();
+		em.close();
 		return list.size() != 0;
 	}
 	
 	public static boolean favDoesNotExist(String username, int ad_id) {
-		List<?> list = executeQuery("SELECT f FROM Fav f WHERE f.user.username = '" + username + "' AND f.autoAd.adId = " + ad_id);
+		EntityManager em = factory.createEntityManager();
+		List<?> list = em.createQuery("SELECT f FROM Fav f WHERE f.user.username = '" + username + "' AND f.autoAd.adId = " + ad_id).getResultList();
+		em.close();
 		return list.size() == 0;
 	}
 	
-	private static Object createDeepCopy(Object o) {
+	public static Object createDeepCopy(Object o) {
 		Object result = null;
 		try {
 			ByteArrayOutputStream out = new ByteArrayOutputStream();

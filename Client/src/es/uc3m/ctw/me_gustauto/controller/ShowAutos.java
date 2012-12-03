@@ -3,8 +3,6 @@ package es.uc3m.ctw.me_gustauto.controller;
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,9 +28,9 @@ public class ShowAutos extends HttpServlet {
 	 */
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megustauto");
-		EntityManager manager = emf.createEntityManager();
-		AutoAd auto = manager.find(AutoAd.class, Integer.valueOf(request.getParameter("id")));
+		EntityManager em = MySQLConnector.getFactory().createEntityManager();
+		AutoAd auto = em.find(AutoAd.class, Integer.valueOf(request.getParameter("id")));
+		em.close();
 		if(auto!=null){
 			request.setAttribute("auto",auto);
 		}

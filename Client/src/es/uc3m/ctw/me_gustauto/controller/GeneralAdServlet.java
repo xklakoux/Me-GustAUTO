@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +16,7 @@ import java.util.Collections;
  */
 public class GeneralAdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    EntityManagerFactory emf;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */	
@@ -30,9 +28,9 @@ public class GeneralAdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megustauto");
-		EntityManager manager = emf.createEntityManager();
-		List<?> list = manager.createQuery("select b from GeneralAd b order by b.adId").getResultList();
+		EntityManager em = MySQLConnector.getFactory().createEntityManager();
+		List<?> list = em.createQuery("select b from GeneralAd b order by b.adId").getResultList();
+		em.close();
 		Collections.shuffle(list);
 		list = list.subList(0, 5);
 		if(list!=null){

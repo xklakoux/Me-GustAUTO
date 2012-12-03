@@ -65,7 +65,7 @@
 			<div id="content">
 				<c:choose>
 					<c:when test="${param.page==null}">
-						<jsp:include page="showautos.jsp" />
+						<jsp:include page="/ShowAutosServlet" />
 					</c:when>
 					<c:otherwise>
 						<jsp:include page="${param.page}" />
