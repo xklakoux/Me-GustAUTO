@@ -2,7 +2,7 @@
 
 <jsp:useBean id="autoAdListBean" class="es.uc3m.ctw.me_gustauto.controller.AutoAdListBean" />
 <c:choose>
-	<c:when test="${param.page==null || (param.page!=null && param.page!='search.jsp')}">
+	<c:when test="${param.page==null || (param.page!=null && param.page!='SearchServlet')}">
 		<form METHOD="POST" ACTION="SearchServlet">
 			<table>
 				<tr>
@@ -10,7 +10,7 @@
 					<td></td>
 					<td><select name="brand">
 							<option value="-">-</option>
-							<c:forEach items="${autoAdListBean.getList('brand')}" var="value">
+							<c:forEach items="${SearchBrand}" var="value">
 								<option value="${value}">${value}</option>
 							</c:forEach>
 					</select></td>
@@ -20,7 +20,7 @@
 					<td></td>
 					<td><select name="model">
 							<option value="-">-</option>
-							<c:forEach items="${autoAdListBean.getList('model')}" var="value">
+							<c:forEach items="${SearchModel}" var="value">
 								<option value="${value}">${value}</option>
 							</c:forEach>
 					</select></td>
@@ -30,7 +30,7 @@
 					<td></td>
 					<td><select name="engine">
 							<option value="-">-</option>
-							<c:forEach items="${autoAdListBean.getList('engine')}" var="value">
+							<c:forEach items="${SearchEngine}" var="value">
 								<option value="${value}">${value}</option>
 							</c:forEach>
 					</select></td>
@@ -50,7 +50,7 @@
 					<td></td>
 					<td><select name="colour">
 							<option value="-">-</option>
-							<c:forEach items="${autoAdListBean.getList('colour')}" var="value">
+							<c:forEach items="${SearchColour}" var="value">
 								<option value="${value}">${value}</option>
 							</c:forEach>
 					</select></td>

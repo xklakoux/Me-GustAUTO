@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +22,8 @@ import es.uc3m.ctw.me_gustauto.model.User;
 @WebServlet("/AutoAdAdministrationServlet")
 public class AutoAdAdministrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private ServletContext context;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,42 +36,53 @@ public class AutoAdAdministrationServlet extends HttpServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		context = config.getServletContext();
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		EntityManager em = MySQLConnector.getFactory().createEntityManager();
 		String command = request.getParameter("command");
 		String id = request.getParameter("id");
 		if ("c".equals(command)) {
-			MySQLConnector.executeUpdate("UPDATE AutoAd a SET a.validTo = :validTo WHERE a.adId = " + id, "validTo", new Date());
+			context.setAttribute("AutoAdList", null);
+			em.getTransaction().begin();
+			AutoAd autoAd = em.find(AutoAd.class, Integer.parseInt(id));
+			autoAd.setValidTo(new Date());
+			em.getTransaction().commit();
 			response.sendRedirect("index.jsp");
 		} else if ("d".equals(command)) {
-			MySQLConnector.executeUpdate("DELETE FROM AutoAd a WHERE a.adId = :id", "id", Integer.parseInt(id));
+			context.setAttribute("AutoAdList", null);
+			em.getTransaction().begin();
+			AutoAd autoAd = em.find(AutoAd.class, Integer.parseInt(id));
+			em.remove(autoAd);
+			em.getTransaction().commit();
 			response.sendRedirect("index.jsp");
 		} else if ("af".equals(command)) {
-			User user = (User) MySQLConnector.executeQuery("SELECT u FROM User u WHERE u.username = '" + request.getSession(true).getAttribute(MySQLConnector.USERNAME_OF_CLIENT) + "'").get(0);
-			AutoAd autoAd = (AutoAd) MySQLConnector.executeQuery("SELECT a FROM AutoAd a WHERE a.adId = " + id).get(0);
+			context.setAttribute("FavList", null);
+			Object o = em.createQuery("SELECT u FROM User u WHERE u.username = '" + request.getSession(true).getAttribute(MySQLConnector.USERNAME_OF_CLIENT) + "'").getResultList().get(0);
+			User user = (User) MySQLConnector.createDeepCopy(o);
+			AutoAd autoAd = em.find(AutoAd.class, Integer.parseInt(id));
 			
 			if (MySQLConnector.favDoesNotExist(user.getUsername(), autoAd.getAdId())) {
-				EntityManagerFactory factory = Persistence.createEntityManagerFactory(MySQLConnector.PERSISTENCE_UNIT_NAME);
-				EntityManager em = factory.createEntityManager();
-				EntityTransaction tx = em.getTransaction();
-				tx.begin();
-				
+				em.getTransaction().begin();
 				Fav f = new Fav();
 				em.persist(f);
 				f.setUser(user);
 				f.setAutoAd(autoAd);
-				
-				tx.commit();
-				em.close();
+				em.getTransaction().commit();
 			}
 			response.sendRedirect("index.jsp");
 		} else if ("df".equals(command)) {
-			MySQLConnector.executeUpdate("DELETE FROM Fav v WHERE v.id = :id", "id", Integer.parseInt(id));
+			context.setAttribute("FavList", null);
+			em.getTransaction().begin();
+			Fav fav = em.find(Fav.class, Integer.parseInt(id));
+			em.remove(fav);
+			em.getTransaction().commit();
 			response.sendRedirect("index.jsp?page=showfav.jsp");
 		}
+		em.close();
 	}
 }

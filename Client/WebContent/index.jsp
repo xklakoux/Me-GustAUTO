@@ -34,8 +34,8 @@
 						<li><a href="index.jsp?page=addgenad.jsp">Add General Ad</a></li>
 						<li><a href="index.jsp?page=prices.jsp">Pricing</a></li>
 						<li><a href="/MessagesServlet">Messages</a></li>
-						<li><a href="index.jsp?page=search.jsp">Search</a></li>
-						<li><a href="index.jsp?page=showfav.jsp">Favourites</a></li>
+						<li><a href="index.jsp?page=SearchServlet">Search</a></li>
+						<li><a href="index.jsp?page=FavServlet">Favourites</a></li>
 						<li><a href="index.jsp?page=contact.jsp">Contact</a></li>
 					</ul>
 
@@ -52,7 +52,7 @@
 					<ul>
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="index.jsp?page=prices.jsp">Pricing</a></li>
-						<li><a href="index.jsp?page=search.jsp">Search</a></li>
+						<li><a href="index.jsp?page=SearchServlet">Search</a></li>
 						<li><a href="index.jsp?page=contact.jsp">Contact</a></li>
 						<li><a href="index.jsp?page=registration_form.jsp">Register</a></li>
 					</ul>
@@ -62,13 +62,13 @@
 		</c:choose>
 
 		<div class="container">
-<!-- 			<div id="bar-search"> -->
-<%-- 				<jsp:include page="bar-search.jsp" /> --%>
-<!-- 			</div> -->
+			<div id="bar-search">
+				<jsp:include page="/BarSearchServlet" />
+			</div>
 			<div id="content">
 				<c:choose>
 					<c:when test="${param.page==null}">
-						<jsp:include page="showautos.jsp" />
+						<jsp:include page="/ShowAutosServlet" />
 					</c:when>
 					<c:otherwise>
 						<jsp:include page="${param.page}" />
