@@ -34,7 +34,7 @@ public class AddGeneralAd extends HttpServlet {
 		EntityManager em = MySQLConnector.getFactory().createEntityManager();
 		String username = (String) request.getSession().getAttribute(MySQLConnector.USERNAME_OF_CLIENT);
 		User user = new User();
-		user = (User) em.createNamedQuery("getUserByUsername").setParameter("usern", username).getResultList().get(0);
+		user = (User) em.createQuery("SELECT u FROM User u WHERE u.username = :usern").setParameter("usern", username).getResultList().get(0);
 		em.getTransaction().begin();
 		em.persist(ga);
 		ga.setTitle((String) request.getParameter("title"));
