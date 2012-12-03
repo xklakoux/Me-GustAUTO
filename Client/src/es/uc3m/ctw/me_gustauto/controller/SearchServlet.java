@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Persistence;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ServletContext context;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -30,6 +32,19 @@ public class SearchServlet extends HttpServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		context = config.getServletContext();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (context.getAttribute("SearchBrand") == null) context.setAttribute("SearchBrand", AutoAdListBean.getList("brand"));
+		if (context.getAttribute("SearchModel") == null) context.setAttribute("SearchModel", AutoAdListBean.getList("model"));
+		if (context.getAttribute("SearchEngine") == null) context.setAttribute("SearchEngine", AutoAdListBean.getList("engine"));
+		if (context.getAttribute("SearchColour") == null) context.setAttribute("SearchColour", AutoAdListBean.getList("colour"));
+		request.getRequestDispatcher("search.jsp").include(request, response);
 	}
 
 	/**

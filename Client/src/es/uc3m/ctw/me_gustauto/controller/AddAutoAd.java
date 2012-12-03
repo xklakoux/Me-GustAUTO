@@ -10,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,17 +26,18 @@ import es.uc3m.ctw.me_gustauto.model.User;
 @WebServlet("/AddAutoAd")
 public class AddAutoAd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ServletContext context;
        
     public AddAutoAd() {
         super();
     }
 
     public void init(ServletConfig config) throws ServletException {
-		super.init(config);
+    	super.init(config);
+		context = config.getServletContext();
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -80,6 +82,12 @@ public class AddAutoAd extends HttpServlet {
 		
 		
 		et.commit();
+		
+		// delete search option values in context
+		context.setAttribute("SearchBrand", null);
+		context.setAttribute("SearchModel", null);
+		context.setAttribute("SearchEngine", null);
+		context.setAttribute("SearchColour", null);
 		
 		response.sendRedirect("index.jsp?page=showdetails.jsp"); // later it should redirect to newly created ad viewed in showdetails
 	}

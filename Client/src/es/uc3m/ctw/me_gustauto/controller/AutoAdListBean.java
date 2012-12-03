@@ -24,13 +24,6 @@ public class AutoAdListBean {
 	}
 	
 	/**
-	 * Get a distinct list of all values of a column in AutoAds
-	 */
-	public List<?> getList(String columnName) {
-		return Persistence.createEntityManagerFactory("megustauto").createEntityManager().createQuery("SELECT DISTINCT a." + columnName + " FROM AutoAd a ORDER BY a." + columnName + " ASC").getResultList();
-	}
-	
-	/**
 	 * 
 	 * @param field AutoAdListBean.PRICE or any other AutoAd field name
 	 * @param order AutoAdListBean.ASCENDING or AutoAdListBean.DESCENDING
@@ -42,7 +35,6 @@ public class AutoAdListBean {
 					.setParameter("o", order)
 					.getResultList();
 	}
-	
 	
 	// what comes next might be useful for searching
 	/**
@@ -63,5 +55,12 @@ public class AutoAdListBean {
 	
 	public List<?> getListFromQuery(String query){
 		return Persistence.createEntityManagerFactory("megustauto").createEntityManager().createQuery(query).getResultList();
+	}
+	
+	/**
+	 * Get a distinct list of all values of a column in AutoAds
+	 */
+	public static List<?> getList(String columnName) {
+		return Persistence.createEntityManagerFactory("megustauto").createEntityManager().createQuery("SELECT DISTINCT a." + columnName + " FROM AutoAd a ORDER BY a." + columnName + " ASC").getResultList();
 	}
 }

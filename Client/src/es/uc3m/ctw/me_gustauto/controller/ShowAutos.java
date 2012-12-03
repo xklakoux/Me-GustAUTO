@@ -1,8 +1,6 @@
 package es.uc3m.ctw.me_gustauto.controller;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,7 +23,6 @@ public class ShowAutos extends HttpServlet {
      */
     public ShowAutos() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -33,7 +30,6 @@ public class ShowAutos extends HttpServlet {
 	 */
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megustauto");
 		EntityManager manager = emf.createEntityManager();
 		AutoAd auto = manager.find(AutoAd.class, Integer.valueOf(request.getParameter("id")));
@@ -47,7 +43,6 @@ public class ShowAutos extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 }

@@ -5,31 +5,6 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <filter>
-  	<description>
-  	</description>
-  	<display-name>FillDetailsFilter</display-name>
-  	<filter-name>FillDetailsFilter</filter-name>
-  	<filter-class>es.uc3m.ctw.me_gustauto.controller.FillDetailsFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>FillDetailsFilter</filter-name>
-  	<url-pattern>/FillDetailsFilter</url-pattern>
-  </filter-mapping>
-  <servlet>
-    <description>
-  	</description>
-    <display-name>SortSearchResults</display-name>
-    <servlet-name>SortSearchResults</servlet-name>
-    <servlet-class>es.uc3m.ctw.me_gustauto.controller.SortSearchResults</servlet-class>
-  </servlet>
-  <servlet>
-    <description>
-  	</description>
-    <display-name>AddComment</display-name>
-    <servlet-name>AddComment</servlet-name>
-    <servlet-class>es.uc3m.ctw.me_gustauto.controller.AddComment</servlet-class>
-  </servlet>
   <servlet>
     <description>
   	</description>
@@ -40,16 +15,9 @@
   <servlet>
     <description>
   	</description>
-    <display-name>DBServlet</display-name>
-    <servlet-name>DBServlet</servlet-name>
-    <servlet-class>es.uc3m.ctw.me_gustauto.DBServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <description>
-  	</description>
-    <display-name>GeneralAdServlet</display-name>
-    <servlet-name>GeneralAdServlet</servlet-name>
-    <servlet-class>es.uc3m.ctw.me_gustauto.controller.GeneralAdServlet</servlet-class>
+    <display-name>AddComment</display-name>
+    <servlet-name>AddComment</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.AddComment</servlet-class>
   </servlet>
   <servlet>
     <description></description>
@@ -60,44 +28,65 @@
   <servlet>
     <description>
   	</description>
+    <display-name>BarSearchServlet</display-name>
+    <servlet-name>BarSearchServlet</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.BarSearchServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>
+  	</description>
+    <display-name>GeneralAdServlet</display-name>
+    <servlet-name>GeneralAdServlet</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.GeneralAdServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>
+  	</description>
     <display-name>SendEmailServlet</display-name>
     <servlet-name>SendEmailServlet</servlet-name>
     <servlet-class>es.uc3m.ctw.me_gustauto.controller.SendEmailServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description>
+    <description>
   	</description>
-  	<display-name>ShowAutos</display-name>
-  	<servlet-name>ShowAutos</servlet-name>
-  	<servlet-class>es.uc3m.ctw.me_gustauto.controller.ShowAutos</servlet-class>
+    <display-name>ShowAutos</display-name>
+    <servlet-name>ShowAutos</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.ShowAutos</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>DBServlet</servlet-name>
-    <url-pattern>/DBServlet</url-pattern>
-  </servlet-mapping>
+  <servlet>
+    <description>
+  	</description>
+    <display-name>SortSearchResults</display-name>
+    <servlet-name>SortSearchResults</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.SortSearchResults</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>AddAutoAd</servlet-name>
     <url-pattern>/AddAutoAd</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>SortSearchResults</servlet-name>
-    <url-pattern>/SortSearchResults</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>GeneralAdServlet</servlet-name>
-    <url-pattern>/GeneralAdServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddGeneralAd</servlet-name>
     <url-pattern>/AddGeneralAd</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <servlet-name>BarSearchServlet</servlet-name>
+    <url-pattern>/BarSearchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GeneralAdServlet</servlet-name>
+    <url-pattern>/GeneralAdServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>SendEmailServlet</servlet-name>
     <url-pattern>/SendEmailServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>ShowAutos</servlet-name>
-  	<url-pattern>/ShowAutos</url-pattern>
+    <servlet-name>ShowAutos</servlet-name>
+    <url-pattern>/ShowAutos</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SortSearchResults</servlet-name>
+    <url-pattern>/SortSearchResults</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>10</session-timeout>
