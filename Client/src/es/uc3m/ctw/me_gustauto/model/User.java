@@ -56,6 +56,14 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<GeneralAd> generalAds;
 
+	//bi-directional many-to-one association to Message
+	@OneToMany(mappedBy="user1")
+	private List<Message> messages1;
+
+	//bi-directional many-to-one association to Message
+	@OneToMany(mappedBy="user2")
+	private List<Message> messages2;
+
 	public User() {
 	}
 
@@ -169,6 +177,22 @@ public class User implements Serializable {
 
 	public void setGeneralAds(List<GeneralAd> generalAds) {
 		this.generalAds = generalAds;
+	}
+
+	public List<Message> getMessages1() {
+		return this.messages1;
+	}
+
+	public void setMessages1(List<Message> messages1) {
+		this.messages1 = messages1;
+	}
+
+	public List<Message> getMessages2() {
+		return this.messages2;
+	}
+
+	public void setMessages2(List<Message> messages2) {
+		this.messages2 = messages2;
 	}
 
 }

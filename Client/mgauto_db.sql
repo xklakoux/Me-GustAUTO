@@ -83,6 +83,20 @@ CREATE TABLE comments(
     FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
     PRIMARY KEY(id)
 );
+
+DROP TABLE IF EXISTS messages;
+CREATE TABLE messages(
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    ad_id INT,
+    seller_id INT,
+    content TEXT,
+    date_added datetime,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
+    FOREIGN KEY (seller_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    PRIMARY KEY(id)
+);
 -- users passwords are following
 --  admin -> admin1
 --  xklakoux -> qweqwe
@@ -148,5 +162,11 @@ insert into auto_ads (title, brand, model, engine, registration_number, years, p
 values ('Recent offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
 insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
 values ('Recent offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Gray', 'The car is in a perfect condition.', 1, 'auto', now());
+
+-- messages
+insert into messages (user_id,ad_id,seller_id,content,date_added)
+VALUES('1','1',2,'Do not buy from this guy he is a thief.','2012-11-10');
+insert into messages (user_id,ad_id,seller_id,content,date_added)
+VALUES('1','1',2,'Do not buy from this guy he is a thief.','2012-11-10');
 
 SET FOREIGN_KEY_CHECKS=1; -- has to be on the very end

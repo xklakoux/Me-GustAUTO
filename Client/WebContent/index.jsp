@@ -29,9 +29,11 @@
 					<ul>
 
 						<li><a href="index.jsp">Home</a></li>
+						<li><a href="index.jsp?page=messages.jsp">Messages</a></li>
 						<li><a href="index.jsp?page=addauto.jsp">Add Auto Ad</a></li>
 						<li><a href="index.jsp?page=addgenad.jsp">Add General Ad</a></li>
 						<li><a href="index.jsp?page=prices.jsp">Pricing</a></li>
+						<li><a href="/MessagesServlet">Messages</a></li>
 						<li><a href="index.jsp?page=search.jsp">Search</a></li>
 						<li><a href="index.jsp?page=showfav.jsp">Favourites</a></li>
 						<li><a href="index.jsp?page=contact.jsp">Contact</a></li>
@@ -60,9 +62,9 @@
 		</c:choose>
 
 		<div class="container">
-			<div id="bar-search">
-				<jsp:include page="bar-search.jsp" />
-			</div>
+<!-- 			<div id="bar-search"> -->
+<%-- 				<jsp:include page="bar-search.jsp" /> --%>
+<!-- 			</div> -->
 			<div id="content">
 				<c:choose>
 					<c:when test="${param.page==null}">
@@ -75,7 +77,7 @@
 			</div>
 
 			<div id="bar-ads">
-						<jsp:include page="/GeneralAdServlet" />
+				<jsp:include page="/GeneralAdServlet" />
 			</div>
 		</div>
 		<div id="footer_container">

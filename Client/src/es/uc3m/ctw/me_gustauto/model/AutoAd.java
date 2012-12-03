@@ -66,6 +66,10 @@ public class AutoAd implements Serializable {
 	@OneToMany(mappedBy="autoAd")
 	private List<Fav> favs;
 
+	//bi-directional many-to-one association to Message
+	@OneToMany(mappedBy="autoAd")
+	private List<Message> messages;
+
 	public AutoAd() {
 	}
 
@@ -203,6 +207,14 @@ public class AutoAd implements Serializable {
 
 	public void setFavs(List<Fav> favs) {
 		this.favs = favs;
+	}
+
+	public List<Message> getMessages() {
+		return this.messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 
 }
