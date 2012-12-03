@@ -2,8 +2,6 @@
 <%@ page import="es.uc3m.ctw.me_gustauto.model.AutoAd"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<jsp:useBean id="autoAdListBean"
-	class="es.uc3m.ctw.me_gustauto.controller.AutoAdListBean" />
 <h2>Current Offers</h2>
 <c:choose>
 	<c:when test="${SEARCHRESULT}">

@@ -64,6 +64,7 @@ public class MySQLConnector {
 		em.close();
 		if (list.size() == 0) return false;
 		User user = (User) createDeepCopy(list.get(0));
+		if (user == null) return false;
 		String hash = sha1(password, (user.getSalt()));
 		if (user.getHash().equals(hash)) return true;
 		return false;

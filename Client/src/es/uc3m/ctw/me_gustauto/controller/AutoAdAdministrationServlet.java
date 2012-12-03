@@ -43,24 +43,25 @@ public class AutoAdAdministrationServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		context.setAttribute("AutoAdList", null);
-		
 		EntityManager em = MySQLConnector.getFactory().createEntityManager();
 		String command = request.getParameter("command");
 		String id = request.getParameter("id");
 		if ("c".equals(command)) {
+			context.setAttribute("AutoAdList", null);
 			em.getTransaction().begin();
 			AutoAd autoAd = em.find(AutoAd.class, Integer.parseInt(id));
 			autoAd.setValidTo(new Date());
 			em.getTransaction().commit();
 			response.sendRedirect("index.jsp");
 		} else if ("d".equals(command)) {
+			context.setAttribute("AutoAdList", null);
 			em.getTransaction().begin();
 			AutoAd autoAd = em.find(AutoAd.class, Integer.parseInt(id));
 			em.remove(autoAd);
 			em.getTransaction().commit();
 			response.sendRedirect("index.jsp");
 		} else if ("af".equals(command)) {
+			context.setAttribute("FavList", null);
 			Object o = em.createQuery("SELECT u FROM User u WHERE u.username = '" + request.getSession(true).getAttribute(MySQLConnector.USERNAME_OF_CLIENT) + "'").getResultList().get(0);
 			User user = (User) MySQLConnector.createDeepCopy(o);
 			AutoAd autoAd = em.find(AutoAd.class, Integer.parseInt(id));
@@ -75,6 +76,7 @@ public class AutoAdAdministrationServlet extends HttpServlet {
 			}
 			response.sendRedirect("index.jsp");
 		} else if ("df".equals(command)) {
+			context.setAttribute("FavList", null);
 			em.getTransaction().begin();
 			Fav fav = em.find(Fav.class, Integer.parseInt(id));
 			em.remove(fav);

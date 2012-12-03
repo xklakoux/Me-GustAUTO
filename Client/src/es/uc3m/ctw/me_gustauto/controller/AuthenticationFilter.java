@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AuthenticationFilter
  */
-@WebFilter(filterName = "AuthenticationFilter", urlPatterns = "/showfav.jsp")
+@WebFilter(filterName = "AuthenticationFilter", urlPatterns = "*.jsp")
 public class AuthenticationFilter implements Filter {
 
 	/**
@@ -29,12 +29,17 @@ public class AuthenticationFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse res = (HttpServletResponse) response;
-		HttpSession session = req.getSession(true);
+		String uri = req.getRequestURI();
+		String page = request.getParameter("page");
 		
-		Object client = session.getAttribute(MySQLConnector.CLIENT_IS_LOGGED_IN);
-		if (client == null || !(Boolean) client) {
-			res.sendRedirect("index.jsp");
+		if ("FavServlet".equals(page) || "/Me-GustAUTO/showfav.jsp".equals(uri)) {
+			HttpServletResponse res = (HttpServletResponse) response;
+			HttpSession session = req.getSession(true);
+			
+			Object client = session.getAttribute(MySQLConnector.CLIENT_IS_LOGGED_IN);
+			if (client == null || !(Boolean) client) {
+				res.sendRedirect("index.jsp");
+			}
 		}
 		
 		// pass the request along the filter chain

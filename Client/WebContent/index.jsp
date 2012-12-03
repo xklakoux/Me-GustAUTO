@@ -32,7 +32,7 @@
 						<li><a href="index.jsp?page=addgenad.jsp">Add General Ad</a></li>
 						<li><a href="index.jsp?page=prices.jsp">Pricing</a></li>
 						<li><a href="index.jsp?page=SearchServlet">Search</a></li>
-						<li><a href="index.jsp?page=showfav.jsp">Favourites</a></li>
+						<li><a href="index.jsp?page=FavServlet">Favourites</a></li>
 						<li><a href="index.jsp?page=contact.jsp">Contact</a></li>
 					</ul>
 
