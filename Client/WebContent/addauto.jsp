@@ -12,71 +12,59 @@
 		<table>
 			<tr>
 				<td>Type</td>
-				<td><INPUT TYPE="radio"	name="auto_moto" value="auto"> Car 
-					<INPUT TYPE="radio"	name="auto_moto" value="moto"> Motorbike</td>
+				<td><INPUT TYPE="radio" name="auto_moto" value="auto">
+					Car <INPUT TYPE="radio" name="auto_moto" value="moto">
+					Motorbike</td>
 			</tr>
 			<tr>
 				<td><br>Title</td>
-				<td><INPUT NAME="title"
-					VALUE="">
+				<td><INPUT NAME="title" VALUE="">
 			</tr>
 			<tr>
 				<td>Brand</td>
-				<td><INPUT NAME="brand"
-					VALUE=""/>
-				</td>
+				<td><INPUT NAME="brand" VALUE="" /></td>
 			</tr>
 			<tr>
 				<td>Model</td>
-				<td><INPUT NAME="model"
-					VALUE=""/>
-				</td>
+				<td><INPUT NAME="model" VALUE="" /></td>
 			</tr>
 			<tr>
 				<td>Engine</td>
-				<td><INPUT NAME="engine"
-					VALUE="">
-				</td>
+				<td><INPUT NAME="engine" VALUE=""></td>
 			</tr>
 			<tr>
 				<td>Registration number</td>
-				<td><INPUT NAME="registration_number"
-					VALUE="">
-				</td>
+				<td><INPUT NAME="registration_number" VALUE=""></td>
 			</tr>
 			<tr>
 				<td>Year</td>
-				<td><input name="years"
-					value=""  />
-				</td>
+				<td><input name="years" value="" /></td>
 			</tr>
 			<tr>
 				<td>Price (in &euro;s)</td>
-				<td><INPUT NAME="price"
-					VALUE=""  /></td>
+				<td><INPUT NAME="price" VALUE="" /></td>
 			</tr>
 			<tr>
 				<td>Mileage (in kms)</td>
-				<td><INPUT NAME="mileage"
-					VALUE="" />
-				</td>
+				<td><INPUT NAME="mileage" VALUE="" /></td>
 			</tr>
 			<tr>
 				<td>Color</td>
-				<td><INPUT NAME="colour"
-					VALUE=""/>
-				</td>
+				<td><INPUT NAME="colour" VALUE="" /></td>
 			</tr>
 			<tr>
-				<td>Months</td>
-				<td><INPUT NAME="months"
-					VALUE="" /></td>
+				<td>Number of months that the ad will be available</td>
+				<td><select name="months">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				</select>
+				</td></td>
 			</tr>
 		</table>
 		Description <br>
 		<TEXTAREA NAME="description" COLS=40 ROWS=6></TEXTAREA>
-		<br>
-		<br> <INPUT TYPE=Submit Value="Send">
+		<br> <br> <INPUT TYPE=Submit Value="Send">
 	</div>
 
 	<br>

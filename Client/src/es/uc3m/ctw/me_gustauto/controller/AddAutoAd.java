@@ -83,14 +83,19 @@ public class AddAutoAd extends HttpServlet {
 		
 		et.commit();
 		
+		String ad_id = String.valueOf(ad.getAdId());
+		
+		em.close();
+		
+				
 		// delete search option values in context
 		context.setAttribute("SearchBrand", null);
 		context.setAttribute("SearchModel", null);
 		context.setAttribute("SearchEngine", null);
 		context.setAttribute("SearchColour", null);
 		context.setAttribute("AutoAdList", null);
-		
-		response.sendRedirect("index.jsp?page=showdetails.jsp"); // later it should redirect to newly created ad viewed in showdetails
+
+		response.sendRedirect("ShowAutos?id="+ad_id);
 	}
 
 }
