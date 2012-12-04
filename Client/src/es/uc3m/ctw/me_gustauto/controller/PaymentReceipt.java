@@ -33,7 +33,7 @@ public class PaymentReceipt extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int ad_id = Integer.valueOf(request.getParameter("id"));
 		int months = Integer.valueOf(request.getParameter("months"));
-		int price = 0;
+		int price = 20;
 		
 		EntityManager em = Persistence.createEntityManagerFactory("megustauto").createEntityManager();
 		AutoAd auto = em.find(AutoAd.class, ad_id);

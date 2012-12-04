@@ -37,7 +37,7 @@ public class AutoAdAdministrationServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		String ad_id = request.getParameter("ad_id");
 		if ("c".equals(command)) {
-			MySQLConnector.execute("UPDATE auto_ads SET valid_to = CURRENT_TIMESTAMP() WHERE ad_id = '" + ad_id + "';");
+			MySQLConnector.execute("UPDATE auto_ads SET valid = 1 WHERE ad_id = '" + ad_id + "';");
 		} else if ("d".equals(command)) {
 			MySQLConnector.execute("DELETE FROM auto_ads WHERE ad_id = '" + ad_id + "';");
 		}

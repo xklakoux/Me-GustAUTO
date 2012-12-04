@@ -11,7 +11,7 @@
 	<h3>Your advertisement details:</h3>
 	You want to order an advertisement of ${auto.brand} ${auto.model} <br>
 	For <%= request.getParameter("months") %> month(s). <br>
-	The price is ${price} <br>
+	The price is ${price} € <br>
 </div>
 <div>
 	<input type="button" value="Proceed to payment">

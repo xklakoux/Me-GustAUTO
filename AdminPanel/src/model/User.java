@@ -34,7 +34,7 @@ public class User implements Serializable {
 
 	private String phone;
 
-	private int role;
+	private String role;
 
 	private String salt;
 
@@ -107,11 +107,11 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 
-	public int getRole() {
+	public String getRole() {
 		return this.role;
 	}
 
-	public void setRole(int role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

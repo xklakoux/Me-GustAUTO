@@ -39,12 +39,16 @@ public class AutoAd implements Serializable {
 
 	private String model;
 
+	private boolean paid;
+
 	private BigDecimal price;
 
 	@Column(name="registration_number")
 	private String registrationNumber;
 
 	private String title;
+
+	private boolean valid;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="valid_to")
@@ -132,6 +136,14 @@ public class AutoAd implements Serializable {
 		this.model = model;
 	}
 
+	public boolean getPaid() {
+		return this.paid;
+	}
+
+	public void setPaid(boolean paid) {
+		this.paid = paid;
+	}
+
 	public BigDecimal getPrice() {
 		return this.price;
 	}
@@ -154,6 +166,14 @@ public class AutoAd implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public boolean getValid() {
+		return this.valid;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
 	}
 
 	public Date getValidTo() {

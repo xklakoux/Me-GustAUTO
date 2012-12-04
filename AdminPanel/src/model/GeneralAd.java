@@ -25,7 +25,11 @@ public class GeneralAd implements Serializable {
 	@Lob
 	private String descr;
 
+	private boolean paid;
+
 	private String title;
+
+	private boolean valid;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="valid_to")
@@ -63,12 +67,28 @@ public class GeneralAd implements Serializable {
 		this.descr = descr;
 	}
 
+	public boolean getPaid() {
+		return this.paid;
+	}
+
+	public void setPaid(boolean paid) {
+		this.paid = paid;
+	}
+
 	public String getTitle() {
 		return this.title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public boolean getValid() {
+		return this.valid;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
 	}
 
 	public Date getValidTo() {
