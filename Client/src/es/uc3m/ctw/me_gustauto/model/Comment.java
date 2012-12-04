@@ -2,6 +2,7 @@ package es.uc3m.ctw.me_gustauto.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Date;
 
 

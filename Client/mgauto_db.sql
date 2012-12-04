@@ -27,6 +27,8 @@ CREATE TABLE general_ads(
     user_id INT NOT NULL,
     add_date DATETIME,
     valid_to DATETIME,
+    valid boolean NOT NULL default 0,
+    paid boolean NOT NULL default 0,
     PRIMARY KEY (ad_id),
     FOREIGN KEY (user_id) references users(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB;
@@ -48,6 +50,8 @@ CREATE TABLE auto_ads(
     auto_moto ENUM('auto','moto'),
     add_date DATETIME,
     valid_to DATETIME,
+    paid boolean NOT NULL default 0,
+    valid boolean NOT NULL default 0,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     PRIMARY KEY (ad_id)
 ) ENGINE=INNODB;
