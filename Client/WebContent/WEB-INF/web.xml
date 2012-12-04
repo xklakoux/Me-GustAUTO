@@ -8,6 +8,13 @@
   <servlet>
     <description>
   	</description>
+    <display-name>PaymentReceipt</display-name>
+    <servlet-name>PaymentReceipt</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.PaymentReceipt</servlet-class>
+  </servlet>
+  <servlet>
+    <description>
+  	</description>
     <display-name>AddAutoAd</display-name>
     <servlet-name>AddAutoAd</servlet-name>
     <servlet-class>es.uc3m.ctw.me_gustauto.controller.AddAutoAd</servlet-class>
@@ -68,11 +75,11 @@
     <servlet-class>es.uc3m.ctw.me_gustauto.controller.SortSearchResults</servlet-class>
   </servlet>
   <servlet>
-  	<description>
+    <description>
   	</description>
-  	<display-name>MessagesServlet</display-name>
-  	<servlet-name>MessagesServlet</servlet-name>
-  	<servlet-class>es.uc3m.ctw.me_gustauto.controller.MessagesServlet</servlet-class>
+    <display-name>MessagesServlet</display-name>
+    <servlet-name>MessagesServlet</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.MessagesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddAutoAd</servlet-name>
@@ -91,6 +98,10 @@
     <url-pattern>/GeneralAdServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <servlet-name>PaymentReceipt</servlet-name>
+    <url-pattern>/PaymentReceipt</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>SendEmailServlet</servlet-name>
     <url-pattern>/SendEmailServlet</url-pattern>
   </servlet-mapping>
@@ -107,8 +118,8 @@
     <url-pattern>/SortSearchResults</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>MessagesServlet</servlet-name>
-  	<url-pattern>/MessagesServlet</url-pattern>
+    <servlet-name>MessagesServlet</servlet-name>
+    <url-pattern>/MessagesServlet</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>10</session-timeout>
