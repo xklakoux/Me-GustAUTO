@@ -18,8 +18,8 @@
 					<ul>
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="?page=editprices.jsp">Edit Pricing</a></li>
-						<li><a href="?page=showautos.jsp">View ads</a></li>
-						<li><a href="?page=viewgenads.jsp">View general ads</a></li>
+						<li><a href="ShowAutosServlet">View auto ads</a></li>
+						<li><a href="ViewGenAdServlet">View general ads</a></li>
 					</ul>
 				</div>
 
@@ -32,8 +32,7 @@
 						<jsp:include page="${param.page}" />
 					</c:otherwise>
 				</c:choose>
-				
- 
-
+			</div>
+	</div>
 </body>
 </html>

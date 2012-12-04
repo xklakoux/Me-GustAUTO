@@ -11,11 +11,21 @@
 	<%@ page import="es.uc3m.ctw.me_gustauto.controller.MySQLConnector"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-	<jsp:useBean id="autoAdListBean"
-		class="es.uc3m.ctw.me_gustauto.controller.AutoAdListBean" />
 	<h2>Current Offers</h2>
-	<c:forEach items="${autoAdListBean.getList()}" var="autoAd">
 
+	<form action="ShowAutosServlet" method="post">
+		<select name="list_type">
+			<option value="0">Only unconfirmed ads</option>
+			<option value="1" 			
+			<c:if test="${param.list_type == '1' }">
+				selected="selected"
+			</c:if>
+			 >All ads</option>
+		</select> 
+		<input type="submit" value="OK">
+	</form>
+
+	<c:forEach items="${list}" var="autoAd">
 		<div
 			style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
 			<a href="?page=showdetails.jsp&id=123"><img
@@ -31,15 +41,16 @@
 
 				<div>
 					<%
-							out.println("<a href='AutoAdAdministrationServlet?command=c&ad_id="
-									+ ((AutoAd) pageContext.getAttribute("autoAd"))
-											.getAdId()
-									+ "'><img src='res/images/confirm.png' width='13px' height='13px'></a>");
+						if (!((AutoAd) pageContext.getAttribute("autoAd")).getValid()) {
+								out.println("<a href='AutoAdAdministrationServlet?command=c&ad_id="
+										+ ((AutoAd) pageContext.getAttribute("autoAd"))
+										.getAdId()
+										+ "&list_type="+request.getParameter("list_type")+"'><img src='res/images/confirm.png' width='13px' height='13px'></a>");
+							}
 							out.println("<a href='AutoAdAdministrationServlet?command=d&ad_id="
 									+ ((AutoAd) pageContext.getAttribute("autoAd"))
-											.getAdId()
-									+ "'><img src='res/images/delete.gif' width='13px' height='13px'></a>");
-											
+									.getAdId()
+									+ "&list_type="+request.getParameter("list_type")+"'><img src='res/images/delete.gif' width='13px' height='13px'></a>");
 					%>
 				</div>
 			</div>

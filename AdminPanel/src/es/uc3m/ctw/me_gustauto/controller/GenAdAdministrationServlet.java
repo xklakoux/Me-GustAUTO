@@ -10,17 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AutoAdAdministrationServlet
+ * Servlet implementation class GenAdAdministrationServlet
  */
-@WebServlet("/AutoAdAdministrationServlet")
-public class AutoAdAdministrationServlet extends HttpServlet {
+@WebServlet("/GenAdAdministrationServlet")
+public class GenAdAdministrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AutoAdAdministrationServlet() {
+    public GenAdAdministrationServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -37,10 +38,11 @@ public class AutoAdAdministrationServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		String ad_id = request.getParameter("ad_id");
 		if ("c".equals(command)) {
-			MySQLConnector.execute("UPDATE auto_ads SET valid = '1' WHERE ad_id = '" + ad_id + "';"); //TODO
+			MySQLConnector.execute("UPDATE general_ads SET valid = '1' WHERE ad_id = '" + ad_id + "';");
 		} else if ("d".equals(command)) {
-			MySQLConnector.execute("DELETE FROM auto_ads WHERE ad_id = '" + ad_id + "';");
+			MySQLConnector.execute("DELETE FROM general_ads WHERE ad_id = '" + ad_id + "';");
 		}
-		request.getRequestDispatcher("ShowAutosServlet").include(request, response);
+		
+		request.getRequestDispatcher("ViewGenAdServlet").include(request, response);
 	}
 }

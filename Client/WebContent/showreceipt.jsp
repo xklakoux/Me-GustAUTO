@@ -10,7 +10,7 @@
 <div>
 	<h3>Your advertisement details:</h3>
 	You want to order an advertisement of ${auto.brand} ${auto.model} <br>
-	For <%= request.getParameter("months") %> month(s). <br>
+	For ${param.months} month(s). <br>
 	The price is ${price} € <br>
 </div>
 <div>
