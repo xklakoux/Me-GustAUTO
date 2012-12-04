@@ -79,7 +79,7 @@ public class AddAutoAd extends HttpServlet {
 		ad.setYears(request.getParameter("years"));
 		ad.setTitle(request.getParameter("title"));
 		ad.setUser((User) u);		
-		
+		// paid and valid 0 by default
 		
 		et.commit();
 		
@@ -95,7 +95,9 @@ public class AddAutoAd extends HttpServlet {
 		context.setAttribute("SearchColour", null);
 		context.setAttribute("AutoAdList", null);
 
-		response.sendRedirect("ShowAutos?id="+ad_id);
+		response.sendRedirect("PaymentReceipt?id="+ad_id+"&months="+request.getParameter("months"));
+		//TODO: show only valid and paid ads on the page
+		//response.sendRedirect("ShowAutos?id="+ad_id);
 	}
 
 }
