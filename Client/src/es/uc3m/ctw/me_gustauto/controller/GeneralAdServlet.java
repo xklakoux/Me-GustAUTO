@@ -32,7 +32,7 @@ public class GeneralAdServlet extends HttpServlet {
 		List<?> list = em.createQuery("select b from GeneralAd b order by b.adId").getResultList();
 		em.close();
 		Collections.shuffle(list);
-		list = list.subList(0, 5);
+		list = list.subList(0, Math.min(5, list.size() ));
 		if(list!=null){
 			request.setAttribute("list", list);
 		}
