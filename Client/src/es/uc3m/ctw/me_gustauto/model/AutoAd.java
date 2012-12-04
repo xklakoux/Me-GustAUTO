@@ -17,6 +17,7 @@ public class AutoAd implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ad_id")
 	private int adId;
 
@@ -40,7 +41,7 @@ public class AutoAd implements Serializable {
 
 	private String model;
 
-	private byte paid;
+	private boolean paid;
 
 	private BigDecimal price;
 
@@ -49,7 +50,7 @@ public class AutoAd implements Serializable {
 
 	private String title;
 
-	private byte valid;
+	private boolean valid;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="valid_to")
@@ -149,11 +150,11 @@ public class AutoAd implements Serializable {
 		this.model = model;
 	}
 
-	public byte getPaid() {
+	public boolean getPaid() {
 		return this.paid;
 	}
 
-	public void setPaid(byte paid) {
+	public void setPaid(boolean paid) {
 		this.paid = paid;
 	}
 
@@ -181,11 +182,11 @@ public class AutoAd implements Serializable {
 		this.title = title;
 	}
 
-	public byte getValid() {
+	public boolean getValid() {
 		return this.valid;
 	}
 
-	public void setValid(byte valid) {
+	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
 

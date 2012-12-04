@@ -15,6 +15,7 @@ public class GeneralAd implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ad_id")
 	private int adId;
 
@@ -25,11 +26,11 @@ public class GeneralAd implements Serializable {
 	@Lob
 	private String descr;
 
-	private byte paid;
+	private boolean paid;
 
 	private String title;
 
-	private byte valid;
+	private boolean valid;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="valid_to")
@@ -67,11 +68,11 @@ public class GeneralAd implements Serializable {
 		this.descr = descr;
 	}
 
-	public byte getPaid() {
+	public boolean getPaid() {
 		return this.paid;
 	}
 
-	public void setPaid(byte paid) {
+	public void setPaid(boolean paid) {
 		this.paid = paid;
 	}
 
@@ -83,11 +84,11 @@ public class GeneralAd implements Serializable {
 		this.title = title;
 	}
 
-	public byte getValid() {
+	public boolean getValid() {
 		return this.valid;
 	}
 
-	public void setValid(byte valid) {
+	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
 
