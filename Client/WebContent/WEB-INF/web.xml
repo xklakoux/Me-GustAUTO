@@ -95,6 +95,10 @@
     <url-pattern>/SendEmailServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <servlet-name>ShowAutos</servlet-name>
+    <url-pattern>/ShowAutos</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ShowAutosServlet</servlet-name>
     <url-pattern>/ShowAutosServlet</url-pattern>
   </servlet-mapping>
