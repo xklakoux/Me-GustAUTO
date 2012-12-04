@@ -4,9 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
-<title>Insert title here</title>
+<title>Receipt for ${auto.brand} ${auto.model}</title>
 </head>
 <body>
-
+<div>
+	<h3>Your advertisement details:</h3>
+	You want to order an advertisement of ${auto.brand} ${auto.model} <br>
+	For <%= request.getParameter("months") %> month(s). <br>
+	The price is ${price} <br>
+</div>
+<div>
+	<input type="button" value="Proceed to payment">
+	<input type="button" value="Cancel">
+</div>
 </body>
 </html>

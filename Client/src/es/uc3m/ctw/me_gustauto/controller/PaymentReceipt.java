@@ -27,7 +27,7 @@ public class PaymentReceipt extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doPost(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,6 +38,7 @@ public class PaymentReceipt extends HttpServlet {
 		EntityManager em = Persistence.createEntityManagerFactory("megustauto").createEntityManager();
 		AutoAd auto = em.find(AutoAd.class, ad_id);
 		
+		request.setAttribute("auto", auto);
 		
 		
 		//calculate price
@@ -51,7 +52,6 @@ public class PaymentReceipt extends HttpServlet {
 		em.close();
 		//redirect to confirmation page		
 		request.getRequestDispatcher("/index.jsp?page=showreceipt.jsp").forward(request, response);
-		
 	}
 
 }
