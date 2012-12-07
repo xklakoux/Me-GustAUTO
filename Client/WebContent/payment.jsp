@@ -16,7 +16,10 @@
 		</c:if>
 		
 		<form action="PaymentVerificationServlet">
-		Credit card number:<input type="text" name="number" maxlength="16" size="16"><br>
+		Credit card number:<input type="text" name="number1" maxlength="4" size="4">
+		<input type="text" name="number2" maxlength="4" size="4">
+		<input type="text" name="number3" maxlength="4" size="4">
+		<input type="text" name="number4" maxlength="4" size="4"><br>
 		Expiry date:<br>   
 		Month/Year:<input type="text" name="month" maxlength="2" size="2">/
 		<input type="text" name="year" maxlength="2" size="2"><br>

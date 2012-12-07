@@ -42,7 +42,8 @@ public class PaymentVerificationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		BankServicesProxy proxy = new BankServicesProxy();
-		String result = proxy.validateCreditCard(request.getParameter("number"), request.getParameter("month"), request.getParameter("year"));
+		String number = request.getParameter("number1")+request.getParameter("number2")+request.getParameter("number3")+request.getParameter("number4");
+		String result = proxy.validateCreditCard(number, request.getParameter("month"), request.getParameter("year"));
 		
 		EntityManager em = Persistence.createEntityManagerFactory("megustauto").createEntityManager();
 		AutoAd auto = em.find(AutoAd.class, Integer.valueOf(request.getParameter("id")));
