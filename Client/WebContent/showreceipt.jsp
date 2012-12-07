@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-2"
-    pageEncoding="ISO-8859-2"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
-<title>Receipt for ${auto.brand} ${auto.model}</title>
+<title>Receipt for advertisement of ${auto.brand} ${auto.model}</title>
 </head>
 <body>
 <div>
@@ -14,8 +14,15 @@
 	The price is ${price} € <br>
 </div>
 <div>
-	<input type="button" value="Proceed to payment">
-	<input type="button" value="Cancel">
-</div>
+		<form action="index.jsp">
+			<input type="hidden" name="price" value="${price}">					
+			<input type="hidden" name="id" value="${auto.adId}">
+			<input type="hidden" name="page" value="payment.jsp">
+			<input type="submit" value="Proceed to payment">
+		</form>
+		<form action="index.jsp">
+			<input type="submit" value="Cancel">
+		</form>
+	</div>
 </body>
 </html>

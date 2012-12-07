@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BankServicesService WSDL service -->
+
+  <service name="BankServices" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.jhc"/>
+      <parameter name="wsdlServiceElement" value="BankServicesService"/>
+      <parameter name="schemaQualified" value="http://ws.jhc"/>
+      <parameter name="wsdlServicePort" value="BankServices"/>
+      <parameter name="className" value="jhc.ws.BankServices"/>
+      <parameter name="wsdlPortType" value="BankServices"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.jhc" xmlns:retNS="http://ws.jhc" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="validateCreditCard" qname="operNS:validateCreditCard" returnQName="retNS:validateCreditCardReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://ws.jhc" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:number" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.jhc" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:month" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.jhc" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:year" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="validateCreditCard"/>
+
+  </service>
+</deployment>
