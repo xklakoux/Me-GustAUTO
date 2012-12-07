@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.uc3m.ctw.me_gustauto.model.AutoAd;
+import es.uc3m.ctw.me_gustauto.model.GeneralAd;
 
 /**
  * Servlet implementation class PaymentReceipt
@@ -33,13 +34,20 @@ public class PaymentReceipt extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int ad_id = Integer.valueOf(request.getParameter("id"));
 		int months = Integer.valueOf(request.getParameter("months"));
-		int price = 20;
+		String type = request.getParameter("ad_type");
+		int price = 20; // TODO
 		
 		EntityManager em = Persistence.createEntityManagerFactory("megustauto").createEntityManager();
-		AutoAd auto = em.find(AutoAd.class, ad_id);
 		
-		request.setAttribute("auto", auto);
 		
+		
+		if(type.equals("auto")){
+			AutoAd auto = em.find(AutoAd.class, ad_id);		
+			request.setAttribute("auto", auto);
+		}else if(type.equals("genad")){
+			GeneralAd genad = em.find(GeneralAd.class, ad_id);
+			request.setAttribute("genad", genad);	
+		}
 		
 		//calculate price
 		

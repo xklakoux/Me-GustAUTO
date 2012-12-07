@@ -96,7 +96,7 @@ public class AddAutoAd extends HttpServlet {
 		context.setAttribute("SearchColour", null);
 		context.setAttribute("AutoAdList", null);
 
-		response.sendRedirect("PaymentReceipt?id="+ad_id+"&months="+request.getParameter("months"));
+		response.sendRedirect("PaymentReceipt?id="+ad_id+"&months="+request.getParameter("months")+"&ad_type=auto");
 		//TODO: show only valid and paid ads on the page
 		//response.sendRedirect("ShowAutos?id="+ad_id);
 	}

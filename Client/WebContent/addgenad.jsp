@@ -10,6 +10,12 @@
 				Description<br>
 				<textarea rows="5" cols="40" name="descr"></textarea><br>
 				<br>
+				Number of months that the ad will be available 
+				<select name="months">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				</select><br>
 				<input type=submit value="Upload" />
 			</form>
 		</div>

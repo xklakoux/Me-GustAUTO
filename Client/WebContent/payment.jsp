@@ -24,6 +24,7 @@
 		Month/Year:<input type="text" name="month" maxlength="2" size="2">/
 		<input type="text" name="year" maxlength="2" size="2"><br>
 		
+		<input type="hidden" name="ad_type" value="${param.ad_type}">
 		<input type="hidden" name="id" value="${param.id}">
 		<input type="hidden" name="price" value="${param.price}">
 		
