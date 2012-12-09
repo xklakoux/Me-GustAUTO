@@ -20,6 +20,7 @@ AdminPanel/*.beforefix
 AdminPanel/.classpath
 AdminPanel/bin
 AdminPanel/build
+
+BusinessLogic/build
 bin
 .settings
-
