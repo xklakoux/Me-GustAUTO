@@ -3,26 +3,24 @@ package es.uc3m.ctw.me_gustauto.controller;
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import es.uc3m.ctw.me_gustauto.model.AutoAd;
 
 /**
  * Servlet implementation class ShowAutos
  */
-public class ShowAutos extends HttpServlet {
+public class ShowDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowAutos() {
+    public ShowDetailsServlet() {
         super();
     }
 
@@ -31,13 +29,20 @@ public class ShowAutos extends HttpServlet {
 	 */
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EntityManager em = Persistence.createEntityManagerFactory("megustauto").createEntityManager();
-		AutoAd auto = em.find(AutoAd.class, Integer.valueOf(request.getParameter("id")));
+		int id = Integer.parseInt(request.getParameter("id"));
+		EntityManager em = MySQLConnector.getFactory().createEntityManager();
+		AutoAd auto = em.find(AutoAd.class, id);
 		em.close();
-		if(auto!=null){
-			request.setAttribute("auto",auto);
+		request.setAttribute("auto",auto);
+		
+		HttpSession session = request.getSession(true);
+		Object isLoggedIn = session.getAttribute(MySQLConnector.CLIENT_IS_LOGGED_IN);
+		if (isLoggedIn != null && (Boolean) isLoggedIn) {
+			boolean favDoesNotExist = MySQLConnector.favDoesNotExist((String) session.getAttribute(MySQLConnector.USERNAME_OF_CLIENT), id);
+			request.setAttribute("favDoesNotExist", favDoesNotExist);
 		}
-		request.getRequestDispatcher("/index.jsp?page=showdetails.jsp&id="+request.getParameter("id")).forward(request, response);
+		
+		request.getRequestDispatcher("/index.jsp?page=showdetails.jsp").forward(request, response);
 	}
 
 	/**

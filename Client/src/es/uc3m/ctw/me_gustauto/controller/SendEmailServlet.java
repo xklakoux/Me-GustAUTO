@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
@@ -13,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.uc3m.ctw.me_gustauto.model.*;
-
-import org.apache.commons.mail.*;
 
 /**
  * Servlet implementation class SendEmailServlet

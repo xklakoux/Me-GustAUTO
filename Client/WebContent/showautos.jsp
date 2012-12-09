@@ -38,7 +38,7 @@ sort by:
 <c:forEach items="${autoAdList}" var="autoAd">
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
-		<a href="ShowAutos?id=${autoAd.adId}"><img
+		<a href="ShowDetailsServlet?id=${autoAd.adId}"><img
 			src="res/images/car.png" width="50px" height="30px"
 			style="float: left; margin-right: 20px;" /></a>
 		<div>
@@ -57,16 +57,6 @@ sort by:
 						<a href="AutoAdAdministrationServlet?command=d&id=${autoAd.adId}"><img
 							src='res/images/delete.gif' width='13px' height='13px'></a>
 					</c:if>
-					<%
-						/*if (MySQLConnector.favDoesNotExist((String) session
-										.getAttribute(MySQLConnector.USERNAME_OF_CLIENT),
-										((AutoAd) pageContext.getAttribute("autoAd"))
-												.getAdId())) {
-									out.println("<a href='AutoAdAdministrationServlet?command=af&id="
-											+ ((AutoAd) pageContext.getAttribute("autoAd"))
-													.getAdId() + "'>Add to Favourites</a>");
-								}*/
-					%>
 				</c:if>
 			</div>
 		</div>

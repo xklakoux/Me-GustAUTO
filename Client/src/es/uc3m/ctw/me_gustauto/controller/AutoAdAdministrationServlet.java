@@ -74,14 +74,14 @@ public class AutoAdAdministrationServlet extends HttpServlet {
 				f.setAutoAd(autoAd);
 				em.getTransaction().commit();
 			}
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("index.jsp?page=FavServlet");
 		} else if ("df".equals(command)) {
 			context.setAttribute("FavList", null);
 			em.getTransaction().begin();
 			Fav fav = em.find(Fav.class, Integer.parseInt(id));
 			em.remove(fav);
 			em.getTransaction().commit();
-			response.sendRedirect("index.jsp?page=showfav.jsp");
+			response.sendRedirect("index.jsp?page=FavServlet");
 		}
 		em.close();
 	}

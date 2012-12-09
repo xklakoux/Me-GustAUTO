@@ -3,6 +3,7 @@
 	<name>Me-GustAUTO</name>
 	<comment></comment>
 	<projects>
+		<project>BusinessLogic</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
