@@ -43,7 +43,7 @@ public class AddGeneralAd extends HttpServlet {
 		ga.setAddDate(new Date());
 		em.getTransaction().commit();
 		em.close();
-		response.sendRedirect("index.jsp?page=success.jsp");
+		response.sendRedirect("PaymentReceipt?id="+ga.getAdId()+"&months="+request.getParameter("months")+"&ad_type=genad");
 		return;
 	}
 }

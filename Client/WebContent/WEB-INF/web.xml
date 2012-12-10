@@ -56,9 +56,9 @@
   <servlet>
     <description>
   	</description>
-    <display-name>ShowAutos</display-name>
-    <servlet-name>ShowAutos</servlet-name>
-    <servlet-class>es.uc3m.ctw.me_gustauto.controller.ShowAutos</servlet-class>
+    <display-name>ShowDetailsServlet</display-name>
+    <servlet-name>ShowDetailsServlet</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.ShowDetailsServlet</servlet-class>
   </servlet>
   <servlet>
     <description>
@@ -106,8 +106,8 @@
     <url-pattern>/SendEmailServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>ShowAutos</servlet-name>
-    <url-pattern>/ShowAutos</url-pattern>
+    <servlet-name>ShowDetailsServlet</servlet-name>
+    <url-pattern>/ShowDetailsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ShowAutosServlet</servlet-name>

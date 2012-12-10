@@ -5,7 +5,7 @@
 	<c:set var="autoAd" value="${fav.autoAd}"/>
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
-		<a href="?page=showdetails.jsp&id=${fav.autoAd.adId}"><img
+		<a href="ShowDetailsServlet?id=${fav.autoAd.adId}"><img
 			src="res/images/car.png" width="50px" height="30px"
 			style="float: left; margin-right: 20px;" /></a>
 		<div>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.uc3m.ctw.me_gustauto.model.AutoAd;
+import es.uc3m.ctw.me_gustauto.model.GeneralAd;
 
 import jhc.ws.BankServicesProxy;
 
@@ -40,14 +41,10 @@ public class PaymentVerificationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String ad_type = request.getParameter("ad_type");
 		BankServicesProxy proxy = new BankServicesProxy();
-		String result = proxy.validateCreditCard(request.getParameter("number"), request.getParameter("month"), request.getParameter("year"));
-		
-		EntityManager em = Persistence.createEntityManagerFactory("megustauto").createEntityManager();
-		AutoAd auto = em.find(AutoAd.class, Integer.valueOf(request.getParameter("id")));
-		
-		
+		String number = request.getParameter("number1")+request.getParameter("number2")+request.getParameter("number3")+request.getParameter("number4");
+		String result = proxy.validateCreditCard(number, request.getParameter("month"), request.getParameter("year"));
 		
 		
 		
@@ -58,20 +55,24 @@ public class PaymentVerificationServlet extends HttpServlet {
 			
 			// TODO: CONCILIATION TABLE?
 			
-			request.setAttribute("result", result);
-	
-			EntityTransaction et = em.getTransaction();
+			EntityManager em = Persistence.createEntityManagerFactory("megustauto").createEntityManager();			
+			EntityTransaction et = em.getTransaction();			
 			et.begin();
-			auto.setPaid(true);
+			
+			if(ad_type.equals("auto")){
+				AutoAd auto = em.find(AutoAd.class, Integer.valueOf(request.getParameter("id")));
+				auto.setPaid(true);
+			}else if(ad_type.equals("genad")){
+				GeneralAd genad = em.find(GeneralAd.class, Integer.valueOf(request.getParameter("id")));
+				genad.setPaid(true);
+			}
+			
 			et.commit();
-		
+			em.close();			
+			
+			request.setAttribute("result", result);
 			request.getRequestDispatcher("index.jsp?page=paymentsuccess.jsp").forward(request, response);
 		}
-		
-		
-		
-		em.close();
-		
 		
 	}
 

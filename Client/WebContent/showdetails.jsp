@@ -33,27 +33,28 @@ body {
 	<c:if test="${param.sent}">
 		<div class="confirm">Message successfully sent!</div>
 	</c:if>
-
-	<jsp:useBean id="autoAdBean"
-		class="es.uc3m.ctw.me_gustauto.controller.AutoAdBean" />
-	<jsp:setProperty name="autoAdBean" property="*" />
 	<br>
 
 	<div style="font-weight: bold; font-size: 16px">
 		${auto.title}
-		<jsp:getProperty name="autoAdBean" property="title" />
 	</div>
 
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
 		<img src="res/images/car.png" width="120px" height="72px"
 			style="float: left; margin-right: 20px;" /> ${auto.brand}
-		${auto.model} <br><b> engine: </b>${auto.engine}<br> <b>year of
-		manufacture:</b> ${auto.years}<br> <b>mileage: </b>${auto.mileage} <br>
-		<b>color:</b>${auto.colour}<br> <b>registration number:</b>
+		${auto.model} <br><b> Engine: </b>${auto.engine}<br> <b>Year of
+		Manufacture:</b> ${auto.years}<br> <b>mileage: </b>${auto.mileage} <br>
+		<b>Color:</b>${auto.colour}<br> <b>Registration Number:</b>
 		${auto.registrationNumber}
 	</div>
-
+	
+	<c:if test="${CLIENT_IS_LOGGED_IN}">
+		<c:if test="${favDoesNotExist}">
+			<br><a href='AutoAdAdministrationServlet?command=af&id=${auto.adId}'>Add to Favourites</a>
+		</c:if>
+	</c:if>
+	
 	<div
 		style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
 		Description:<br> <br>
@@ -94,8 +95,8 @@ I'm interested in this advertisment...
 			</div>
 		</div>
 	</c:if>
+	
 	<h4>Comments:</h4>
-
 	<c:forEach items="${commentsListBean.getList()}" var="comment">
 		<div
 			style="border-style: solid; border-width: 1px; padding: 8px; overflow: hidden;">
