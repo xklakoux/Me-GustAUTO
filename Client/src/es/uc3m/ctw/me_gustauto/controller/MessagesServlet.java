@@ -45,7 +45,7 @@ public class MessagesServlet extends HttpServlet {
 		List<Message> messages = (List<Message>) em.createQuery("SELECT d from Message d where d.user2=:usern").setParameter("usern", user).getResultList();
 		request.setAttribute("messages", messages);
 		System.out.println(messages.get(0).getContent());
-		request.getRequestDispatcher("/index.jsp?page=messages.jsp").include(request, response);
+		request.getRequestDispatcher("/index.jsp?page=messages.jsp").forward(request, response);
 	}
 
 	/**
