@@ -16,7 +16,6 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private int userId;
 
@@ -48,6 +47,10 @@ public class User implements Serializable {
 	//bi-directional many-to-one association to Comment
 	@OneToMany(mappedBy="user")
 	private List<Comment> comments;
+
+	//bi-directional many-to-one association to ConfirmationCode
+	@OneToMany(mappedBy="user")
+	private List<ConfirmationCode> confirmationCodes;
 
 	//bi-directional many-to-one association to Fav
 	@OneToMany(mappedBy="user")
@@ -162,6 +165,14 @@ public class User implements Serializable {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public List<ConfirmationCode> getConfirmationCodes() {
+		return this.confirmationCodes;
+	}
+
+	public void setConfirmationCodes(List<ConfirmationCode> confirmationCodes) {
+		this.confirmationCodes = confirmationCodes;
 	}
 
 	public List<Fav> getFavs() {
