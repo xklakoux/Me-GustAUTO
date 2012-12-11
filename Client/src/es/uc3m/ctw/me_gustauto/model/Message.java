@@ -14,16 +14,19 @@ import java.util.Date;
 public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-
 	@Lob
 	private String content;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_added")
 	private Date dateAdded;
+
+	private int id;
+
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user1;
 
 	//bi-directional many-to-one association to AutoAd
 	@ManyToOne
@@ -32,23 +35,10 @@ public class Message implements Serializable {
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user1;
-
-	//bi-directional many-to-one association to User
-	@ManyToOne
 	@JoinColumn(name="seller_id")
 	private User user2;
 
 	public Message() {
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getContent() {
@@ -67,12 +57,12 @@ public class Message implements Serializable {
 		this.dateAdded = dateAdded;
 	}
 
-	public AutoAd getAutoAd() {
-		return this.autoAd;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setAutoAd(AutoAd autoAd) {
-		this.autoAd = autoAd;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public User getUser1() {
@@ -81,6 +71,14 @@ public class Message implements Serializable {
 
 	public void setUser1(User user1) {
 		this.user1 = user1;
+	}
+
+	public AutoAd getAutoAd() {
+		return this.autoAd;
+	}
+
+	public void setAutoAd(AutoAd autoAd) {
+		this.autoAd = autoAd;
 	}
 
 	public User getUser2() {

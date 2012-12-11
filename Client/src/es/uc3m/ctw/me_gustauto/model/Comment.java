@@ -14,10 +14,6 @@ import java.util.Date;
 public class Comment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-
 	@Lob
 	private String content;
 
@@ -25,25 +21,19 @@ public class Comment implements Serializable {
 	@Column(name="date_added")
 	private Date dateAdded;
 
-	//bi-directional many-to-one association to AutoAd
-	@ManyToOne
-	@JoinColumn(name="ad_id")
-	private AutoAd autoAd;
+	private int id;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 
+	//bi-directional many-to-one association to AutoAd
+	@ManyToOne
+	@JoinColumn(name="ad_id")
+	private AutoAd autoAd;
+
 	public Comment() {
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getContent() {
@@ -62,12 +52,12 @@ public class Comment implements Serializable {
 		this.dateAdded = dateAdded;
 	}
 
-	public AutoAd getAutoAd() {
-		return this.autoAd;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setAutoAd(AutoAd autoAd) {
-		this.autoAd = autoAd;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public User getUser() {
@@ -76,6 +66,14 @@ public class Comment implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public AutoAd getAutoAd() {
+		return this.autoAd;
+	}
+
+	public void setAutoAd(AutoAd autoAd) {
+		this.autoAd = autoAd;
 	}
 
 }

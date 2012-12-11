@@ -103,9 +103,9 @@ CREATE TABLE messages(
 );
 
 
-DROP TABLE IF EXISTS conciliation;
-CREATE TABLE conciliation(
-    conc_id INT NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS confirmation_codes;
+CREATE TABLE confirmation_codes(
+    cc_id INT NOT NULL AUTO_INCREMENT,
     confirmation_code varchar(45) NOT NULL,
     user_id INT NOT NULL,
     ad_id INT,
@@ -113,7 +113,7 @@ CREATE TABLE conciliation(
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
     FOREIGN KEY (gen_id) REFERENCES general_ads(ad_id) ON DELETE CASCADE,
-    PRIMARY KEY(conc_id)
+    PRIMARY KEY(cc_id)
 );
 
 -- users passwords are following
