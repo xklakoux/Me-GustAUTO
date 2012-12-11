@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.uc3m.ctw.me_gustauto.ejb.AdvertisementRemote;
-import es.uc3m.ctw.me_gustauto.ejb.HelloBRemote;
 
 /**
  * Servlet implementation class GeneralAdServlet
