@@ -40,7 +40,7 @@ CREATE TABLE auto_ads(
     brand VARCHAR(30) NOT NULL,
     model VARCHAR(30) NOT NULL,
     engine VARCHAR (20) NOT NULL,
-    registration_number VARCHAR(30) NOT NULL,
+    registration_number VARCHAR(29) NOT NULL,
     years VARCHAR (4) NOT NULL,
     price DECIMAL(7,2),
     mileage INT,
@@ -58,39 +58,39 @@ CREATE TABLE auto_ads(
 
 DROP TABLE IF EXISTS prices;
 CREATE TABLE prices(
-    id INT NOT NULL AUTO_INCREMENT,
+    price_id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(20),
     price DECIMAL(7,2),
     descr TEXT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (price_id)
 );
 
 
 DROP TABLE IF EXISTS favs;
 CREATE TABLE favs(
-    id INT NOT NULL AUTO_INCREMENT,
+    fav_id INT NOT NULL AUTO_INCREMENT,
     user_id INT,
     ad_id INT,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
-    PRIMARY KEY(id)
+    PRIMARY KEY(fav_id)
 );
 
 DROP TABLE IF EXISTS comments;
 CREATE TABLE comments(
-    id INT NOT NULL AUTO_INCREMENT,
+    com_id INT NOT NULL AUTO_INCREMENT,
     user_id INT,
     ad_id INT,
     content TEXT,
     date_added datetime,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
-    PRIMARY KEY(id)
+    PRIMARY KEY(com_id)
 );
 
 DROP TABLE IF EXISTS messages;
 CREATE TABLE messages(
-    id INT NOT NULL AUTO_INCREMENT,
+    mes_id INT NOT NULL AUTO_INCREMENT,
     user_id INT,
     ad_id INT,
     seller_id INT,
@@ -99,8 +99,23 @@ CREATE TABLE messages(
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
     FOREIGN KEY (seller_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    PRIMARY KEY(id)
+    PRIMARY KEY(mes_id)
 );
+
+
+DROP TABLE IF EXISTS conciliation;
+CREATE TABLE conciliation(
+    conc_id INT NOT NULL AUTO_INCREMENT,
+    confirmation_code varchar(45) NOT NULL,
+    user_id INT NOT NULL,
+    ad_id INT,
+    gen_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (ad_id) REFERENCES auto_ads(ad_id) ON DELETE CASCADE,
+    FOREIGN KEY (gen_id) REFERENCES general_ads(ad_id) ON DELETE CASCADE,
+    PRIMARY KEY(conc_id)
+);
+
 -- users passwords are following
 --  admin -> admin1
 --  xklakoux -> qweqwe
@@ -121,9 +136,9 @@ insert into prices (name, price, descr) values ("2 month", 16, "at least 2 month
 insert into prices (name, price, descr) values ("3 month", 8, "at least 3 months ultra discount!");
 
 -- comments
-insert into comments (id,user_id,ad_id,content,date_added)
+insert into comments (com_id,user_id,ad_id,content,date_added)
 VALUES('1','1','1','Do not buy from this guy he is a thief.','2012-11-10');
-insert into comments (id,user_id,ad_id,content,date_added)
+insert into comments (com_id,user_id,ad_id,content,date_added)
 VALUES('2','2','1','Very nice offer, I will ask my mom to buy it.','2012-09-01');
 
 -- auto_ads
