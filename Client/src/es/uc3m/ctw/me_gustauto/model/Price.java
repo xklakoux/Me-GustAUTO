@@ -14,10 +14,13 @@ import java.math.BigDecimal;
 public class Price implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="price_id")
+	private int priceId;
+
 	@Lob
 	private String descr;
-
-	private int id;
 
 	private String name;
 
@@ -26,20 +29,20 @@ public class Price implements Serializable {
 	public Price() {
 	}
 
+	public int getPriceId() {
+		return this.priceId;
+	}
+
+	public void setPriceId(int priceId) {
+		this.priceId = priceId;
+	}
+
 	public String getDescr() {
 		return this.descr;
 	}
 
 	public void setDescr(String descr) {
 		this.descr = descr;
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
