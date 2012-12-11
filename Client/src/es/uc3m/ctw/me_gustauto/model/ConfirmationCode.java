@@ -14,16 +14,12 @@ public class ConfirmationCode implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="cc_id")
 	private int ccId;
 
 	@Column(name="confirmation_code")
 	private String confirmationCode;
-
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
 
 	//bi-directional many-to-one association to AutoAd
 	@ManyToOne
@@ -34,6 +30,11 @@ public class ConfirmationCode implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="gen_id")
 	private GeneralAd generalAd;
+
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 
 	public ConfirmationCode() {
 	}
@@ -54,14 +55,6 @@ public class ConfirmationCode implements Serializable {
 		this.confirmationCode = confirmationCode;
 	}
 
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public AutoAd getAutoAd() {
 		return this.autoAd;
 	}
@@ -76,6 +69,14 @@ public class ConfirmationCode implements Serializable {
 
 	public void setGeneralAd(GeneralAd generalAd) {
 		this.generalAd = generalAd;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

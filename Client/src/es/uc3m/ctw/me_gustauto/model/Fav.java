@@ -13,35 +13,30 @@ import javax.persistence.*;
 public class Fav implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private int id;
-
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="fav_id")
+	private int favId;
 
 	//bi-directional many-to-one association to AutoAd
 	@ManyToOne
 	@JoinColumn(name="ad_id")
 	private AutoAd autoAd;
 
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+
 	public Fav() {
 	}
 
-	public int getId() {
-		return this.id;
+	public int getFavId() {
+		return this.favId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setFavId(int favId) {
+		this.favId = favId;
 	}
 
 	public AutoAd getAutoAd() {
@@ -50,6 +45,14 @@ public class Fav implements Serializable {
 
 	public void setAutoAd(AutoAd autoAd) {
 		this.autoAd = autoAd;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
