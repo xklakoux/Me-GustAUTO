@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.uc3m.ctw.me_gustauto.model.AutoAd;
+import es.uc3m.ctw.me_gustauto.model.ConfirmationCode;
 import es.uc3m.ctw.me_gustauto.model.GeneralAd;
 
 import jhc.ws.BankServicesProxy;
@@ -51,20 +52,28 @@ public class PaymentVerificationServlet extends HttpServlet {
 		if(result == null){
 			request.setAttribute("bad_data", true);
 			request.getRequestDispatcher("index.jsp?page=payment.jsp").forward(request, response);
-		}else{
-			
-			// TODO: CONCILIATION TABLE?
+		}else{			
 			
 			EntityManager em = Persistence.createEntityManagerFactory("megustauto").createEntityManager();			
 			EntityTransaction et = em.getTransaction();			
-			et.begin();
+			
+			ConfirmationCode cc = new ConfirmationCode();
+			
+			et.begin();		
+			
+			em.persist(cc);
+			cc.setConfirmationCode(result);
 			
 			if(ad_type.equals("auto")){
 				AutoAd auto = em.find(AutoAd.class, Integer.valueOf(request.getParameter("id")));
 				auto.setPaid(true);
+				cc.setUser(auto.getUser());
+				cc.setAutoAd(auto);
 			}else if(ad_type.equals("genad")){
 				GeneralAd genad = em.find(GeneralAd.class, Integer.valueOf(request.getParameter("id")));
 				genad.setPaid(true);
+				cc.setUser(genad.getUser());
+				cc.setGeneralAd(genad);
 			}
 			
 			et.commit();

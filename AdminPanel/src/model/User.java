@@ -16,6 +16,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private int userId;
 
@@ -44,9 +45,29 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<AutoAd> autoAds;
 
+	//bi-directional many-to-one association to Comment
+	@OneToMany(mappedBy="user")
+	private List<Comment> comments;
+
+	//bi-directional many-to-one association to ConfirmationCode
+	@OneToMany(mappedBy="user")
+	private List<ConfirmationCode> confirmationCodes;
+
+	//bi-directional many-to-one association to Fav
+	@OneToMany(mappedBy="user")
+	private List<Fav> favs;
+
 	//bi-directional many-to-one association to GeneralAd
 	@OneToMany(mappedBy="user")
 	private List<GeneralAd> generalAds;
+
+	//bi-directional many-to-one association to Message
+	@OneToMany(mappedBy="user1")
+	private List<Message> messages1;
+
+	//bi-directional many-to-one association to Message
+	@OneToMany(mappedBy="user2")
+	private List<Message> messages2;
 
 	public User() {
 	}
@@ -139,12 +160,52 @@ public class User implements Serializable {
 		this.autoAds = autoAds;
 	}
 
+	public List<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public List<ConfirmationCode> getConfirmationCodes() {
+		return this.confirmationCodes;
+	}
+
+	public void setConfirmationCodes(List<ConfirmationCode> confirmationCodes) {
+		this.confirmationCodes = confirmationCodes;
+	}
+
+	public List<Fav> getFavs() {
+		return this.favs;
+	}
+
+	public void setFavs(List<Fav> favs) {
+		this.favs = favs;
+	}
+
 	public List<GeneralAd> getGeneralAds() {
 		return this.generalAds;
 	}
 
 	public void setGeneralAds(List<GeneralAd> generalAds) {
 		this.generalAds = generalAds;
+	}
+
+	public List<Message> getMessages1() {
+		return this.messages1;
+	}
+
+	public void setMessages1(List<Message> messages1) {
+		this.messages1 = messages1;
+	}
+
+	public List<Message> getMessages2() {
+		return this.messages2;
+	}
+
+	public void setMessages2(List<Message> messages2) {
+		this.messages2 = messages2;
 	}
 
 }

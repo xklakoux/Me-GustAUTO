@@ -8,6 +8,10 @@
 		<class>model.GeneralAd</class>
 		<class>model.Price</class>
 		<class>model.User</class>
+		<class>model.Comment</class>
+		<class>model.ConfirmationCode</class>
+		<class>model.Fav</class>
+		<class>model.Message</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="eclipselink.exclude-eclipselink-orm" value="false" />
