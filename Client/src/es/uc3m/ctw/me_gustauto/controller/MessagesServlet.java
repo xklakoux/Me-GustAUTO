@@ -19,34 +19,47 @@ import es.uc3m.ctw.me_gustauto.model.User;
  */
 public class MessagesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MessagesServlet() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("megustauto");
-		EntityManager em = emf.createEntityManager();
-		String username = (String) request.getSession().getAttribute(MySQLConnector.USERNAME_OF_CLIENT);
-		System.out.println("username " + username);
-		User user = (User) em.createQuery("SELECT d from User d where d.username=:usern").setParameter("usern", username).getResultList().get(0);
-		List<Message> messages = (List<Message>) em.createQuery("SELECT d from Message d where d.user2=:usern").setParameter("usern", user).getResultList();
-		em.close();
-		request.setAttribute("messages", messages);
-		System.out.println(messages.get(0).getContent());
-		request.getRequestDispatcher("/index.jsp?page=messages.jsp").forward(request, response);
+	public MessagesServlet() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("megustauto");
+		EntityManager em = emf.createEntityManager();
+		String username = (String) request.getSession().getAttribute(
+				MySQLConnector.USERNAME_OF_CLIENT);
+		System.out.println("username " + username);
+		User user = (User) em
+				.createQuery("SELECT d from User d where d.username=:usern")
+				.setParameter("usern", username).getResultList().get(0);
+		List<Message> messages = (List<Message>) em
+				.createQuery("SELECT d from Message d where d.user2=:usern")
+				.setParameter("usern", user).getResultList();
+		em.close();
+		if (!messages.isEmpty()) {
+			request.setAttribute("messages", messages);
+		}
+//		System.out.println(messages.get(0).getContent());
+		request.getRequestDispatcher("/index.jsp?page=messages.jsp").forward(
+				request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }

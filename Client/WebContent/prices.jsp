@@ -9,20 +9,17 @@
 <title>Price list</title>
 </head>
 <body>
-	<div style="text-align:center;">
-		<h2>Our prices:</h2>
-		<hr>
-		<h3>Auto ads prices:</h3>
-		<c:forEach items="${prices}" var="value">
-		<c:out value="${value.name}" />
-		</c:forEach>
-		1 day (less than 3 months) - 0.20€<br>
-		1 day (more than 3 months) - 0.15€<br>
-		Yearly BestSeller Premium Special Extended Promotional Bonus Extra VIP offer - 60€<br>
-		<hr>
-		<h3>General ads prices:</h3>
-		1 day (less than 3 months) - 55.00€<br>
-		1 day (more than 3 months) - 44.25€<br>
+	<div>
+		<h2>Our prices:</h2><br>
+		<table style="margin:0 auto;">
+			<c:forEach var="price" items="${prices}">
+				<tr>
+					<td>${price.typ} advertisment for ${price.months} months</td>
+					<td>${price.price}&euro;</td>
+				</tr>
+			</c:forEach>
+		</table>
+
 		<hr>
 	</div>
 </body>
