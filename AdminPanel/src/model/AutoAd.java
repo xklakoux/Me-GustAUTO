@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -16,6 +17,7 @@ public class AutoAd implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ad_id")
 	private int adId;
 
@@ -60,6 +62,22 @@ public class AutoAd implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+
+	//bi-directional many-to-one association to Comment
+	@OneToMany(mappedBy="autoAd")
+	private List<Comment> comments;
+
+	//bi-directional many-to-one association to ConfirmationCode
+	@OneToMany(mappedBy="autoAd")
+	private List<ConfirmationCode> confirmationCodes;
+
+	//bi-directional many-to-one association to Fav
+	@OneToMany(mappedBy="autoAd")
+	private List<Fav> favs;
+
+	//bi-directional many-to-one association to Message
+	@OneToMany(mappedBy="autoAd")
+	private List<Message> messages;
 
 	public AutoAd() {
 	}
@@ -198,6 +216,38 @@ public class AutoAd implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public List<ConfirmationCode> getConfirmationCodes() {
+		return this.confirmationCodes;
+	}
+
+	public void setConfirmationCodes(List<ConfirmationCode> confirmationCodes) {
+		this.confirmationCodes = confirmationCodes;
+	}
+
+	public List<Fav> getFavs() {
+		return this.favs;
+	}
+
+	public void setFavs(List<Fav> favs) {
+		this.favs = favs;
+	}
+
+	public List<Message> getMessages() {
+		return this.messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 
 }

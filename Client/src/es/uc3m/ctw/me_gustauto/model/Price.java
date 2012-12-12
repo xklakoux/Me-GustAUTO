@@ -16,7 +16,8 @@ public class Price implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	@Column(name="price_id")
+	private int priceId;
 
 	@Lob
 	private String descr;
@@ -28,12 +29,12 @@ public class Price implements Serializable {
 	public Price() {
 	}
 
-	public int getId() {
-		return this.id;
+	public int getPriceId() {
+		return this.priceId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setPriceId(int priceId) {
+		this.priceId = priceId;
 	}
 
 	public String getDescr() {

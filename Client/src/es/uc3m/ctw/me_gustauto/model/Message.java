@@ -16,7 +16,8 @@ public class Message implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	@Column(name="mes_id")
+	private int mesId;
 
 	@Lob
 	private String content;
@@ -43,12 +44,12 @@ public class Message implements Serializable {
 	public Message() {
 	}
 
-	public int getId() {
-		return this.id;
+	public int getMesId() {
+		return this.mesId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setMesId(int mesId) {
+		this.mesId = mesId;
 	}
 
 	public String getContent() {

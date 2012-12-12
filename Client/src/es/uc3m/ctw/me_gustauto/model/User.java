@@ -49,6 +49,10 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<Comment> comments;
 
+	//bi-directional many-to-one association to ConfirmationCode
+	@OneToMany(mappedBy="user")
+	private List<ConfirmationCode> confirmationCodes;
+
 	//bi-directional many-to-one association to Fav
 	@OneToMany(mappedBy="user")
 	private List<Fav> favs;
@@ -162,6 +166,14 @@ public class User implements Serializable {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public List<ConfirmationCode> getConfirmationCodes() {
+		return this.confirmationCodes;
+	}
+
+	public void setConfirmationCodes(List<ConfirmationCode> confirmationCodes) {
+		this.confirmationCodes = confirmationCodes;
 	}
 
 	public List<Fav> getFavs() {

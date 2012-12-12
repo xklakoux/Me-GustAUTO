@@ -3,6 +3,7 @@ package es.uc3m.ctw.me_gustauto.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -35,6 +36,10 @@ public class GeneralAd implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="valid_to")
 	private Date validTo;
+
+	//bi-directional many-to-one association to ConfirmationCode
+	@OneToMany(mappedBy="generalAd")
+	private List<ConfirmationCode> confirmationCodes;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -98,6 +103,14 @@ public class GeneralAd implements Serializable {
 
 	public void setValidTo(Date validTo) {
 		this.validTo = validTo;
+	}
+
+	public List<ConfirmationCode> getConfirmationCodes() {
+		return this.confirmationCodes;
+	}
+
+	public void setConfirmationCodes(List<ConfirmationCode> confirmationCodes) {
+		this.confirmationCodes = confirmationCodes;
 	}
 
 	public User getUser() {

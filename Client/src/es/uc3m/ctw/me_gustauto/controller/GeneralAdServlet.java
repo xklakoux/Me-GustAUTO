@@ -1,15 +1,17 @@
 package es.uc3m.ctw.me_gustauto.controller;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
+import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.Collections;
+import es.uc3m.ctw.me_gustauto.ejb.AdvertisementRemote;
 
 /**
  * Servlet implementation class GeneralAdServlet
@@ -31,11 +33,19 @@ public class GeneralAdServlet extends HttpServlet {
 		EntityManager em = MySQLConnector.getFactory().createEntityManager();
 		List<?> list = em.createQuery("select b from GeneralAd b order by b.adId").getResultList();
 		em.close();
-		Collections.shuffle(list);
-		list = list.subList(0, Math.min(5, list.size() ));
-		if(list!=null){
-			request.setAttribute("list", list);
-		}
+		
+		LinkedList<Object> sublist = new LinkedList<Object>();
+		try {
+	        InitialContext context = new InitialContext();
+	        AdvertisementRemote bean = (AdvertisementRemote) context.lookup("es.uc3m.ctw.me_gustauto.ejb.AdvertisementRemote");
+	        for (Integer i : bean.getRandomIndexesForGeneralAds(list.size())) {
+	        	sublist.add(list.get(i));
+	        }
+	    } catch(Exception e) {
+	       	e.printStackTrace();
+	    }
+		
+		request.setAttribute("list", sublist);
 		request.getRequestDispatcher("/bar-ads.jsp").include(request, response);
 	}
 

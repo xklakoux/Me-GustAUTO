@@ -67,6 +67,10 @@ public class AutoAd implements Serializable {
 	@OneToMany(mappedBy="autoAd")
 	private List<Comment> comments;
 
+	//bi-directional many-to-one association to ConfirmationCode
+	@OneToMany(mappedBy="autoAd")
+	private List<ConfirmationCode> confirmationCodes;
+
 	//bi-directional many-to-one association to Fav
 	@OneToMany(mappedBy="autoAd")
 	private List<Fav> favs;
@@ -220,6 +224,14 @@ public class AutoAd implements Serializable {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public List<ConfirmationCode> getConfirmationCodes() {
+		return this.confirmationCodes;
+	}
+
+	public void setConfirmationCodes(List<ConfirmationCode> confirmationCodes) {
+		this.confirmationCodes = confirmationCodes;
 	}
 
 	public List<Fav> getFavs() {

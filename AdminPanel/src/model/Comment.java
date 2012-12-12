@@ -1,4 +1,4 @@
-package es.uc3m.ctw.me_gustauto.model;
+package model;
 
 import java.io.Serializable;
 import javax.persistence.*;

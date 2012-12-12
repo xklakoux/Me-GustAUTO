@@ -1,4 +1,4 @@
-package es.uc3m.ctw.me_gustauto.model;
+package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -6,18 +6,18 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the comments database table.
+ * The persistent class for the messages database table.
  * 
  */
 @Entity
-@Table(name="comments")
-public class Comment implements Serializable {
+@Table(name="messages")
+public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="com_id")
-	private int comId;
+	@Column(name="mes_id")
+	private int mesId;
 
 	@Lob
 	private String content;
@@ -34,17 +34,22 @@ public class Comment implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	private User user;
+	private User user1;
 
-	public Comment() {
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="seller_id")
+	private User user2;
+
+	public Message() {
 	}
 
-	public int getComId() {
-		return this.comId;
+	public int getMesId() {
+		return this.mesId;
 	}
 
-	public void setComId(int comId) {
-		this.comId = comId;
+	public void setMesId(int mesId) {
+		this.mesId = mesId;
 	}
 
 	public String getContent() {
@@ -71,12 +76,20 @@ public class Comment implements Serializable {
 		this.autoAd = autoAd;
 	}
 
-	public User getUser() {
-		return this.user;
+	public User getUser1() {
+		return this.user1;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser1(User user1) {
+		this.user1 = user1;
+	}
+
+	public User getUser2() {
+		return this.user2;
+	}
+
+	public void setUser2(User user2) {
+		this.user2 = user2;
 	}
 
 }
