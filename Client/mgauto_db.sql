@@ -27,6 +27,7 @@ CREATE TABLE general_ads(
     user_id INT NOT NULL,
     add_date DATETIME,
     valid_to DATETIME,
+    months INT NOT NULL,
     valid boolean NOT NULL default 0,
     paid boolean NOT NULL default 0,
     PRIMARY KEY (ad_id),
@@ -50,6 +51,7 @@ CREATE TABLE auto_ads(
     auto_moto ENUM('auto','moto'),
     add_date DATETIME,
     valid_to DATETIME,
+    months INT NOT NULL,
     paid boolean NOT NULL default 0,
     valid boolean NOT NULL default 0,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
@@ -124,12 +126,12 @@ insert into users (username, full_name, hash, salt, email, phone, address, role)
 insert into users (username, full_name, hash, salt, email, phone, address, role) values('xklakoux', 'Artur Staniec', 'e8e8921b196428ac5ef1f05265d360f2078910af', 'INAEBQWCKQ', 'adsad@dasdsa.ds', '123131313', 'dasdada', 'admin');
 
 -- general_ads
-insert into general_ads (title, descr, user_id) values("Garage for sale", "lot of space, super nice", 1);
-insert into general_ads (title, descr, user_id) values("Viagra", "will get you up and running in seconds", 0);
-insert into general_ads (title, descr, user_id) values("Rooms for students", "without furniture or anything, ideal for students!", 1);
-insert into general_ads (title, descr, user_id) values("Lollipops", "sweet and stuff, for kids and everyone", 1);
-insert into general_ads (title, descr, user_id) values("Computers", "used, new, for your grandma and grandpa too", 1);
-insert into general_ads (title, descr, user_id) values("Cars", "other super site for cars, forget about this", 1);
+insert into general_ads (title, descr, user_id, months) values("Garage for sale", "lot of space, super nice", 1, 3);
+insert into general_ads (title, descr, user_id, months) values("Viagra", "will get you up and running in seconds", 0, 2);
+insert into general_ads (title, descr, user_id, months) values("Rooms for students", "without furniture or anything, ideal for students!", 1, 3);
+insert into general_ads (title, descr, user_id, months) values("Lollipops", "sweet and stuff, for kids and everyone", 1, 3);
+insert into general_ads (title, descr, user_id, months) values("Computers", "used, new, for your grandma and grandpa too", 1, 3);
+insert into general_ads (title, descr, user_id, months) values("Cars", "other super site for cars, forget about this", 1, 3);
 
 -- prices
 insert into prices (months, price, typ) values (1, 20, "Auto");
@@ -146,45 +148,45 @@ insert into comments (com_id,user_id,ad_id,content,date_added)
 VALUES('2','2','1','Very nice offer, I will ask my mom to buy it.','2012-09-01');
 
 -- auto_ads
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Brand-new offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Brand-new offer', 'Audi', 'R8', '800', '12345', '2012', 59000.5, 3000, 'Red', 'The car is in a perfect condition.', 1, 'auto', now());
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Brand-new offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now(), 2);
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Brand-new offer', 'Audi', 'R8', '800', '12345', '2012', 59000.5, 3000, 'Red', 'The car is in a perfect condition.', 1, 'auto', now(), 3);
 
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Brand-new offer', 'Mercedes', 'CLK', '200', '1q2w3e4r', '1999', 9000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Brand-new offer', 'Audi', 'R7', '700', '12345', '2000', 9000.5, 23000, 'Blue', 'The car is in a perfect condition.', 1, 'auto', now());
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Brand-new offer', 'Mercedes', 'CLK', '200', '1q2w3e4r', '1999', 9000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now(), 1);
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Brand-new offer', 'Audi', 'R7', '700', '12345', '2000', 9000.5, 23000, 'Blue', 'The car is in a perfect condition.', 1, 'auto', now(), 1);
 
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Brand-new offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Brand-new offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Red', 'The car is in a perfect condition.', 1, 'auto', now());
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Brand-new offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now(), 3);
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Brand-new offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Red', 'The car is in a perfect condition.', 1, 'auto', now(), 2);
 
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Brand-new offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Brand-new offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Red', 'The car is in a perfect condition.', 1, 'auto', now());
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Brand-new offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now(), 1);
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Brand-new offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Red', 'The car is in a perfect condition.', 1, 'auto', now(), 2);
 
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Recent offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Recent offer', 'Audi', 'R8', '800', '12345', '2012', 59000.5, 3000, 'Red', 'The car is in a perfect condition.', 1, 'auto', now());
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Recent offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now(), 2);
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Recent offer', 'Audi', 'R8', '800', '12345', '2012', 59000.5, 3000, 'Red', 'The car is in a perfect condition.', 1, 'auto', now(), 2);
 
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Recent offer', 'Mercedes', 'CLK', '200', '1q2w3e4r', '1999', 9000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Recent offer', 'Audi', 'R7', '700', '12345', '2000', 9000.5, 23000, 'Blue', 'The car is in a perfect condition.', 1, 'auto', now());
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Recent offer', 'Mercedes', 'CLK', '200', '1q2w3e4r', '1999', 9000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now(), 2);
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Recent offer', 'Audi', 'R7', '700', '12345', '2000', 9000.5, 23000, 'Blue', 'The car is in a perfect condition.', 1, 'auto', now(),1);
 
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Recent offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Recent offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Gray', 'The car is in a perfect condition.', 1, 'auto', now());
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Recent offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now(), 2);
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Recent offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Gray', 'The car is in a perfect condition.', 1, 'auto', now(),2);
 
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Recent offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now());
-insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date)
-values ('Recent offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Gray', 'The car is in a perfect condition.', 1, 'auto', now());
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Recent offer', 'Mercedes', 'CLK', '500', '12345', '2006', 29000.5, 15000, 'Black', 'The car is in a perfect condition.', 1, 'auto', now(), 2);
+insert into auto_ads (title, brand, model, engine, registration_number, years, price, mileage, colour, description, user_id, auto_moto, add_date, months)
+values ('Recent offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 'Gray', 'The car is in a perfect condition.', 1, 'auto', now(), 2);
 
 -- messages
 insert into messages (user_id,ad_id,seller_id,content,date_added)

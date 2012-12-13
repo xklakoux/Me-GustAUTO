@@ -3,6 +3,8 @@ package es.uc3m.ctw.me_gustauto.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.jms.QueueConnection;
+import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -52,6 +54,10 @@ public class MessagesServlet extends HttpServlet {
 //		System.out.println(messages.get(0).getContent());
 		request.getRequestDispatcher("/index.jsp?page=messages.jsp").forward(
 				request, response);
+		
+		
+		
+		
 	}
 
 	/**

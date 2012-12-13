@@ -27,6 +27,8 @@ public class GeneralAd implements Serializable {
 	@Lob
 	private String descr;
 
+	private int months;
+
 	private boolean paid;
 
 	private String title;
@@ -37,14 +39,14 @@ public class GeneralAd implements Serializable {
 	@Column(name="valid_to")
 	private Date validTo;
 
+	//bi-directional many-to-one association to ConfirmationCode
+	@OneToMany(mappedBy="generalAd")
+	private List<ConfirmationCode> confirmationCodes;
+
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-
-	//bi-directional many-to-one association to ConfirmationCode
-	@OneToMany(mappedBy="generalAd")
-	private List<ConfirmationCode> confirmationCodes;
 
 	public GeneralAd() {
 	}
@@ -71,6 +73,14 @@ public class GeneralAd implements Serializable {
 
 	public void setDescr(String descr) {
 		this.descr = descr;
+	}
+
+	public int getMonths() {
+		return this.months;
+	}
+
+	public void setMonths(int months) {
+		this.months = months;
 	}
 
 	public boolean getPaid() {
@@ -105,20 +115,20 @@ public class GeneralAd implements Serializable {
 		this.validTo = validTo;
 	}
 
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public List<ConfirmationCode> getConfirmationCodes() {
 		return this.confirmationCodes;
 	}
 
 	public void setConfirmationCodes(List<ConfirmationCode> confirmationCodes) {
 		this.confirmationCodes = confirmationCodes;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
