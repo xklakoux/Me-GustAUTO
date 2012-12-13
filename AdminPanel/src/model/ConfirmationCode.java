@@ -14,7 +14,6 @@ public class ConfirmationCode implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="cc_id")
 	private int ccId;
 

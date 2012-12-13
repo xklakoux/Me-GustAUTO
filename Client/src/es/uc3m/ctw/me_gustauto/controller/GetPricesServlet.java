@@ -36,8 +36,11 @@ public class GetPricesServlet extends HttpServlet {
 		List<Price> prices = (List<Price>) em.createQuery("select c from Price c").getResultList();
 		request.setAttribute("prices", prices);
 		for(Price price: prices){
-			System.out.println("oto " + price.getMonths());
 		}
+		Promo promo = (Promo) em.createQuery("select c from Promo c").getResultList().get(0);
+		request.setAttribute("promo", promo);
+		System.out.println("dlaczego to jest " + promo.getValid());
+
 		em.close();
 		request.getRequestDispatcher("index.jsp?page=prices.jsp").forward(request, response);
 

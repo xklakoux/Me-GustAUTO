@@ -16,7 +16,6 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private int userId;
 
@@ -32,6 +31,9 @@ public class User implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="join_date")
 	private Date joinDate;
+
+	@Column(name="next_percent_discount")
+	private int nextPercentDiscount;
 
 	private String phone;
 
@@ -118,6 +120,14 @@ public class User implements Serializable {
 
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
+	}
+
+	public int getNextPercentDiscount() {
+		return this.nextPercentDiscount;
+	}
+
+	public void setNextPercentDiscount(int nextPercentDiscount) {
+		this.nextPercentDiscount = nextPercentDiscount;
 	}
 
 	public String getPhone() {

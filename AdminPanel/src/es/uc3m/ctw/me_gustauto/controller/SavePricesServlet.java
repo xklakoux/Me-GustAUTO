@@ -50,9 +50,17 @@ public class SavePricesServlet extends HttpServlet {
 			price.setPrice(value);
 			em.getTransaction().commit();
 		}
+		Promo prmo = (Promo) em.createQuery("select c from Promo c").getResultList().get(0);
+		em.getTransaction().begin();
+		prmo.setPerc(Integer.valueOf(request.getParameter("perc")));
+		prmo.setValid(Boolean.parseBoolean(request.getParameter("valid")));
+		em.getTransaction().commit();
 		
 		List<Price> prices = (List<Price>) em.createQuery("select c from Price c").getResultList();
 		request.setAttribute("prices", prices);
+		Promo promo = (Promo) em.createQuery("select c from Promo c").getResultList().get(0);
+		request.setAttribute("promo", promo);
+		em.close();
 		request.getRequestDispatcher("index.jsp?page=editprices.jsp").forward(request, response);
 		
 	}

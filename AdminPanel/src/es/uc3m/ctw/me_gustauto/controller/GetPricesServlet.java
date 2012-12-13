@@ -38,6 +38,9 @@ public class GetPricesServlet extends HttpServlet {
 		for(Price price: prices){
 			System.out.println("oto " + price.getMonths());
 		}
+		Promo promo = (Promo) em.createQuery("select c from Promo c").getResultList().get(0);
+		request.setAttribute("promo", promo);
+
 		em.close();
 		request.getRequestDispatcher("index.jsp?page=editprices.jsp").forward(request, response);
 

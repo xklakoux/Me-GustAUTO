@@ -28,20 +28,37 @@ table {
 	<hr>
 	<form method="POST" action="SavePricesServlet">
 		<table>
-		<c:forEach var="price" items="${prices}"> 
-			<tr>
-				<td>${price.typ} advertisment for ${price.months} months</td>
-				<td><input type="text" name="${price.priceId}" value="${price.price}" valid>&euro;</td>
-			</tr>
+			<c:forEach var="price" items="${prices}">
+				<tr>
+					<td>${price.typ} advertisment for ${price.months} months</td>
+					<td><input type="text" name="${price.priceId}"
+						value="${price.price}">&euro;</td>
+					</td>
+				</tr>
 			</c:forEach>
 		</table>
-		<hr>
-		<p>Promotions</p>
-		<hr>
-		Admin will be able to set promotions here.
-		<hr>
-		<INPUT TYPE=Submit Value="Save">
-	</form>
 
+	<hr>
+	<p>Promotions</p>
+	<hr>
+	<table>
+		<tr>
+			<td>${promo.name}</td>
+			<td><input type="text" name="perc" value="${promo.perc}" maxlength="2" size="2" > %</td>
+			<c:choose>
+			<c:when test="${promo.valid}">
+			<td>Valid <input type="checkbox" name="valid"
+				value="true" checked>
+			</c:when>
+			<c:otherwise>
+			<td>Valid <input type="checkbox" name="valid"
+				value="true">
+			</c:otherwise>
+		</c:choose>
+		</tr>
+	</table>
+	<INPUT TYPE=Submit Value="Save">
+	</form>
+	<hr>
 </body>
 </html>

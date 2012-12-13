@@ -14,6 +14,7 @@ CREATE TABLE users(
     phone VARCHAR(15),
     address VARCHAR(50),
     role ENUM('admin','user'),
+    next_percent_discount INT default 0,
     join_date DATETIME,
     PRIMARY KEY (user_id),
     UNIQUE(username)
@@ -35,7 +36,6 @@ CREATE TABLE general_ads(
 ) ENGINE=INNODB;
 
 DROP TABLE IF EXISTS auto_ads;
-CREATE TABLE auto_ads(
     ad_id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
     brand VARCHAR(30) NOT NULL,
@@ -66,6 +66,16 @@ CREATE TABLE prices(
     months INT,
     typ ENUM('Auto','General'),
     PRIMARY KEY (price_id)
+);
+
+
+DROP TABLE IF EXISTS promos;
+CREATE TABLE promos(
+    promo_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(20),
+    valid boolean,
+    perc INT NOT NULL,
+    PRIMARY KEY (promo_id)
 );
 
 
@@ -193,5 +203,8 @@ insert into messages (user_id,ad_id,seller_id,content,date_added)
 VALUES('2','1',1,'Do not buy from this guy he is a thief.','2012-11-10');
 insert into messages (user_id,ad_id,seller_id,content,date_added)
 VALUES('2','1',1,'Do not buy from this guy he is a thief.','2012-11-10');
+
+
+insert into promos (name, perc, valid) values("Next with discount", 50, true);
 
 SET FOREIGN_KEY_CHECKS=1; -- has to be on the very end

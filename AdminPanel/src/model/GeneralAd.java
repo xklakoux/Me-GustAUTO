@@ -16,7 +16,6 @@ public class GeneralAd implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ad_id")
 	private int adId;
 
@@ -26,6 +25,8 @@ public class GeneralAd implements Serializable {
 
 	@Lob
 	private String descr;
+
+	private int months;
 
 	private boolean paid;
 
@@ -71,6 +72,14 @@ public class GeneralAd implements Serializable {
 
 	public void setDescr(String descr) {
 		this.descr = descr;
+	}
+
+	public int getMonths() {
+		return this.months;
+	}
+
+	public void setMonths(int months) {
+		this.months = months;
 	}
 
 	public boolean getPaid() {

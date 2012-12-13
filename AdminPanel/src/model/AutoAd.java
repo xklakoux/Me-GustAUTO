@@ -17,7 +17,6 @@ public class AutoAd implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ad_id")
 	private int adId;
 
@@ -40,6 +39,8 @@ public class AutoAd implements Serializable {
 	private int mileage;
 
 	private String model;
+
+	private int months;
 
 	private boolean paid;
 
@@ -152,6 +153,14 @@ public class AutoAd implements Serializable {
 
 	public void setModel(String model) {
 		this.model = model;
+	}
+
+	public int getMonths() {
+		return this.months;
+	}
+
+	public void setMonths(int months) {
+		this.months = months;
 	}
 
 	public boolean getPaid() {

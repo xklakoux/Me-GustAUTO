@@ -8,6 +8,7 @@
 		<class>es.uc3m.ctw.me_gustauto.model.Comment</class>
 		<class>es.uc3m.ctw.me_gustauto.model.Message</class>
 		<class>es.uc3m.ctw.me_gustauto.model.ConfirmationCode</class>
+		<class>es.uc3m.ctw.me_gustauto.model.Promo</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="eclipselink.exclude-eclipselink-orm" value="false"/>

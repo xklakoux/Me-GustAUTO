@@ -52,46 +52,8 @@ public class SendEmailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-
-		Message msg = new Message();
-		EntityManager manager = Persistence.createEntityManagerFactory(
-				"megustauto").createEntityManager();
-		EntityTransaction et = manager.getTransaction();
 		String username = (String) request.getSession().getAttribute(
 				MySQLConnector.USERNAME_OF_CLIENT);
-		et.begin();
-		manager.persist(msg);
-		AutoAd ad = new AutoAd();
-		ad = manager.find(AutoAd.class, Integer.valueOf(id));
-		msg.setAutoAd(ad);
-		msg.setContent(((String) request.getParameter("message")));
-		msg.setUser1((User) (manager
-				.createQuery("SELECT c FROM User c WHERE c.username=:userName")
-				.setParameter("userName", username).getResultList().get(0)));
-		msg.setDateAdded(new Date());
-		msg.setUser2(ad.getUser());
-		et.commit();
-
-		User vendor = ad.getUser();
-		 
-		// SimpleEmail email = new SimpleEmail();
-		// try {
-		// email.setHostName("smtp.gmail.com");
-		// email.setAuthenticator(new DefaultAuthenticator("projectjava2012",
-		// "contrasena1234"));
-		// email.setSmtpPort(587);
-		// email.setTLS(true);
-		// email.addTo("projectjava2012@gmail.com", "Project Java");
-		// email.setFrom("projectjava2012@gmail.com", "someone");
-		// email.setSubject("Me-gustAUTO Ad nr. " + id + " para "
-		// + vendor.getEmail());
-		// email.setMsg(body);
-		// email.send();
-		//
-		// } catch (EmailException e) {
-		// e.printStackTrace();
-		// }
-
 
 		final String FACTORY = "jms/ConnectionFactory";
 		final String QUEUE = "jms/Queue";
@@ -109,9 +71,11 @@ public class SendEmailServlet extends HttpServlet {
 			QueueSender sender = session.createSender(queue);
 			// Send messages
 			String messageText = null;
-			messageText = "message text to be sent";
+			messageText = (String) request.getParameter("message");
 			TextMessage message = session.createTextMessage(messageText);
-			message.setIntProperty("id", ad.getUser().getUserId());
+			message.setStringProperty("username", username);
+			message.setIntProperty("idAd", Integer.valueOf(id));
+			
 			sender.send(message);
 			// Exit
 			System.out.println("Exiting...");
@@ -120,9 +84,8 @@ public class SendEmailServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		manager.close();
 		request.getRequestDispatcher(
-				"/index.jsp?page=showdetails.jsp&id=" + id + "&sent=true")
+				"AutoAdAdministrationServlet?command=c&id=" + id + "&sent=true")
 				.include(request, response);
 	}
 }

@@ -9,4 +9,7 @@
 		<i><fmt:formatDate value="${message.dateAdded}"
 				pattern=" d MMM yyyy 'at' hh:mm a " /></i> <br>
 	</div>
+	
+	
+	
 </c:forEach>

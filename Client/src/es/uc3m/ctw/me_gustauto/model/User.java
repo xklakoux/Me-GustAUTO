@@ -33,6 +33,9 @@ public class User implements Serializable {
 	@Column(name="join_date")
 	private Date joinDate;
 
+	@Column(name="next_percent_discount")
+	private int nextPercentDiscount;
+
 	private String phone;
 
 	private String role;
@@ -118,6 +121,14 @@ public class User implements Serializable {
 
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
+	}
+
+	public int getNextPercentDiscount() {
+		return this.nextPercentDiscount;
+	}
+
+	public void setNextPercentDiscount(int nextPercentDiscount) {
+		this.nextPercentDiscount = nextPercentDiscount;
 	}
 
 	public String getPhone() {

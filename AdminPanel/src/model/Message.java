@@ -15,7 +15,6 @@ public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="mes_id")
 	private int mesId;
 

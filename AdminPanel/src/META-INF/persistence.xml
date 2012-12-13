@@ -12,6 +12,7 @@
 		<class>model.ConfirmationCode</class>
 		<class>model.Fav</class>
 		<class>model.Message</class>
+		<class>model.Promo</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="eclipselink.exclude-eclipselink-orm" value="false" />

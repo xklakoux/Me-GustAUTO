@@ -62,7 +62,6 @@ body {
 		<br>
 		<br>
 	</div>
-	
 		<jsp:useBean id="commentsListBean"
 			class="es.uc3m.ctw.me_gustauto.controller.CommentsListBean" />
 		<%

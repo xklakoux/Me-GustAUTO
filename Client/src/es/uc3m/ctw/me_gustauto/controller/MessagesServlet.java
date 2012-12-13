@@ -3,7 +3,12 @@ package es.uc3m.ctw.me_gustauto.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.jms.Queue;
 import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.QueueReceiver;
+import javax.jms.QueueSession;
+import javax.jms.Session;
 import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -51,12 +56,41 @@ public class MessagesServlet extends HttpServlet {
 		if (!messages.isEmpty()) {
 			request.setAttribute("messages", messages);
 		}
-//		System.out.println(messages.get(0).getContent());
+		// System.out.println(messages.get(0).getContent());
 		request.getRequestDispatcher("/index.jsp?page=messages.jsp").forward(
 				request, response);
-		
-		
-		
+
+		final String FACTORY = "jms/ConnectionFactory";
+		final String QUEUE = "jms/Queue";
+		boolean stop=false;
+		try {
+			// Prompt for JNDI names
+			// Look up administered objects
+			InitialContext initContext = new InitialContext();
+			QueueConnectionFactory factory = (QueueConnectionFactory) initContext
+					.lookup(FACTORY);
+			Queue queue = (Queue) initContext.lookup(QUEUE);
+			initContext.close();
+			// Create JMS objects
+			QueueConnection connection = factory.createQueueConnection();
+			QueueSession session = connection.createQueueSession(false,
+					Session.AUTO_ACKNOWLEDGE);
+			QueueReceiver receiver = session.createReceiver(queue);
+			receiver.receive();
+			connection.start();
+			// Wait for stop
+			while (!stop) {
+				Thread.sleep(1000);
+			}
+			// Exit
+			System.out.println("Exiting...");
+			connection.close();
+			System.out.println("Goodbye!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+
 		
 	}
 
