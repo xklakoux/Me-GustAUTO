@@ -36,6 +36,7 @@ CREATE TABLE general_ads(
 ) ENGINE=INNODB;
 
 DROP TABLE IF EXISTS auto_ads;
+CREATE TABLE auto_ads(
     ad_id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
     brand VARCHAR(30) NOT NULL,
