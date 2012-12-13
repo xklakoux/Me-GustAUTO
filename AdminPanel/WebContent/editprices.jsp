@@ -28,13 +28,11 @@ table {
 	<hr>
 	<form method="POST" action="SavePricesServlet">
 		<table>
-			<c:forEach var="price" items="${prices}">
-				<tr>
-					<td>${price.typ} advertisment for ${price.months} months</td>
-					<td><input type="text" name="${price.priceId}"
-						value="${price.price}">&euro;</td>
-					</td>
-				</tr>
+		<c:forEach var="price" items="${prices}"> 
+			<tr>
+				<td>${price.typ} advertisment for ${price.months} months</td>
+				<td><input type="text" name="${price.priceId}" value="${price.price}">&euro;</td>
+			</tr>
 			</c:forEach>
 		</table>
 

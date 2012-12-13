@@ -41,6 +41,7 @@ public class GeneralAdServlet extends HttpServlet {
 	        for (Integer i : bean.getRandomIndexesForGeneralAds(list.size())) {
 	        	sublist.add(list.get(i));
 	        }
+	        
 	    } catch(Exception e) {
 	       	e.printStackTrace();
 	    }
