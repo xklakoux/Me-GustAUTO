@@ -61,7 +61,8 @@ CREATE TABLE prices(
     price_id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(20),
     price DECIMAL(7,2),
-    descr TEXT,
+    months INT,
+    typ ENUM('Auto','General'),
     PRIMARY KEY (price_id)
 );
 
@@ -131,10 +132,13 @@ insert into general_ads (title, descr, user_id) values("Computers", "used, new, 
 insert into general_ads (title, descr, user_id) values("Cars", "other super site for cars, forget about this", 1);
 
 -- prices
-insert into prices (name, price, descr) values ("1 month", 20, "normal price");
-insert into prices (name, price, descr) values ("2 month", 16, "at least 2 months 10/month discount!");
-insert into prices (name, price, descr) values ("3 month", 8, "at least 3 months ultra discount!");
+insert into prices (months, price, typ) values (1, 20, "Auto");
+insert into prices (months, price, typ) values (2, 16, "Auto");
+insert into prices (months, price, typ) values (3, 8, "Auto");
 
+insert into prices (months, price, typ) values (1, 10, "General");
+insert into prices (months, price, typ) values (2, 8, "General");
+insert into prices (months, price, typ) values (3, 4, "General");
 -- comments
 insert into comments (com_id,user_id,ad_id,content,date_added)
 VALUES('1','1','1','Do not buy from this guy he is a thief.','2012-11-10');
@@ -184,8 +188,8 @@ values ('Recent offer', 'Opel', 'Corsa', '800', '12345', '2012', 59000.5, 3000, 
 
 -- messages
 insert into messages (user_id,ad_id,seller_id,content,date_added)
-VALUES('1','1',2,'Do not buy from this guy he is a thief.','2012-11-10');
+VALUES('2','1',1,'Do not buy from this guy he is a thief.','2012-11-10');
 insert into messages (user_id,ad_id,seller_id,content,date_added)
-VALUES('1','1',2,'Do not buy from this guy he is a thief.','2012-11-10');
+VALUES('2','1',1,'Do not buy from this guy he is a thief.','2012-11-10');
 
 SET FOREIGN_KEY_CHECKS=1; -- has to be on the very end

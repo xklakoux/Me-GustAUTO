@@ -37,14 +37,14 @@ public class GeneralAd implements Serializable {
 	@Column(name="valid_to")
 	private Date validTo;
 
-	//bi-directional many-to-one association to ConfirmationCode
-	@OneToMany(mappedBy="generalAd")
-	private List<ConfirmationCode> confirmationCodes;
-
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+
+	//bi-directional many-to-one association to ConfirmationCode
+	@OneToMany(mappedBy="generalAd")
+	private List<ConfirmationCode> confirmationCodes;
 
 	public GeneralAd() {
 	}
@@ -105,20 +105,20 @@ public class GeneralAd implements Serializable {
 		this.validTo = validTo;
 	}
 
-	public List<ConfirmationCode> getConfirmationCodes() {
-		return this.confirmationCodes;
-	}
-
-	public void setConfirmationCodes(List<ConfirmationCode> confirmationCodes) {
-		this.confirmationCodes = confirmationCodes;
-	}
-
 	public User getUser() {
 		return this.user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<ConfirmationCode> getConfirmationCodes() {
+		return this.confirmationCodes;
+	}
+
+	public void setConfirmationCodes(List<ConfirmationCode> confirmationCodes) {
+		this.confirmationCodes = confirmationCodes;
 	}
 
 }

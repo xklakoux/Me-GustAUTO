@@ -29,11 +29,10 @@
 					<ul>
 
 						<li><a href="index.jsp">Home</a></li>
-						<li><a href="index.jsp?page=messages.jsp">Messages</a></li>
 						<li><a href="index.jsp?page=addauto.jsp">Add Auto Ad</a></li>
 						<li><a href="index.jsp?page=addgenad.jsp">Add General Ad</a></li>
-						<li><a href="index.jsp?page=prices.jsp">Pricing</a></li>
-						<li><a href="/MessagesServlet">Messages</a></li>
+						<li><a href="GetPricesServlet">Pricing</a></li>
+						<li><a href="MessagesServlet">Messages</a></li>
 						<li><a href="index.jsp?page=SearchServlet">Search</a></li>
 						<li><a href="index.jsp?page=FavServlet">Favourites</a></li>
 						<li><a href="index.jsp?page=contact.jsp">Contact</a></li>
@@ -51,7 +50,7 @@
 				<div id="menu">
 					<ul>
 						<li><a href="index.jsp">Home</a></li>
-						<li><a href="index.jsp?page=prices.jsp">Pricing</a></li>
+						<li><a href="GetPricesServlet">Pricing</a></li>
 						<li><a href="index.jsp?page=SearchServlet">Search</a></li>
 						<li><a href="index.jsp?page=contact.jsp">Contact</a></li>
 						<li><a href="index.jsp?page=registration_form.jsp">Register</a></li>

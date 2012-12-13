@@ -19,12 +19,13 @@ public class Price implements Serializable {
 	@Column(name="price_id")
 	private int priceId;
 
-	@Lob
-	private String descr;
+	private int months;
 
 	private String name;
 
 	private BigDecimal price;
+
+	private String typ;
 
 	public Price() {
 	}
@@ -37,12 +38,12 @@ public class Price implements Serializable {
 		this.priceId = priceId;
 	}
 
-	public String getDescr() {
-		return this.descr;
+	public int getMonths() {
+		return this.months;
 	}
 
-	public void setDescr(String descr) {
-		this.descr = descr;
+	public void setMonths(int months) {
+		this.months = months;
 	}
 
 	public String getName() {
@@ -59,6 +60,14 @@ public class Price implements Serializable {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public String getTyp() {
+		return this.typ;
+	}
+
+	public void setTyp(String typ) {
+		this.typ = typ;
 	}
 
 }

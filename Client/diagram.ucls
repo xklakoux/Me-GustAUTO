@@ -1,0 +1,172 @@
+<class-diagram version="1.0.11" icons="true" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="TOP_LEFT" language="java" name="es.uc3m.ctw.me_gustauto.model.User" project="Me-GustAUTO" 
+    file="/Me-GustAUTO/src/es/uc3m/ctw/me_gustauto/model/User.java" binary="false">    
+    <position height="-1" width="-1" x="380" y="427"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      visibility="false">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="es.uc3m.ctw.me_gustauto.model.Price" project="Me-GustAUTO" 
+    file="/Me-GustAUTO/src/es/uc3m/ctw/me_gustauto/model/Price.java" binary="false">    
+    <position height="-1" width="-1" x="84" y="70"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      visibility="false">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="es.uc3m.ctw.me_gustauto.model.AutoAd" project="Me-GustAUTO" 
+    file="/Me-GustAUTO/src/es/uc3m/ctw/me_gustauto/model/AutoAd.java" binary="false">    
+    <position height="-1" width="-1" x="563" y="184"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      visibility="false">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="es.uc3m.ctw.me_gustauto.model.Comment" project="Me-GustAUTO" 
+    file="/Me-GustAUTO/src/es/uc3m/ctw/me_gustauto/model/Comment.java" binary="false">    
+    <position height="-1" width="-1" x="332" y="180"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      visibility="false">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="es.uc3m.ctw.me_gustauto.model.Fav" project="Me-GustAUTO" 
+    file="/Me-GustAUTO/src/es/uc3m/ctw/me_gustauto/model/Fav.java" binary="false">    
+    <position height="-1" width="-1" x="225" y="46"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      visibility="false">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="es.uc3m.ctw.me_gustauto.model.GeneralAd" 
+    project="Me-GustAUTO" file="/Me-GustAUTO/src/es/uc3m/ctw/me_gustauto/model/GeneralAd.java" binary="false">    
+    <position height="-1" width="-1" x="601" y="515"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      visibility="false">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="es.uc3m.ctw.me_gustauto.model.ConfirmationCode" 
+    project="Me-GustAUTO" file="/Me-GustAUTO/src/es/uc3m/ctw/me_gustauto/model/ConfirmationCode.java" binary="false">    
+    <position height="-1" width="-1" x="779" y="360"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <association id="8">    
+    <bendpoint x="484" y="48"/>    
+    <end type="SOURCE" refId="5" navigable="true">      
+      <attribute id="9" name="autoAd"/>      
+      <multiplicity id="10" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true">      
+      <attribute id="11" name="favs"/>      
+      <multiplicity id="12" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="13">    
+    <end type="SOURCE" refId="6" navigable="true">      
+      <attribute id="14" name="user"/>      
+      <multiplicity id="15" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true">      
+      <attribute id="16" name="generalAds"/>      
+      <multiplicity id="17" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="18">    
+    <end type="SOURCE" refId="6" navigable="true">      
+      <attribute id="19" name="confirmationCodes"/>      
+      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true">      
+      <attribute id="21" name="generalAd"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
+    </end>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="1" navigable="true">      
+      <attribute id="24" name="autoAds"/>      
+      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true">      
+      <attribute id="26" name="user"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="3" navigable="true">      
+      <attribute id="29" name="comments"/>      
+      <multiplicity id="30" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true">      
+      <attribute id="31" name="autoAd"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
+    </end>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="33">    
+    <end type="SOURCE" refId="1" navigable="true">      
+      <attribute id="34" name="comments"/>      
+      <multiplicity id="35" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true">      
+      <attribute id="36" name="user"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <end type="SOURCE" refId="3" navigable="true">      
+      <attribute id="39" name="confirmationCodes"/>      
+      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true">      
+      <attribute id="41" name="autoAd"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="43">    
+    <bendpoint x="261" y="414"/>    
+    <end type="SOURCE" refId="5" navigable="true">      
+      <attribute id="44" name="user"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true">      
+      <attribute id="46" name="favs"/>      
+      <multiplicity id="47" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="7" navigable="true">      
+      <attribute id="49" name="user"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true">      
+      <attribute id="51" name="confirmationCodes"/>      
+      <multiplicity id="52" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="false" package="true" protected="true" private="true"/>    
+    <operations public="false" package="false" protected="false" private="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

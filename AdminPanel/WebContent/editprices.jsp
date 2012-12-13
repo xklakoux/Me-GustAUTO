@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,40 +22,18 @@ table {
 	margin-right: auto;
 }
 </style>
-<%
-	// will get those prices from db
-	double aal3 = 0.2;
-	double aam3 = 0.15;
-	double allInc = 60;
-	double gal3 = 55;
-	double gam3 = 44.25;
-%>
 <body>
 	<hr>
 	<p>Edit prices</p>
 	<hr>
-	<form method="POST" name="admin_editprices.jsp">
+	<form method="POST" action="SavePricesServlet">
 		<table>
+		<c:forEach var="price" items="${prices}"> 
 			<tr>
-				<td>Auto ad less than 3 months</td>
-				<td><input type="text" name="aal3" value="<%=aal3%>">&euro;</td>
+				<td>${price.typ} advertisment for ${price.months} months</td>
+				<td><input type="text" name="${price.priceId}" value="${price.price}" valid>&euro;</td>
 			</tr>
-			<tr>
-				<td>Auto ad more than 3 months</td>
-				<td><input type="text" name="aam3" value="<%=aam3%>">&euro;</td>
-			</tr>
-			<tr>
-				<td>All inclusive 1 year</td>
-				<td><input type="text" name="allInc" value="<%=allInc%>">&euro;</td>
-			</tr>
-			<tr>
-				<td>General ad less than 3 months</td>
-				<td><input type="text" name="gal3" value="<%=gal3%>">&euro;</td>
-			</tr>
-			<tr>
-				<td>General ad more than 3 months</td>
-				<td><input type="text" name="gam3" value="<%=gam3%>">&euro;</td>
-			</tr>
+			</c:forEach>
 		</table>
 		<hr>
 		<p>Promotions</p>
