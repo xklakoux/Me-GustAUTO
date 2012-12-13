@@ -78,6 +78,7 @@ public class AddAutoAd extends HttpServlet {
 		ad.setRegistrationNumber(request.getParameter("registration_number"));
 		ad.setYears(request.getParameter("years"));
 		ad.setTitle(request.getParameter("title"));
+		ad.setMonths(Integer.valueOf(request.getParameter("months")));
 		ad.setUser((User) u);	
 		ad.setValid(false);
 		ad.setPaid(false);
