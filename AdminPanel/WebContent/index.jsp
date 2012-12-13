@@ -17,9 +17,10 @@
 				<div id="menu">
 					<ul>
 						<li><a href="index.jsp">Home</a></li>
-						<li><a href="?page=editprices.jsp">Edit Pricing</a></li>
+						<li><a href="index.jsp?page=editprices.jsp">Edit Pricing</a></li>
 						<li><a href="ShowAutosServlet">View auto ads</a></li>
 						<li><a href="ViewGenAdServlet">View general ads</a></li>
+						<li><a href="StatisticsServlet">Business statistics</a></li>
 					</ul>
 				</div>
 
