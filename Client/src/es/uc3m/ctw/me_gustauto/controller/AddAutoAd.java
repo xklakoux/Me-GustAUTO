@@ -47,9 +47,6 @@ public class AddAutoAd extends HttpServlet {
 		cal.add(Calendar.MONTH, Integer.valueOf(request.getParameter("months"))); // add months to add_date
 		Date valid_To = cal.getTime();
 		
-//		SimpleDateFormat inputDateFormat = new SimpleDateFormat("dd-MM-yyyy");			
-		
-		
 		String username = (String) request.getSession().getAttribute(MySQLConnector.USERNAME_OF_CLIENT);
 	
 		AutoAd ad = new AutoAd();
@@ -98,8 +95,7 @@ public class AddAutoAd extends HttpServlet {
 		context.setAttribute("AutoAdList", null);
 
 		response.sendRedirect("PaymentReceipt?id="+ad_id+"&months="+request.getParameter("months")+"&ad_type=auto");
-		//TODO: show only valid and paid ads on the page
-		//response.sendRedirect("ShowAutos?id="+ad_id);
+		//TODO: show only valid and paid ads on the page		
 	}
 
 }

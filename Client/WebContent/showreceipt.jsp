@@ -28,7 +28,10 @@
 	</c:choose>
 	 <br>
 	For ${param.months} month(s). <br>
-	The price is ${price} € <br>
+	The price is ${price} € 
+	<c:if test="${discount_used}">
+		<div style='color: green;'>with ${discount_value}% of discount from your last transaction!</div>
+	</c:if><br>
 </div>
 <div>
 		<form action="index.jsp">
