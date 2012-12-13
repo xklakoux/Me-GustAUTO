@@ -29,9 +29,15 @@
 	 <br>
 	For ${param.months} month(s). <br>
 	The price is ${price} € 
-	<c:if test="${discount_used}">
+	<c:choose>
+	<c:when test="${discount_used}">
 		<div style='color: green;'>with ${discount_value}% of discount from your last transaction!</div>
-	</c:if><br>
+	</c:when>
+	<c:otherwise>
+		<div style='color: gray;'>for the next ad you will get a discount of ${discount_value}% !</div>
+	</c:otherwise>
+	</c:choose>
+	<br>
 </div>
 <div>
 		<form action="index.jsp">

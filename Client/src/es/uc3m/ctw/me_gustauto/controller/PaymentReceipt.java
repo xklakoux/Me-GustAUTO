@@ -78,6 +78,8 @@ public class PaymentReceipt extends HttpServlet {
 			request.setAttribute("discount_value", user.getNextPercentDiscount());			
 			user.setNextPercentDiscount(0);
 		}else{ // set discount for the next ad
+			request.setAttribute("discount_used", false);
+			request.setAttribute("discount_value", promo.getPerc());
 			user.setNextPercentDiscount(promo.getPerc());
 		}
 		em.getTransaction().commit();
