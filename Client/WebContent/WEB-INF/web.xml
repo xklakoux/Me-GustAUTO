@@ -8,6 +8,13 @@
   <servlet>
     <description>
   	</description>
+    <display-name>ReturnDiscountServlet</display-name>
+    <servlet-name>ReturnDiscountServlet</servlet-name>
+    <servlet-class>es.uc3m.ctw.me_gustauto.controller.ReturnDiscountServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>
+  	</description>
     <display-name>PaymentReceipt</display-name>
     <servlet-name>PaymentReceipt</servlet-name>
     <servlet-class>es.uc3m.ctw.me_gustauto.controller.PaymentReceipt</servlet-class>
@@ -81,6 +88,10 @@
     <servlet-name>MessagesServlet</servlet-name>
     <servlet-class>es.uc3m.ctw.me_gustauto.controller.MessagesServlet</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>ReturnDiscountServlet</servlet-name>
+    <url-pattern>/ReturnDiscountServlet</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddAutoAd</servlet-name>
     <url-pattern>/AddAutoAd</url-pattern>

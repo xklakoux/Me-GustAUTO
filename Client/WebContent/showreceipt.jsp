@@ -42,7 +42,8 @@
 			<input type="hidden" name="page" value="payment.jsp">
 			<input type="submit" value="Proceed to payment">
 		</form>
-		<form action="index.jsp">
+		<form action="ReturnDiscountServlet">	
+			<input type="hidden" name="discount_value" value ="${discount_value}">					
 			<input type="submit" value="Cancel">
 		</form>
 	</div>
