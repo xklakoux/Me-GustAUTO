@@ -57,11 +57,11 @@ public class Statistics implements StatisticsRemote {
 		int generalAdsCount = getGeneralAdsCount();
 		double generalAdsPrice;
 		try {
-			ResultSet rs = statement.executeQuery("SELECT price FROM prices WHERE name = '1 month';");
+			ResultSet rs = statement.executeQuery("SELECT price FROM prices WHERE price_id = 1;");
 			rs.next();
 			autoAdsPrice = rs.getDouble(1);
 			
-			rs = statement.executeQuery("SELECT price FROM prices WHERE name = '3 month';");
+			rs = statement.executeQuery("SELECT price FROM prices WHERE price_id = 4;");
 			rs.next();
 			generalAdsPrice = rs.getDouble(1);
 			
