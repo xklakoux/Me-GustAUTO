@@ -52,20 +52,16 @@ public class Statistics implements StatisticsRemote {
 	@Override
 	public double getTotalIncome() {
 		double result = -1;
-		int autoAdsCount = getAutoAdsCount();
-		double autoAdsPrice;
-		int generalAdsCount = getGeneralAdsCount();
-		double generalAdsPrice;
 		try {
-			ResultSet rs = statement.executeQuery("SELECT price FROM prices WHERE price_id = 1;");
+			// Retrieve total income of AutoAds
+			ResultSet rs = statement.executeQuery("SELECT SUM(prices.price*months)  FROM auto_ads INNER JOIN prices USING(months) WHERE  typ = 'Auto';");
 			rs.next();
-			autoAdsPrice = rs.getDouble(1);
+			result = rs.getDouble(1);
 			
-			rs = statement.executeQuery("SELECT price FROM prices WHERE price_id = 4;");
+			// Retrieve total income of GeneralAds
+			rs = statement.executeQuery("SELECT SUM(prices.price*months)  FROM general_ads INNER JOIN prices USING(months) WHERE  typ = 'General';");
 			rs.next();
-			generalAdsPrice = rs.getDouble(1);
-			
-			result = autoAdsCount*autoAdsPrice + generalAdsCount*generalAdsPrice;
+			result += rs.getDouble(1);
 		} catch (SQLException e) {e.printStackTrace();}
 		return result;
 	}
