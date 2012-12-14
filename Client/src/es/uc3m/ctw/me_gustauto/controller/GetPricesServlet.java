@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +31,7 @@ public class GetPricesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		EntityManager em = Persistence.createEntityManagerFactory("megustauto").createEntityManager();
+		EntityManager em = MySQLConnector.getFactory().createEntityManager();
 		List<Price> prices = (List<Price>) em.createQuery("select c from Price c").getResultList();
 		request.setAttribute("prices", prices);
 		for(Price price: prices){

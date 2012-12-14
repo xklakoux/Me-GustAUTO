@@ -13,7 +13,7 @@ import javax.jms.MessageListener;
 		activationConfig = { @ActivationConfigProperty(
 				propertyName = "destinationType", propertyValue = "javax.jms.Queue"
 		) }, 
-		mappedName = "jms/Queue")
+		mappedName = "jms/MotorSales")
 public class QueueListener1 implements MessageListener {
 
     /**

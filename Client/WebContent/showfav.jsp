@@ -15,7 +15,7 @@
 			</div>
 
 			<div>
-				<a href="AutoAdAdministrationServlet?command=df&id=${fav.id}"><img src='res/images/delete.gif' width='13px' height='13px'></a>
+				<a href="AutoAdAdministrationServlet?command=df&id=${fav.favId}"><img src='res/images/delete.gif' width='13px' height='13px'></a>
 			</div>
 		</div>
 	</div>

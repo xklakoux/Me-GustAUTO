@@ -11,14 +11,11 @@ import javax.jms.QueueSession;
 import javax.jms.Session;
 import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.uc3m.ctw.me_gustauto.model.Message;
 import es.uc3m.ctw.me_gustauto.model.User;
 
 /**
@@ -38,43 +35,32 @@ public class MessagesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("megustauto");
-		EntityManager em = emf.createEntityManager();
-		String username = (String) request.getSession().getAttribute(
-				MySQLConnector.USERNAME_OF_CLIENT);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		EntityManager em = MySQLConnector.getFactory().createEntityManager();
+		String username = (String) request.getSession().getAttribute(MySQLConnector.USERNAME_OF_CLIENT);
 		System.out.println("username " + username);
-		User user = (User) em
-				.createQuery("SELECT d from User d where d.username=:usern")
-				.setParameter("usern", username).getResultList().get(0);
-		List<Message> messages = (List<Message>) em
-				.createQuery("SELECT d from Message d where d.user2=:usern")
-				.setParameter("usern", user).getResultList();
+		User user = (User) em.createQuery("SELECT d from User d where d.username=:usern").setParameter("usern", username).getResultList().get(0);
+		List<?> messages = em.createQuery("SELECT d from Message d where d.user2=:usern").setParameter("usern", user).getResultList();
 		em.close();
 		if (!messages.isEmpty()) {
 			request.setAttribute("messages", messages);
 		}
 		// System.out.println(messages.get(0).getContent());
-		request.getRequestDispatcher("/index.jsp?page=messages.jsp").forward(
-				request, response);
+		request.getRequestDispatcher("/index.jsp?page=messages.jsp").forward(request, response);
 
-		final String FACTORY = "jms/ConnectionFactory";
-		final String QUEUE = "jms/Queue";
+		final String FACTORY = "jms/MotorSalesCF";
+		final String QUEUE = "jms/MotorSales";
 		boolean stop=false;
 		try {
 			// Prompt for JNDI names
 			// Look up administered objects
 			InitialContext initContext = new InitialContext();
-			QueueConnectionFactory factory = (QueueConnectionFactory) initContext
-					.lookup(FACTORY);
+			QueueConnectionFactory factory = (QueueConnectionFactory) initContext.lookup(FACTORY);
 			Queue queue = (Queue) initContext.lookup(QUEUE);
 			initContext.close();
 			// Create JMS objects
 			QueueConnection connection = factory.createQueueConnection();
-			QueueSession session = connection.createQueueSession(false,
-					Session.AUTO_ACKNOWLEDGE);
+			QueueSession session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
 			QueueReceiver receiver = session.createReceiver(queue);
 			receiver.receive();
 			connection.start();

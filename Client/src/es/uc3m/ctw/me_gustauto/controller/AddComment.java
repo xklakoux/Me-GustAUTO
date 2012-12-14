@@ -52,6 +52,6 @@ public class AddComment extends HttpServlet {
 		cmt.setDateAdded(new Date());
 		em.getTransaction().commit();
 		em.close();
-		response.sendRedirect("ShowAutos?id="+request.getParameter("ad_id"));
+		response.sendRedirect("ShowDetailsServlet?id="+request.getParameter("ad_id"));
 	}
 }

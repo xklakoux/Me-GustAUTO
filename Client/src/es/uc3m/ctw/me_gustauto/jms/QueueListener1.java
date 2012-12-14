@@ -18,7 +18,7 @@ import javax.persistence.Persistence;
  * Message-Driven Bean implementation class for: QueueListener1
  * 
  */
-@MessageDriven(activationConfig = { @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue") }, mappedName = "jms/Queue")
+@MessageDriven(activationConfig = { @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue") }, mappedName = "jms/MotorSales")
 public class QueueListener1 implements MessageListener {
 
 	/**
