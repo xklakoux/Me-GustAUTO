@@ -13,8 +13,6 @@ public class AutoAdListBean {
 			AD_ID = "addId", COLOUR = "colour", DESCRIPTION = "description",
 			MODEL = "model", REGISTRATION_NUMBER = "registrationNumber", TITLE = "title",
 			VALID_UNTIL = "validTo";
-	// operators for filtering
-	public final String BIGGER = ">", SMALLER = "<", EQUAL = "=", SMALLER_EQUAL = "<=", BIGGER_EQUAL = ">=";
 	
 	/**
 	 * Get a list of all AutoAds
@@ -36,12 +34,7 @@ public class AutoAdListBean {
 		return result;
 	}
 	
-	/**
-	 * 
-	 * @param field AutoAdListBean.PRICE or any other AutoAd field name
-	 * @param order AutoAdListBean.ASCENDING or AutoAdListBean.DESCENDING
-	 * @return list of auto ads sorted ascending or descending by a given field
-	 */
+	
 	public List<?> getSortedList(String field, String order){
 		EntityManager em = MySQLConnector.getFactory().createEntityManager();
 		List<?> result = em.createQuery("SELECT a FROM AutoAd a ORDER BY a.:f :o")
@@ -52,30 +45,4 @@ public class AutoAdListBean {
 		return result;
 	}
 	
-	// what comes next might be useful for searching
-	/**
-	 * 
-	 * @param field AutoAdListBean.PRICE or any other AutoAd field name
-	 * 
-	 * @param relation AutoAdListBean.BIGGER SMALLER EQUAL SMALLER_EQUAL BIGGER_EQUAL
-	 * @param value 
-	 * @return list of ads that fulfill the specified requirement
-	 */
-	public List<?> getFilteredList(String field, String relation, String value){
-		EntityManager em = MySQLConnector.getFactory().createEntityManager();
-		List<?> result = em.createQuery("SELECT a FROM AutoAd a WHERE a.:f :r :v")
-				.setParameter("f", field)
-				.setParameter("r", relation)
-				.setParameter("v", value)
-				.getResultList();
-		em.close();
-		return result;
-	}
-	
-	public List<?> getListFromQuery(String query){
-		EntityManager em = MySQLConnector.getFactory().createEntityManager();
-		List<?> result = em.createQuery(query).getResultList();
-		em.close();
-		return result;
-	}
 }
