@@ -47,7 +47,7 @@ public class ReturnDiscountServlet extends HttpServlet {
 				.setParameter("usern", username).getSingleResult();
 		
 		em.getTransaction().begin();
-		if(request.getParameter("discount_value") == null || request.getParameter("discount_value").equals("0") || request.getParameter("discount_value").equals("")){
+		if(!request.getParameter("discount_value").matches("\\d*")){
 			user.setNextPercentDiscount(0);
 		}else{			
 			user.setNextPercentDiscount(Integer.valueOf(request.getParameter("discount_value")));			
